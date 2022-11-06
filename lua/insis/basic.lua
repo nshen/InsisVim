@@ -32,7 +32,7 @@ vim.o.smartindent = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 -- 搜索不要高亮
-vim.o.hlsearch = false
+vim.opt.hlsearch = false
 -- 边输入边搜索
 vim.o.incsearch = true
 -- 命令行高为2，提供足够的显示空间
@@ -82,3 +82,6 @@ vim.o.showmode = false
 -- 配置剪切板
 vim.opt.clipboard = "unnamedplus"
 vim.opt.foldtext = "v:lua.require('utils.simple_fold').simple_fold()"
+-- disable netrw at the very start of your init.lua (strongly advised) nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
