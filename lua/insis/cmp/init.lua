@@ -16,6 +16,8 @@ if not status then
   return
 end
 
+local lspkind = require("insis.cmp.lspkind")
+
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -86,7 +88,7 @@ cmp.setup({
   }),
 
   -- 使用lspkind-nvim显示类型图标
-  formatting = require("cmp.lspkind").formatting,
+  formatting = lspkind.formatting,
 })
 
 -- Use buffer source for `/`.
@@ -117,4 +119,4 @@ cmp.setup.filetype({ "markdown", "help" }, {
   } },
 })
 
-require("cmp.luasnip")
+require("insis.cmp.luasnip")

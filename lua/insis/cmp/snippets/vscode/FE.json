@@ -189,7 +189,7 @@
         "body": "console.log(${1:object})",
         "description": "Displays a message in the console"
     },
-    "Console Log": {
+    "Console Log2": {
         "prefix": "log",
         "body": "console.log(${1:object})",
         "description": "Displays a message in the console"
@@ -339,7 +339,7 @@
     "itBlock": {
         "key": "itBlock",
         "prefix": "it",
-        "body": ["it('${2:should }', ${3|,async |}() => {", "\t$4", "})"],
+        "body": ["it('${2:should }', ${3| ,async |}() => {", "\t$4", "})"],
         "description": "Testing `it` block",
         "scope": "typescript,typescriptreact,javascript,javascriptreact"
     },
