@@ -1,10 +1,112 @@
-local M = {
+-- Default user config
+--
+return {
   config_path = vim.fn.stdpath("config"),
 
   packer = {
     max_jobs = 20,
-    clone_timeout = 60, -- Timeout, in seconds, for git clones
-    default_url_format = "https://github.com/%s", -- Lua format string used for "aaa/bbb" style plugins
+    clone_timeout = 100,
+
+    -- default_url_format = "https://hub.fastgit.xyz/%s",
+    -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
+    -- default_url_format = "https://gitcode.net/mirrors/%s",
+    -- default_url_format = "https://gitclone.com/github.com/%s",
+    default_url_format = "https://github.com/%s",
+  },
+
+  notify = {
+    enable = true,
+    -- in millionsecond
+    timeout = 3000,
+    -- 'fade', 'static', 'slide'
+    stages = "fade",
+    -- 'defalut','minimal','simple'
+    render = "minimal",
+  },
+
+  nvimTree = {
+
+    enable = true,
+
+    keys = {
+
+      toggle = "<A-m>",
+      -- toggle = "<leader>m"
+      edit = { "o", "<2-LeftMouse>" },
+      system_open = "<CR>",
+      vsplit = "sv",
+      split = "sh",
+      -- toggle .gitignore (git enable)
+      toggle_git_ignored = "i",
+      -- Hide (dotfiles)
+      toggle_dotfiles = ".",
+      -- togglle custom config
+      toggle_custom = "u",
+
+      refresh = "R",
+      -- file operate
+      create = "a",
+      remove = "d",
+      rename = "r",
+      cut = "x",
+      copy = "c",
+      paste = "p",
+      copy_name = "y",
+      copy_path = "Y",
+      copy_absolute_path = "gy",
+      toggle_file_info = "I",
+      tabnew = "t",
+      cd = "]",
+      dir_up = "[",
+    },
+  },
+
+  bufferLine = {
+
+    enable = true,
+
+    keys = {
+
+      -- left / right cycle
+      prev = "<C-h>",
+      next = "<C-l>",
+
+      -- close current buffer
+      close = "<C-w>", -- close = "<leader>bc",
+
+      -- close all left / right tabs
+      close_left = "<leader>bh",
+      close_right = "<leader>bl",
+
+      -- close all other tabs
+      close_others = "<leader>bo",
+      close_pick = "<leader>bp",
+    },
+  },
+
+  telescope = {
+
+    enable = true,
+
+    keys = {
+      find_files = "<C-p>",
+      live_grep = "<C-f>",
+
+      -- 上下移动
+      move_selection_next = "<C-j>",
+      move_selection_previous = "<C-k>",
+      -- move_selection_next = "<C-n>",
+      -- move_selection_previous = "<C-p>",
+      -- 历史记录
+      cycle_history_next = "<Down>",
+      cycle_history_prev = "<Up>",
+      -- 关闭窗口
+      -- close = "<C-c>",
+      close = "<esc>",
+      -- 预览窗口上下滚动
+      preview_scrolling_up = "<C-u>",
+      preview_scrolling_down = "<C-d>",
+    },
   },
 
   keys = {
@@ -83,8 +185,9 @@ local M = {
     },
 
     fold = {
-      open = "Z",
-      close = "zz",
+      open = "zo",
+      close = "zc",
+      toggle = "za",
     },
 
     format = "<leader>f",
@@ -97,81 +200,6 @@ local M = {
   },
 
   enable_magic_search = true,
-
-  nvimTree = {
-
-    enable = true,
-
-    toggle = "<A-m>",
-    -- toggle = "<leader>m"
-    edit = { "o", "<2-LeftMouse>" },
-    system_open = "<CR>",
-    -- v分屏打开文件
-    vsplit = "sv",
-    -- h分屏打开文件
-    split = "sh",
-    -- toggle .gitignore (git enable)
-    toggle_git_ignored = "i",
-    -- Hide (dotfiles)
-    toggle_dotfiles = ".",
-    -- togglle custom config
-    toggle_custom = "u",
-
-    refresh = "R",
-    -- 文件操作
-    create = "a",
-    remove = "d",
-    rename = "r",
-    cut = "x",
-    copy = "c",
-    paste = "p",
-    copy_name = "y",
-    copy_path = "Y",
-    copy_absolute_path = "gy",
-    toggle_file_info = "I",
-    tabnew = "t",
-    -- 进入下一级
-    cd = "]",
-    -- 进入上一级
-    dir_up = "[",
-  },
-
-  bufferLine = {
-
-    enable = true,
-
-    prev = "<C-h>",
-    next = "<C-l>",
-    close = "<C-w>",
-    -- close = "<leader>bc",
-    close_left = "<leader>bh",
-    close_right = "<leader>bl",
-    close_others = "<leader>bo",
-    close_pick = "<leader>bp",
-  },
-
-  telescope = {
-
-    enable = true,
-
-    find_files = "<C-p>",
-    live_grep = "<C-f>",
-
-    -- 上下移动
-    move_selection_next = "<C-j>",
-    move_selection_previous = "<C-k>",
-    -- move_selection_next = "<C-n>",
-    -- move_selection_previous = "<C-p>",
-    -- 历史记录
-    cycle_history_next = "<Down>",
-    cycle_history_prev = "<Up>",
-    -- 关闭窗口
-    -- close = "<C-c>",
-    close = "<esc>",
-    -- 预览窗口上下滚动
-    preview_scrolling_up = "<C-u>",
-    preview_scrolling_down = "<C-d>",
-  },
 
   mkdnflow = {
     enable = true,
@@ -243,5 +271,3 @@ local M = {
     ts_goto_source = "gD",
   },
 }
-
-return M
