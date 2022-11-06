@@ -1,14 +1,20 @@
-function _G.requirePlugin(name)
+-- Global functions
+
+function _G.pRequire(name)
   local status_ok, plugin = pcall(require, name)
   if not status_ok then
-    vim.notify(" 没有找到插件：" .. name)
+    vim.notify(" Can't find: " .. name)
     return nil
   end
   return plugin
 end
 
-function _G.lspCap()
-  print(vim.inspect(vim.lsp.buf_get_clients()[1].resolved_capabilities))
+function _G.getUserConfig(name)
+  return require("insis").config[name]
+end
+
+function _G.logLspCap()
+  print(vim.inspect(vim.lsp.get_active_clients()[1].resolved_capabilities))
 end
 
 function _G.log(v)
