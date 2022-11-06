@@ -1,3 +1,4 @@
+-- NOTE: Do not use requires in plugin
 return {
   -- Packer can manage itself
   { "wbthomason/packer.nvim" },
@@ -51,28 +52,13 @@ return {
     end,
   },
 
+  -- alpha.nvim
   {
     "goolord/alpha-nvim",
     config = function()
       require("alpha").setup(require("insis.plugins.alpha").config)
     end,
   },
-
-  -- dashboard-nvim
-  -- {
-  --   "glepnir/dashboard-nvim",
-  --   config = function()
-  --     require("plugin-config.dashboard")
-  --   end,
-  -- },
-
-  -- project
-  -- {
-  --   "ahmedkhalf/project.nvim",
-  --   config = function()
-  --     require("plugin-config.project")
-  --   end,
-  -- },
 
   -- treesitter
   {
