@@ -20,6 +20,7 @@ end
 -- ~/.local/share/nvim/mason
 mason.setup({
   ui = {
+    border = "rounded",
     icons = {
       package_installed = "✓",
       package_pending = "➜",

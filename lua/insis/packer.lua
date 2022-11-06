@@ -2,7 +2,6 @@ local p = require("insis.utils.path")
 local uConfig = require("insis").config
 
 local install_path = p.join(p.getData(), "site", "pack", "packer", "start", "packer.nvim")
-log(install_path)
 
 local M = {}
 

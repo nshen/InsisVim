@@ -51,13 +51,20 @@ return {
     end,
   },
 
-  -- dashboard-nvim
   {
-    "glepnir/dashboard-nvim",
+    "goolord/alpha-nvim",
     config = function()
-      require("plugin-config.dashboard")
+      require("alpha").setup(require("insis.plugins.alpha").config)
     end,
   },
+
+  -- dashboard-nvim
+  -- {
+  --   "glepnir/dashboard-nvim",
+  --   config = function()
+  --     require("plugin-config.dashboard")
+  --   end,
+  -- },
 
   -- project
   -- {
