@@ -38,20 +38,22 @@ M.setup = function()
     return
   end
 
+  local snapshotPath = p.join(p.getConfig(), "snapshots", "plugins.json")
+  local snapshot = vim.fn.json_decode(vim.fn.readfile(snapshotPath))
+  package.loaded["insis.plugins"] = nil
+  local pluginList = require("insis.plugins")
+  for _, plugin in ipairs(pluginList) do
+    local short_name, _ = require("packer.util").get_plugin_short_name(plugin)
+    if snapshot and snapshot[short_name] and snapshot[short_name].commit then
+      plugin.commit = snapshot[short_name].commit
+    end
+  end
+
   packer.reset()
   packer.startup({
     function(use)
-      local snapshotPath = p.join(p.getConfig(), "snapshots", "plugins.json")
-      local snapshot = vim.fn.json_decode(vim.fn.readfile(snapshotPath))
-      package.loaded["insis.plugins"] = nil
-      local pluginList = require("insis.plugins")
-
       for _, plugin in ipairs(pluginList) do
-        local short_name, _ = require("packer.util").get_plugin_short_name(plugin)
-        if snapshot and snapshot[short_name] and snapshot[short_name].commit then
-          plugin.commit = snapshot[short_name].commit
-          use(plugin)
-        end
+        use(plugin)
       end
     end,
     config = {

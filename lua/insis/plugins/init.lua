@@ -2,6 +2,10 @@ return {
   -- Packer can manage itself
   { "wbthomason/packer.nvim" },
   -------------------------- plugins -------------------------------------------
+  -- requires
+  { "kyazdani42/nvim-web-devicons" },
+  { "moll/vim-bbye" },
+  { "nvim-lua/plenary.nvim" },
   -- ("lewis6991/impatient.nvim")
 
   -- nvim-notify
@@ -14,7 +18,6 @@ return {
   -- nvim-tree
   {
     "kyazdani42/nvim-tree.lua",
-    requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require("insis.plugins.nvim-tree")
     end,
@@ -22,7 +25,6 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
     config = function()
       require("insis.plugins.bufferline")
     end,
@@ -30,24 +32,22 @@ return {
   -- lualine
   {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons" },
     config = function()
       require("insis.plugins.lualine")
     end,
   },
 
   -- telescope
+  -- telescope extensions
+  { "LinArcX/telescope-env.nvim" },
+  { "nvim-telescope/telescope-ui-select.nvim" },
+  { "nvim-telescope/telescope-live-grep-args.nvim" },
   {
     "nvim-telescope/telescope.nvim",
     -- opt = true,
     -- cmd = "Telescope",
-    requires = {
-      -- telescope extensions
-      { "LinArcX/telescope-env.nvim" },
-      { "nvim-telescope/telescope-ui-select.nvim" },
-    },
     config = function()
-      require("plugin-config.telescope")
+      require("insis.plugins.telescope")
     end,
   },
 
@@ -144,7 +144,6 @@ return {
   -- todo-comments.nvim
   {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
     config = function()
       require("plugin-config.todo-comments")
     end,
