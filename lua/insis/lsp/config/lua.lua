@@ -3,7 +3,7 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-local common = require("lsp.common-config")
+local common = require("insis.lsp.common-config")
 
 local opts = {
   capabilities = common.capabilities,

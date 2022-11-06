@@ -1,4 +1,4 @@
-local common = require("lsp.common-config")
+local common = require("insis.lsp.common-config")
 local opts = {
   capabilities = common.capabilities,
   flags = common.flags,
@@ -28,7 +28,8 @@ return {
       -- We don't want to call lspconfig.rust_analyzer.setup() when using rust-tools
       rust_tools.setup({
         server = opts,
-        dap = require("dap.nvim-dap.config.rust"),
+        -- NOTICE: require dap 
+        dap = require("insis.dap.nvim-dap.config.rust"),
       })
     end
   end,

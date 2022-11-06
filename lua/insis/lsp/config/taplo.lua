@@ -1,6 +1,6 @@
 local opts = {
   on_attach = function(_, bufnr)
-    require("lsp.common-config").keyAttach(bufnr)
+    require("insis.lsp.common-config").keyAttach(bufnr)
   end,
 }
 return {

@@ -56,23 +56,23 @@ mason_config.setup({
 -- key 必须为下列网址列出的 server name，不可以随便写
 -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
 local servers = {
-  sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
-  bashls = require("lsp.config.bash"),
-  pyright = require("lsp.config.pyright"),
-  html = require("lsp.config.html"),
-  cssls = require("lsp.config.css"),
-  emmet_ls = require("lsp.config.emmet"),
-  jsonls = require("lsp.config.json"),
-  tsserver = require("lsp.config.typescript"),
-  yamlls = require("lsp.config.yamlls"),
-  dockerls = require("lsp.config.docker"),
-  tailwindcss = require("lsp.config.tailwindcss"),
-  rust_analyzer = require("lsp.config.rust"),
-  taplo = require("lsp.config.taplo"), -- toml
-  gopls = require("lsp.config.gopls"),
-  -- remark_ls = require("lsp.config.markdown"),
-  clangd = require("lsp.config.clangd"),
-  cmake = require("lsp.config.cmake"),
+  sumneko_lua = require("insis.lsp.config.lua"), -- lua/lsp/config/lua.lua
+  bashls = require("insis.lsp.config.bash"),
+  pyright = require("insis.lsp.config.pyright"),
+  html = require("insis.lsp.config.html"),
+  cssls = require("insis.lsp.config.css"),
+  emmet_ls = require("insis.lsp.config.emmet"),
+  jsonls = require("insis.lsp.config.json"),
+  tsserver = require("insis.lsp.config.typescript"),
+  yamlls = require("insis.lsp.config.yamlls"),
+  dockerls = require("insis.lsp.config.docker"),
+  tailwindcss = require("insis.lsp.config.tailwindcss"),
+  rust_analyzer = require("insis.lsp.config.rust"),
+  taplo = require("insis.lsp.config.taplo"), -- toml
+  gopls = require("insis.lsp.config.gopls"),
+  -- remark_ls = require("insis.lsp.config.markdown"),
+  clangd = require("insis.lsp.config.clangd"),
+  cmake = require("insis.lsp.config.cmake"),
 }
 
 for name, config in pairs(servers) do
@@ -85,4 +85,4 @@ for name, config in pairs(servers) do
   end
 end
 
-require("lsp.ui")
+require("insis.lsp.ui")

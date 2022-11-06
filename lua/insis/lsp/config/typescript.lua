@@ -5,7 +5,7 @@ if not status then
 end
 
 local uConfig = require("uConfig")
-local common = require("lsp.common-config")
+local common = require("insis.lsp.common-config")
 local opts = {
   capabilities = common.capabilities,
   flags = common.flags,
