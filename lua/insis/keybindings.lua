@@ -1,4 +1,4 @@
-local uConfig = require("uConfig")
+local uConfig = require("insis").config
 local keys = uConfig.keys
 
 -- Modes
