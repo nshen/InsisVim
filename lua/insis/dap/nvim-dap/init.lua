@@ -17,7 +17,7 @@ if not status then
   return
 end
 
-require("dap.nvim-dap.ui")
+require("insis.dap.nvim-dap.ui")
 
 vt.setup({
   commented = true,
@@ -74,8 +74,8 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
-require("dap.nvim-dap.config.lua").setup()
-require("dap.nvim-dap.config.cpp").setup()
+require("insis.dap.nvim-dap.config.lua").setup()
+require("insis.dap.nvim-dap.config.cpp").setup()
 
 require("dap-go").setup()
-require("keybindings").mapDAP()
+require("insis.keybindings").mapDAP()
