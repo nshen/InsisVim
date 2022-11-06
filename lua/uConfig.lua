@@ -1,6 +1,12 @@
 local M = {
   config_path = vim.fn.stdpath("config"),
 
+  packer = {
+    max_jobs = 20,
+    clone_timeout = 60, -- Timeout, in seconds, for git clones
+    default_url_format = "https://github.com/%s", -- Lua format string used for "aaa/bbb" style plugins
+  },
+
   keys = {
 
     leader_key = " ",

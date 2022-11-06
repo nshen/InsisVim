@@ -31,12 +31,24 @@ autocmd("BufWritePre", {
 })
 
 -- 修改lua/plugins.lua 自动更新插件
+-- autocmd("BufWritePost", {
+--   group = myAutoGroup,
+--   -- autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--   callback = function()
+--     if vim.fn.expand("<afile>") == "lua/plugins.lua" then
+--       vim.api.nvim_command("source lua/plugins.lua")
+--       vim.api.nvim_command("PackerSync")
+--     end
+--   end,
+-- })
+
 autocmd("BufWritePost", {
   group = myAutoGroup,
   -- autocmd BufWritePost plugins.lua source <afile> | PackerSync
   callback = function()
-    if vim.fn.expand("<afile>") == "lua/plugins.lua" then
-      vim.api.nvim_command("source lua/plugins.lua")
+    if vim.fn.expand("<afile>") == "lua/insis/plugins/init.lua" then
+      -- vim.api.nvim_command("source lua/insis/plugins/init.lua")
+      require("insis.packer").setup()
       vim.api.nvim_command("PackerSync")
     end
   end,

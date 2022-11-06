@@ -20,8 +20,8 @@ gitsigns.setup({
   -- 行数高亮
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
-  keymaps = require("keybindings").gitsigns,
+  word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  keymaps = require("insis.keybindings").gitsigns,
   watch_gitdir = {
     interval = 1000,
     follow_files = true,
@@ -52,5 +52,5 @@ gitsigns.setup({
   yadm = {
     enable = false,
   },
-  on_attach = require("keybindings").gitsigns_on_attach,
+  on_attach = require("insis.keybindings").gitsigns_on_attach,
 })
