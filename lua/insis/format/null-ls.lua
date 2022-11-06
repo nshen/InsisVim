@@ -34,7 +34,8 @@ null_ls.setup({
         "markdown",
       },
       timeout = 10000,
-      prefer_local = "node_modules/.bin",
+      -- prefer_local = "node_modules/.bin",
+      only_local = "node_modules/.bin",
     }),
     -- rustfmt
     -- rustup component add rustfmt
