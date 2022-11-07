@@ -1,7 +1,8 @@
 -- Default user config
 --
 return {
-  config_path = vim.fn.stdpath("config"),
+  -- config_path = vim.fn.stdpath("config"),
+
   lock_plugin_commit = false,
 
   packer = {
@@ -122,6 +123,21 @@ return {
 
   rust = {
     enable = false,
+  },
+
+  markdown = {
+
+    enable = true,
+
+    mkdnflow = {
+      next_link = "gn",
+      prev_link = "gp",
+      next_heading = "gj",
+      prev_heading = "gk",
+      go_back = "<C-o>",
+      follow_link = "gd",
+      toggle_item = "tt",
+    },
   },
 
   treesitter = {
@@ -248,17 +264,6 @@ return {
   },
 
   enable_magic_search = true,
-
-  mkdnflow = {
-    enable = true,
-    next_link = "gn",
-    prev_link = "gp",
-    next_heading = "gj",
-    prev_heading = "gk",
-    go_back = "<C-o>",
-    follow_link = "gd",
-    toggle_item = "tt",
-  },
 
   comment = {
     enable = true,

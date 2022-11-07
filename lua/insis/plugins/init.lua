@@ -136,10 +136,9 @@ return {
   -- mkdnflow.nvim
   {
     "jakewvincent/mkdnflow.nvim",
-    ft = { "markdown" },
-    commit = "739b8b93530adbd5dfb2d3abff66752637442d41",
+    -- ft = { "markdown" }, -- lazy load
     config = function()
-      require("plugin-config.mkdnflow")
+      require("insis.plugins.mkdnflow")
     end,
   },
 
