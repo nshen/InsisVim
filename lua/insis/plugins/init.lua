@@ -112,7 +112,7 @@ return {
   {
     "windwp/nvim-autopairs",
     config = function()
-      require("plugin-config.nvim-autopairs")
+      require("insis.plugins.autopairs")
     end,
   },
 
