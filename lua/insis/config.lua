@@ -128,6 +128,27 @@ return {
     disalbe_highlight_line_count = 10000,
   },
 
+  surround = {
+    enable = true,
+
+    keys = {
+      -- you surround
+      normal = "ys",
+      -- you surround line
+      normal_cur = "yss",
+      delete = "ds",
+      change = "cs",
+      -- visual mode
+      visual = "s",
+      visual_line = "gs",
+      -- disable
+      insert = false,
+      insert_line = false,
+      normal_line = false,
+      normal_cur_line = false,
+    },
+  },
+
   keys = {
 
     leader_key = " ",

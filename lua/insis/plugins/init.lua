@@ -100,19 +100,11 @@ return {
     end,
   },
 
-  -- surround
-  -- ({
-  --   "ur4ltz/surround.nvim",
-  --   config = function()
-  --     require("plugin-config.surround")
-  --   end,
-  -- })
-
   -- nvim-surround
   {
     "kylechui/nvim-surround",
     config = function()
-      require("plugin-config.nvim-surround")
+      require("insis.plugins.nvim-surround")
     end,
   },
 
