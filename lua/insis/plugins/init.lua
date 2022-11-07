@@ -142,11 +142,11 @@ return {
     end,
   },
 
-  -- venn 画图
+  -- venn.nvim
   {
     "jbyuki/venn.nvim",
     config = function()
-      require("plugin-config.venn")
+      require("insis.plugins.venn")
     end,
   },
 

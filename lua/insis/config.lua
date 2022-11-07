@@ -173,6 +173,22 @@ return {
     packer = "",
   },
 
+  venn = {
+
+    enable = true,
+
+    keys = {
+      -- toggle keymappings for venn using <leader>v
+      toggle = "<leader>v",
+      up = "K",
+      down = "J",
+      left = "H",
+      right = "L",
+      -- draw a box by pressing "f" with visual selection
+      draw_box = "f",
+    },
+  },
+
   keys = {
 
     leader_key = " ",
@@ -288,15 +304,6 @@ return {
     toggle_window_B = "<leader>tb",
     -- <leader>tc 下方命令行窗口
     toggle_window_C = "<leader>tc",
-  },
-
-  venn = {
-    -- toggle keymappings for venn using <leader>v
-    enable = true,
-    -- venn.nvim: enable or disable keymappings
-    toggle = "<leader>v",
-    -- draw a box by pressing "f" with visual selection
-    draw_box = "f",
   },
 
   zen = {
