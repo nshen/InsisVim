@@ -157,41 +157,50 @@ return {
       require("insis.plugins.zen-mode")
     end,
   },
-  --------------------- LSP --------------------
-  -- installer
+
+  ------------------ LSP ------------------------------------------------------
+
+  -- Installer
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
   -- Lspconfig
   { "neovim/nvim-lspconfig" },
-  -- 补全引擎
+  -- Completion engine
   { "hrsh7th/nvim-cmp" },
-  -- Snippet 引擎
+  -- Snippet engine
   { "L3MON4D3/LuaSnip" },
   { "saadparwaiz1/cmp_luasnip" },
-  -- 补全源
+  -- Completion sources
   { "hrsh7th/cmp-vsnip" },
   { "hrsh7th/cmp-nvim-lsp" }, -- { name = nvim_lsp }
   { "hrsh7th/cmp-buffer" }, -- { name = 'buffer' },
   { "hrsh7th/cmp-path" }, -- { name = 'path' }
   { "hrsh7th/cmp-cmdline" }, -- { name = 'cmdline' }
   { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- { name = 'nvim_lsp_signature_help' }
-  -- 常见编程语言代码段
-  { "rafamadriz/friendly-snippets" }, -- UI 增强
+  -- common snippets
+  { "rafamadriz/friendly-snippets" },
+  -- UI improvement
   { "onsails/lspkind-nvim" },
-  { "tami5/lspsaga.nvim" },
-  -- 代码格式化
-  { "mhartington/formatter.nvim" },
-  { "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" },
-  -- TypeScript 增强
-  { "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" },
+
+  ------------------ Code formatter -------------------------------------------
+
+  -- { "mhartington/formatter.nvim" },
+  { "jose-elias-alvarez/null-ls.nvim" },
+
+  ------------------ Language enhancement -------------------------------------
+
+  -- TypeScript
+  -- { "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" },
   { "jose-elias-alvarez/typescript.nvim" },
-  -- Lua 增强
+  -- Lua
   { "folke/neodev.nvim" },
-  -- JSON 增强
+  -- JSON
   { "b0o/schemastore.nvim" },
-  -- Rust 增强
+  -- Rust
   { "simrat39/rust-tools.nvim" },
-  --------------------- colorschemes --------------------
+
+  --------------------- colorschemes ------------------------------------------
+
   -- tokyonight
   {
     "folke/tokyonight.nvim",
@@ -229,6 +238,8 @@ return {
     end,
   },
 
+  --------------------- DAP ---------------------------------------------------
+
   -- vimspector
   {
     "puremourning/vimspector",
@@ -238,7 +249,7 @@ return {
       require("dap.vimspector")
     end,
   },
-  ----------------------------------------------
+
   -- nvim-dap
   { "mfussenegger/nvim-dap" },
   { "theHamsta/nvim-dap-virtual-text" },
@@ -257,7 +268,11 @@ return {
   -- go
   { "leoluz/nvim-dap-go" },
 
-  --[[ not work
+  -- lua
+  -- ("jbyuki/one-small-step-for-vimkind")
+
+  --[[ 
+  -- TODO: python not work yet
 
   {
   "mfussenegger/nvim-dap-python",
@@ -267,8 +282,5 @@ return {
   end,
   }
 
-    --]]
-
-  -- ("jbyuki/one-small-step-for-vimkind")
-  --[[ ("dstein64/vim-startuptime") ]]
+  --]]
 }
