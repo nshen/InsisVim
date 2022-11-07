@@ -168,7 +168,6 @@ pluginKeys.mapLSP = function(mapbuf)
 
   mapbuf("n", lsp.definition, function()
     require("telescope.builtin").lsp_definitions({
-      initial_mode = "normal",
       -- ignore_filename = false,
     })
   end)

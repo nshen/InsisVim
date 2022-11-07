@@ -39,8 +39,6 @@ if telescope and cfg and cfg.enable then
       },
       live_grep_args = {
         auto_quoting = false, -- enable/disable auto-quoting
-        -- override default mappings
-        default_mappings = {},
         -- mappings = { -- extend mappings
         --   i = {
         --     ["<C-k>"] = lga_actions.quote_prompt(),

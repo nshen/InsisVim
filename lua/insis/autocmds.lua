@@ -8,11 +8,11 @@ local autocmd = vim.api.nvim_create_autocmd
 -- https://github.com/daipeihust/im-select
 autocmd("InsertLeave", {
   group = myAutoGroup,
-  callback = require("utils.im-select").insertLeave,
+  callback = require("insis.utils.im-select").insertLeave,
 })
 autocmd("InsertEnter", {
   group = myAutoGroup,
-  callback = require("utils.im-select").insertEnter,
+  callback = require("insis.utils.im-select").insertEnter,
 })
 
 -- 进入Terminal 自动进入插入模式
