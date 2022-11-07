@@ -1,5 +1,5 @@
 local p = require("insis.utils.path")
-local uConfig = require("insis").config
+local cfg = require("insis").config
 
 local install_path = p.join(p.getData(), "site", "pack", "packer", "start", "packer.nvim")
 
@@ -41,10 +41,12 @@ M.setup = function()
   local snapshot = vim.fn.json_decode(vim.fn.readfile(snapshotPath))
   package.loaded["insis.plugins"] = nil
   local pluginList = require("insis.plugins")
-  for _, plugin in ipairs(pluginList) do
-    local short_name, _ = require("packer.util").get_plugin_short_name(plugin)
-    if snapshot and snapshot[short_name] and snapshot[short_name].commit then
-      plugin.commit = snapshot[short_name].commit
+  if cfg.lock_plugin_commit then
+    for _, plugin in ipairs(pluginList) do
+      local short_name, _ = require("packer.util").get_plugin_short_name(plugin)
+      if snapshot and snapshot[short_name] and snapshot[short_name].commit then
+        plugin.commit = snapshot[short_name].commit
+      end
     end
   end
 

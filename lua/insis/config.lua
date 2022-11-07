@@ -2,6 +2,7 @@
 --
 return {
   config_path = vim.fn.stdpath("config"),
+  lock_plugin_commit = false,
 
   packer = {
     max_jobs = 20,
