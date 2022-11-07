@@ -149,6 +149,13 @@ return {
     },
   },
 
+  -- TODO: mirror
+  mirror = {
+    -- https://github.com/nvim-treesitter/nvim-treesitter#i-want-to-use-a-mirror-instead-of-httpsgithubcom
+    treesitter = "",
+    packer = "",
+  },
+
   keys = {
 
     leader_key = " ",
