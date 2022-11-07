@@ -96,7 +96,7 @@ return {
   {
     "akinsho/toggleterm.nvim",
     config = function()
-      require("plugin-config.toggleterm")
+      require("insis.plugins.toggleterm")
     end,
   },
 
