@@ -220,14 +220,15 @@ return {
   -- nightfox
   -- ("EdenEast/nightfox.nvim")
 
-  -------------------------------------------------------
-  -- git
+  --------------------- git ---------------------------------------------------
+
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require("plugin-config.gitsigns")
+      require("insis.plugins.gitsigns")
     end,
   },
+
   -- vimspector
   {
     "puremourning/vimspector",
