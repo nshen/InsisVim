@@ -88,6 +88,10 @@ if treesitter then
     autotag = {
       enable = true,
     },
+    -- https://github.com/RRethy/nvim-treesitter-endwise
+    endwise = {
+      enable = true,
+    },
     -- nvim-treesitter/nvim-treesitter-refactor
     refactor = {
       highlight_definitions = {

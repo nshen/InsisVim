@@ -66,6 +66,7 @@ return {
   { "windwp/nvim-ts-autotag" },
   { "nvim-treesitter/nvim-treesitter-refactor" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
+  { "RRethy/nvim-treesitter-endwise" },
   {
     "nvim-treesitter/nvim-treesitter",
     run = function()
