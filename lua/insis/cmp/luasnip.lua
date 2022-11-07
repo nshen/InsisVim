@@ -3,6 +3,7 @@ if not status then
   return
 end
 
+--FIX: remove uConfig
 local status, config = pcall(require, "uConfig")
 if not status then
   return
@@ -13,12 +14,13 @@ if not status then
   return
 end
 
+local pathUtils = require("insis.utils.path")
 -- custom snippets
 require("luasnip.loaders.from_lua").load({
-  paths = config.config_path .. "/lua/cmp/snippets/lua",
+  paths = pathUtils.join(pathUtils.getConfig(), "lua", "insis", "cmp", "snippets", "lua"),
 })
 require("luasnip.loaders.from_vscode").lazy_load({
-  paths = config.config_path .. "/lua/cmp/snippets/vscode",
+  paths = pathUtils.join(pathUtils.getConfig(), "lua", "insis", "cmp", "snippets", "vscode"),
 })
 
 -- https://github.com/rafamadriz/friendly-snippets/

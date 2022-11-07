@@ -129,7 +129,7 @@ return {
   {
     "folke/todo-comments.nvim",
     config = function()
-      require("plugin-config.todo-comments")
+      require("insis.plugins.todo-comments")
     end,
   },
 

@@ -1,8 +1,44 @@
 {
-	"snip1": {
-		"prefix": "lua",
-		"body": [
-			"lualualua"
-		]
-	}
+  "todo": {
+    "prefix": "todo",
+    "body": [
+      "-- TODO: "
+    ]
+  },
+  "fix": {
+    "prefix": "fix",
+    "body": [
+      "-- FIX: "
+    ]
+  },
+  "hack": {
+    "prefix": "hack",
+    "body": [
+      "-- HACK: "
+    ]
+  },
+  "warn": {
+    "prefix": "warn",
+    "body": [
+      "-- WARN: "
+    ]
+  },
+  "PERF": {
+    "prefix": "perf",
+    "body": [
+      "-- PERF: "
+    ]
+  },
+  "NOTE": {
+    "prefix": "note",
+    "body": [
+      "-- NOTE: "
+    ]
+  },
+  "TEST": {
+    "prefix": "test",
+    "body": [
+      "-- TEST: "
+    ]
+  }
 }
