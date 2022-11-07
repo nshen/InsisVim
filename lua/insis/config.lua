@@ -115,6 +115,16 @@ return {
     enable = true,
     -- treesitter code highlight
     highlight = { "html", "css", "javascript", "typescript", "tsx", "vue" },
+    typescript = {
+      keys = {
+        ts_organize = "gs",
+        ts_rename_file = "gR",
+        ts_add_missing_import = "gi",
+        ts_remove_unused = "gu",
+        ts_fix_all = "gf",
+        ts_goto_source = "gD",
+      },
+    },
   },
 
   go = {
@@ -335,12 +345,5 @@ return {
     open_flow = "gp",
     goto_next = "gj",
     goto_prev = "gk",
-    -- typescript
-    ts_organize = "gs",
-    ts_rename_file = "gR",
-    ts_add_missing_import = "gi",
-    ts_remove_unused = "gu",
-    ts_fix_all = "gf",
-    ts_goto_source = "gD",
   },
 }

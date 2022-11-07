@@ -1,3 +1,4 @@
+-- NOTE: DEPRECATE USE typescript.lua instead
 local common = require("insis.lsp.common-config")
 local keybindings = require("insis.keybindings")
 local ts_utils = require("nvim-lsp-ts-utils")
