@@ -36,3 +36,9 @@ function _G.keymap(mode, lhs, rhs, opts)
   }
   vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", default_opts, opts))
 end
+
+function _G.arrayConcat(t1, t2)
+  for _, v in ipairs(t2) do
+    table.insert(t1, v)
+  end
+end
