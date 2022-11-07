@@ -154,7 +154,7 @@ return {
   {
     "folke/zen-mode.nvim",
     config = function()
-      require("plugin-config.zen-mode")
+      require("insis.plugins.zen-mode")
     end,
   },
   --------------------- LSP --------------------

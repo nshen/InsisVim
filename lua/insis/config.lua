@@ -189,6 +189,14 @@ return {
     },
   },
 
+  zen = {
+    enable = true,
+    keys = {
+
+      toggle = "<leader>z",
+    },
+  },
+
   keys = {
 
     leader_key = " ",
@@ -304,11 +312,6 @@ return {
     toggle_window_B = "<leader>tb",
     -- <leader>tc 下方命令行窗口
     toggle_window_C = "<leader>tc",
-  },
-
-  zen = {
-    enable = true,
-    toggle = "<leader>z",
   },
 
   lsp = {
