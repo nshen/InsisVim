@@ -78,6 +78,13 @@ return {
     end,
   },
 
+  -- Comment
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("insis.plugins.comment")
+    end,
+  },
   -- indent-blankline
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -107,14 +114,6 @@ return {
     "kylechui/nvim-surround",
     config = function()
       require("plugin-config.nvim-surround")
-    end,
-  },
-
-  -- Comment
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("plugin-config.comment")
     end,
   },
 
