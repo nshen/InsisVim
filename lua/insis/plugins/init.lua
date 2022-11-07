@@ -205,7 +205,7 @@ return {
   {
     "folke/tokyonight.nvim",
     config = function()
-      require("plugin-config.tokyonight")
+      require("insis.plugins.tokyonight")
     end,
   },
   -- OceanicNext
