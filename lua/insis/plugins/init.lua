@@ -62,7 +62,7 @@ return {
 
   -- treesitter
   { "p00f/nvim-ts-rainbow" },
-  { "JoosepAlviste/nvim-ts-context-commentstring" },
+  { "JoosepAlviste/nvim-ts-context-commentstring" }, -- comment
   { "windwp/nvim-ts-autotag" },
   { "nvim-treesitter/nvim-treesitter-refactor" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
@@ -88,7 +88,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("plugin-config.indent-blankline")
+      require("insis.plugins.indent-blankline")
     end,
   },
 
