@@ -109,6 +109,25 @@ return {
     },
   },
 
+  frontend = {
+    enable = true,
+    -- treesitter code highlight
+    highlight = { "html", "css", "javascript", "typescript", "tsx", "vue" },
+  },
+
+  go = {
+    enable = true,
+  },
+
+  rust = {
+    enable = false,
+  },
+
+  treesitter = {
+    --Disable in large buffers
+    disalbe_highlight_line_count = 10000,
+  },
+
   keys = {
 
     leader_key = " ",

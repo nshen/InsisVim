@@ -61,20 +61,19 @@ return {
   },
 
   -- treesitter
+  { "p00f/nvim-ts-rainbow" },
+  { "JoosepAlviste/nvim-ts-context-commentstring" },
+  { "windwp/nvim-ts-autotag" },
+  { "nvim-treesitter/nvim-treesitter-refactor" },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
   {
     "nvim-treesitter/nvim-treesitter",
     run = function()
-      -- require("nvim-treesitter.install").update({ with_sync = true })
+      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+      ts_update()
     end,
-    requires = {
-      { "p00f/nvim-ts-rainbow" },
-      { "JoosepAlviste/nvim-ts-context-commentstring" },
-      { "windwp/nvim-ts-autotag" },
-      { "nvim-treesitter/nvim-treesitter-refactor" },
-      { "nvim-treesitter/nvim-treesitter-textobjects" },
-    },
     config = function()
-      require("plugin-config.nvim-treesitter")
+      require("insis.plugins.treesitter")
     end,
   },
 
