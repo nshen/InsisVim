@@ -121,7 +121,7 @@ return {
   {
     "j-hui/fidget.nvim",
     config = function()
-      require("plugin-config.fidget")
+      require("insis.plugins.fidget")
     end,
   },
 
