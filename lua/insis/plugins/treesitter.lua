@@ -159,6 +159,7 @@ if treesitter then
   vim.opt.foldmethod = "expr"
   vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
   vim.opt.foldenable = false
+  vim.opt.foldtext = "v:lua.require('insis.utils.simple_fold').simple_fold()"
   -- https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
   -- vim.opt.foldlevel = 99
 end
