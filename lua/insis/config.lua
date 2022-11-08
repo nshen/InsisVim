@@ -1,9 +1,9 @@
 -- Default user config
---
 return {
   -- config_path = vim.fn.stdpath("config"),
 
   lock_plugin_commit = false,
+  enable_magic_search = true,
 
   packer = {
     max_jobs = 20,
@@ -91,7 +91,7 @@ return {
     enable = true,
 
     keys = {
-      find_files = "<C-p>",
+      find_files = { "<C-p>", "ff" },
       live_grep = "<C-f>",
 
       -- 上下移动
@@ -111,6 +111,71 @@ return {
     },
   },
 
+  -- super window
+  s_windows = {
+
+    enable = true,
+
+    keys = {
+
+      -- 窗口开关
+      split_vertically = "sv",
+      split_horizontally = "sh",
+      close = "sc",
+      close_others = "so",
+
+      -- 窗口跳转
+      jump_left = { "<A-h>", "<leader>h" },
+      jump_right = { "<A-l>", "<leader>l" },
+      jump_up = { "<A-k>", "<leader>k" },
+      jump_down = { "<A-j>", "<leader>j" },
+
+      -- 窗口比例控制
+      width_decrease = "s,",
+      width_increase = "s.",
+      height_decrease = "sj",
+      height_increase = "sk",
+      size_equal = "s=",
+    },
+  },
+
+  -- super tab
+  s_tab = {
+
+    enable = true,
+
+    keys = {
+      split = "ts",
+      prev = "th",
+      next = "tl",
+      first = "tj",
+      last = "tk",
+      close = "tc",
+    },
+  },
+
+  surround = {
+
+    enable = true,
+
+    keys = {
+      -- you surround
+      normal = "ys",
+      -- you surround line
+      normal_cur = "yss",
+      delete = "ds",
+      change = "cs",
+      -- visual mode
+      visual = "s",
+      visual_line = "gs",
+      -- disable
+      insert = false,
+      insert_line = false,
+      normal_line = false,
+      normal_cur_line = false,
+    },
+  },
+
   frontend = {
     enable = true,
     -- treesitter code highlight
@@ -119,7 +184,7 @@ return {
       keys = {
         ts_organize = "gs",
         ts_rename_file = "gR",
-        ts_add_missing_import = "gi",
+        ts_add_missing_import = "ga",
         ts_remove_unused = "gu",
         ts_fix_all = "gf",
         ts_goto_source = "gD",
@@ -129,6 +194,7 @@ return {
 
   go = {
     enable = true,
+    linter = "golangci-lint",
   },
 
   rust = {
@@ -153,27 +219,6 @@ return {
   treesitter = {
     --Disable in large buffers
     disalbe_highlight_line_count = 10000,
-  },
-
-  surround = {
-    enable = true,
-
-    keys = {
-      -- you surround
-      normal = "ys",
-      -- you surround line
-      normal_cur = "yss",
-      delete = "ds",
-      change = "cs",
-      -- visual mode
-      visual = "s",
-      visual_line = "gs",
-      -- disable
-      insert = false,
-      insert_line = false,
-      normal_line = false,
-      normal_cur_line = false,
-    },
   },
 
   -- TODO: mirror
@@ -217,6 +262,26 @@ return {
     current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
   },
 
+  cmp = {
+    enable = true,
+
+    keys = {
+      complete = "<A-.>",
+      abort = "<A-,>",
+      confirm = "<CR>",
+      scroll_doc_up = "<C-u>",
+      scroll_doc_down = "<C-d>",
+      select_prev_item = "<C-k>",
+      select_next_item = "<C-j>",
+
+      -- luasnip
+      snip_jump_next = "<C-l>",
+      snip_jump_prev = "<C-h>",
+      snip_next_choice = "<C-j>",
+      snip_prev_choice = "<C-k>",
+    },
+  },
+
   keys = {
 
     leader_key = " ",
@@ -238,67 +303,11 @@ return {
     n_v_10k = "<C-u>",
     n_v_10j = "<C-d>",
 
-    -- cmp 快捷键
-    cmp_complete = "<A-.>",
-    cmp_abort = "<A-,>",
-    cmp_confirm = "<CR>",
-    cmp_scroll_doc_up = "<C-u>",
-    cmp_scroll_doc_down = "<C-d>",
-    cmp_select_prev_item = "<C-k>",
-    cmp_select_next_item = "<C-j>",
-
-    -- luasnip
-    snip_jump_next = "<C-l>",
-    snip_jump_prev = "<C-h>",
-    snip_next_choice = "<C-j>",
-    snip_prev_choice = "<C-k>",
-
-    s_windows = {
-
-      enable = true,
-
-      -- 窗口开关
-      split_vertically = "sv",
-      split_horizontally = "sh",
-      close = "sc",
-      close_others = "so",
-
-      -- 窗口跳转
-      jump_left = "<A-h>",
-      jump_right = "<A-l>",
-      jump_up = "<A-k>",
-      jump_down = "<A-j>",
-
-      -- <leader> + hjkl 窗口之间跳转
-      -- jump_left = "<leader>h",
-      -- jump_right = "<leader>j",
-      -- jump_up = "<leader>k",
-      -- jump_down = "<leader>l",
-
-      -- 窗口比例控制
-      width_decrease = "s,",
-      width_increase = "s.",
-      height_decrease = "sj",
-      height_increase = "sk",
-      size_equal = "s=",
-    },
-
-    s_tab = {
-      split = "ts",
-      prev = "th",
-      next = "tl",
-      first = "tj",
-      last = "tk",
-      close = "tc",
-    },
-
     fold = {
       open = "zo",
       close = "zc",
       toggle = "za",
     },
-
-    format = "<leader>f",
 
     terminal_to_normal = "<Esc>",
     -- TODO
@@ -306,8 +315,6 @@ return {
     -- proxy
     -- im-select
   },
-
-  enable_magic_search = true,
 
   comment = {
     enable = true,
@@ -335,15 +342,25 @@ return {
   },
 
   lsp = {
+
+    -- jumps to the declaration
+    definition = "gd",
+    -- jumps to the declaration, many servers do not implement this method
+    declaration = false,
+    -- displays hover information
+    hover = "gh",
+    -- lists all the implementations
+    implementation = "gi",
+    -- lists all the references to the symbol
+    references = "gr",
+
     rename = "<leader>rn",
     code_action = "<leader>ca",
     format = "<leader>f",
-    definition = "gd",
-    references = "gr",
-    hover = "gh",
     -- diagnostic
     open_flow = "gp",
     goto_next = "gj",
     goto_prev = "gk",
+    list = "gl",
   },
 }

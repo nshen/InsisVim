@@ -54,8 +54,11 @@ null_ls.setup({
     -- toml
     -- cargo install taplo-cli
     formatting.taplo,
+    formatting.gofmt,
+
     -----------------------------------------------------
     -- Diagnostics  ---------------------
+
     -- diagnostics.eslint.with({
     --   prefer_local = "node_modules/.bin",
     -- }),
@@ -70,7 +73,8 @@ null_ls.setup({
     --   command = "markdownlint-cli2",
     --   args = { "$FILENAME", "#node_modules" },
     -- }),
-    --
+
+    diagnostics.golangci_lint,
     -- code actions ---------------------
     code_actions.gitsigns,
     -- code_actions.eslint.with({

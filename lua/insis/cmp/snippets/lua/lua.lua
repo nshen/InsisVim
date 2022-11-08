@@ -1,4 +1,7 @@
-ls = require("luasnip") --{{{
+local ls = pRequire("luasnip") --{{{
+if not ls then
+  return
+end
 local s = ls.s --> snippet
 local i = ls.i --> insert node
 local t = ls.t --> text node

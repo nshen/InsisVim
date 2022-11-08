@@ -1,32 +1,24 @@
-local status, ls = pcall(require, "luasnip")
-if not status then
-  return
-end
-
---FIX: remove uConfig
-local status, config = pcall(require, "uConfig")
-if not status then
-  return
-end
-
-local status, types = pcall(require, "luasnip.util.types")
-if not status then
-  return
-end
+local luasnip = pRequire("luasnip")
+local types = pRequire("luasnip.util.types")
+local cfg = pRequire("insis").config.cmp
 
 local pathUtils = require("insis.utils.path")
+
+if not luasnip or not types then
+  return
+end
+
 -- custom snippets
-require("luasnip.loaders.from_lua").load({
+pRequire("luasnip.loaders.from_lua").load({
   paths = pathUtils.join(pathUtils.getConfig(), "lua", "insis", "cmp", "snippets", "lua"),
 })
-require("luasnip.loaders.from_vscode").lazy_load({
+pRequire("luasnip.loaders.from_vscode").lazy_load({
   paths = pathUtils.join(pathUtils.getConfig(), "lua", "insis", "cmp", "snippets", "vscode"),
 })
-
 -- https://github.com/rafamadriz/friendly-snippets/
-require("luasnip.loaders.from_vscode").lazy_load()
+pRequire("luasnip.loaders.from_vscode").lazy_load()
 
-ls.config.set_config({
+luasnip.config.set_config({
   history = true,
   update_events = "TextChanged,TextChangedI",
   enable_autosnippets = true,
@@ -40,26 +32,26 @@ ls.config.set_config({
   },
 })
 
-vim.keymap.set({ "i", "s" }, config.keys.snip_jump_next, function()
-  if ls.expand_or_jumpable() then
-    ls.expand_or_jump()
+keymap({ "i", "s" }, cfg.keys.snip_jump_next, function()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
   end
 end)
 
-vim.keymap.set({ "i", "s" }, config.keys.snip_jump_prev, function()
-  if ls.jumpable(-1) then
-    ls.jump(-1)
+keymap({ "i", "s" }, cfg.keys.snip_jump_prev, function()
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
   end
 end)
 
-vim.keymap.set({ "i", "s" }, config.keys.snip_next_choice, function()
-  if ls.choice_active() then
-    ls.change_choice(1)
+keymap({ "i", "s" }, cfg.keys.snip_next_choice, function()
+  if luasnip.choice_active() then
+    luasnip.change_choice(1)
   end
 end)
 
-vim.keymap.set({ "i", "s" }, config.keys.snip_prev_choice, function()
-  if ls.choice_active() then
-    ls.change_choice(-1)
+keymap({ "i", "s" }, cfg.keys.snip_prev_choice, function()
+  if luasnip.choice_active() then
+    luasnip.change_choice(-1)
   end
 end)

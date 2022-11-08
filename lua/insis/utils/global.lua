@@ -23,18 +23,20 @@ function _G.log(v)
 end
 
 function _G.keymap(mode, lhs, rhs, opts)
-  if not (type(lhs) == "string") then
+  if not lhs or not rhs then
     return
   end
-  if not (type(rhs) == "string") then
+
+  local keyOpts = vim.tbl_extend("force", { remap = false, silent = true }, (opts or {}))
+
+  if type(lhs) == "table" then
+    for _, x in pairs(lhs) do
+      vim.keymap.set(mode, x, rhs, keyOpts)
+    end
     return
   end
-  opts = opts or {}
-  local default_opts = {
-    remap = false,
-    silent = true,
-  }
-  vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", default_opts, opts))
+
+  vim.keymap.set(mode, lhs, rhs, keyOpts)
 end
 
 function _G.arrayConcat(t1, t2)

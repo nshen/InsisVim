@@ -1,5 +1,5 @@
 local typescript = pRequire("typescript")
-local cfg = require("insis").config.frontend.typescript
+local cfg = require("insis").config.frontend
 
 if typescript and cfg and cfg.enable then
   local common = require("insis.lsp.common-config")
@@ -20,12 +20,12 @@ if typescript and cfg and cfg.enable then
     ]]
 
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      keymap("n", cfg.keys.ts_organize, ":TypescriptOrganizeImports<CR>", bufopts)
-      keymap("n", cfg.keys.ts_rename_file, ":TypescriptRenameFile<CR>", bufopts)
-      keymap("n", cfg.keys.ts_add_missing_import, ":TypescriptAddMissingImports<CR>", bufopts)
-      keymap("n", cfg.keys.ts_remove_unused, ":TypescriptRemoveUnused<CR>", bufopts)
-      keymap("n", cfg.keys.ts_fix_all, ":TypescriptFixAll<CR>", bufopts)
-      keymap("n", cfg.keys.ts_goto_source, ":TypescriptGoToSourceDefinition<CR>", bufopts)
+      keymap("n", cfg.typescript.keys.ts_organize, ":TypescriptOrganizeImports<CR>", bufopts)
+      keymap("n", cfg.typescript.keys.ts_rename_file, ":TypescriptRenameFile<CR>", bufopts)
+      keymap("n", cfg.typescript.keys.ts_add_missing_import, ":TypescriptAddMissingImports<CR>", bufopts)
+      keymap("n", cfg.typescript.keys.ts_remove_unused, ":TypescriptRemoveUnused<CR>", bufopts)
+      keymap("n", cfg.typescript.keys.ts_fix_all, ":TypescriptFixAll<CR>", bufopts)
+      keymap("n", cfg.typescript.keys.ts_goto_source, ":TypescriptGoToSourceDefinition<CR>", bufopts)
     end,
   }
   return {
