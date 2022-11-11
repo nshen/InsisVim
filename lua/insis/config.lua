@@ -4,6 +4,8 @@ return {
 
   lock_plugin_commit = false,
   enable_magic_search = true,
+  -- disable code hightlight on big file for performance
+  disalbe_highlight_line_count = 10000,
 
   packer = {
     max_jobs = 20,
@@ -93,6 +95,7 @@ return {
     keys = {
       find_files = { "<C-p>", "ff" },
       live_grep = "<C-f>",
+      live_grep_args = "sf", -- super find  "xx" -tmd
 
       -- 上下移动
       move_selection_next = "<C-j>",
@@ -176,10 +179,19 @@ return {
     },
   },
 
+  ------------------------------------
+  -- Languages
+
   frontend = {
     enable = true,
     -- treesitter code highlight
     highlight = { "html", "css", "javascript", "typescript", "tsx", "vue" },
+
+    -- npm install -g eslint_d
+    linter = "eslint_d",
+    code_actions = "eslint_d",
+    formatter = "eslint_d", -- eslint_d | prettier
+
     typescript = {
       keys = {
         ts_organize = "gs",
@@ -192,18 +204,53 @@ return {
     },
   },
 
-  go = {
-    enable = true,
+  golang = {
+    enable = false,
     linter = "golangci-lint",
+    formatter = "gofmt",
+  },
+
+  lua = {
+    enable = true,
+    formatter = "stylua",
   },
 
   rust = {
     enable = false,
+    -- rustup component add rustfmt
+    formatter = "rustfmt",
+  },
+
+  sh = {
+    enable = false,
+    --  brew install shfmt
+    formatter = "shfmt",
+  },
+
+  python = {
+    enable = false,
+
+    -- pip install black
+    -- asdf reshim python
+    formatter = "black",
+  },
+
+  ruby = {
+    enable = false,
+    -- gem install rubocop
+    formatter = "rubocop",
+  },
+
+  json = {
+    enable = false,
+
+    -- npm install -g fixjson
+    formatter = "fixjson",
   },
 
   markdown = {
 
-    enable = true,
+    enable = false,
 
     mkdnflow = {
       next_link = "gn",
@@ -214,11 +261,6 @@ return {
       follow_link = "gd",
       toggle_item = "tt",
     },
-  },
-
-  treesitter = {
-    --Disable in large buffers
-    disalbe_highlight_line_count = 10000,
   },
 
   -- TODO: mirror
