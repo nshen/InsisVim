@@ -59,11 +59,14 @@ mason_config.setup({
 local servers = {
   sumneko_lua = require("insis.lsp.config.lua"), -- lua/lsp/config/lua.lua
   bashls = require("insis.lsp.config.bash"),
-  pyright = require("insis.lsp.config.pyright"),
+  -- pyright = require("insis.lsp.config.pyright"),
+  pylsp = require("insis.lsp.config.pylsp"),
   html = require("insis.lsp.config.html"),
   cssls = require("insis.lsp.config.css"),
   emmet_ls = require("insis.lsp.config.emmet"),
   jsonls = require("insis.lsp.config.json"),
+  -- DEPRECATE
+  -- tsserver = require("insis.lsp.config.ts"),
   tsserver = require("insis.lsp.config.typescript"),
   yamlls = require("insis.lsp.config.yamlls"),
   dockerls = require("insis.lsp.config.docker"),

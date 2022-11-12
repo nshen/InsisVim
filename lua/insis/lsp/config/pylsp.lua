@@ -7,14 +7,12 @@ local opts = {
     common.keyAttach(bufnr)
   end,
   settings = {
-
-    pyright = { autoImportCompletion = true },
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = "workspace",
-        useLibraryCodeForTypes = true,
-        typeCheckingMode = "off",
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { "W391" },
+          maxLineLength = 100,
+        },
       },
     },
   },
