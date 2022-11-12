@@ -6,21 +6,21 @@ if treesitter then
   local getEnsureInstalled = function(config)
     local parserSet = { json = true, lua = true }
 
-    if config.frontend and cfg.frontend.enable then
+    if config.frontend and config.frontend.enable then
       for _, value in pairs(config.frontend.highlight) do
         parserSet[value] = true
       end
     end
 
-    if config.go and cfg.go.enable then
+    if config.go and config.golang.enable then
       parserSet["go"] = true
     end
 
-    if config.rust and cfg.rust.enable then
+    if config.rust and config.rust.enable then
       parserSet["rust"] = true
     end
 
-    if config.markdown and cfg.markdown.enable then
+    if config.markdown and config.markdown.enable then
       parserSet["markdown"] = true
     end
 
@@ -31,6 +31,12 @@ if treesitter then
   end
 
   pRequire("nvim-treesitter.install").prefer_git = true
+
+  if cfg.mirror.treesitter then
+    for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
+      config.install_info.url = config.install_info.url:gsub("https://github.com/", cfg.mirror.treesitter)
+    end
+  end
 
   treesitter.setup({
     sync_install = false,
@@ -44,7 +50,7 @@ if treesitter then
       enable = true,
       additional_vim_regex_highlighting = false,
       disable = function(_, bufnr) -- Disable in large buffers
-        return vim.api.nvim_buf_line_count(bufnr) > cfg.treesitter.disalbe_highlight_line_count
+        return vim.api.nvim_buf_line_count(bufnr) > cfg.disalbe_highlight_line_count
       end,
     },
 
