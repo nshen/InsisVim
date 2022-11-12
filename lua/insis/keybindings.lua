@@ -22,19 +22,11 @@ local opt = {
 vim.g.mapleader = keys.leader_key
 vim.g.maplocalleader = keys.leader_key
 
-local opts_remap = {
-  remap = true,
-  silent = true,
-}
-
 local opts_expr = {
   expr = true,
   silent = true,
 }
 
--- 命令行下 Ctrl+j/k  上一个下一个
-keymap("c", keys.c_next_item, "<C-n>", opts_remap)
-keymap("c", keys.c_prev_item, "<C-p>", opts_remap)
 
 -- save && quit
 keymap("n", keys.n_save, "<CMD>w<CR>")

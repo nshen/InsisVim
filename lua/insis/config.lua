@@ -308,13 +308,13 @@ return {
     enable = true,
 
     keys = {
-      complete = "<A-.>",
-      abort = "<A-,>",
       confirm = "<CR>",
+      select_next_item = "<C-j>",
+      select_prev_item = "<C-k>",
       scroll_doc_up = "<C-u>",
       scroll_doc_down = "<C-d>",
-      select_prev_item = "<C-k>",
-      select_next_item = "<C-j>",
+      complete = "<A-.>",
+      abort = "<A-,>",
 
       -- luasnip
       snip_jump_next = "<C-l>",
