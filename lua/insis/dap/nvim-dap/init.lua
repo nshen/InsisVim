@@ -76,6 +76,5 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 require("insis.dap.nvim-dap.config.lua").setup()
 require("insis.dap.nvim-dap.config.cpp").setup()
-
 require("dap-go").setup()
-require("insis.keybindings").mapDAP()
+require("insis.dap.nvim-dap.common-config").keyAttach()

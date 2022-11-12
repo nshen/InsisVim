@@ -49,8 +49,8 @@ if telescope and cfg and cfg.enable then
   })
 
   keymap("n", cfg.keys.find_files, "<CMD>Telescope find_files<CR>")
-  -- keymap("n", cfg.keys.live_grep, ":<CMD>Telescope live_grep<CR>")
-  keymap("n", cfg.keys.live_grep, ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+  keymap("n", cfg.keys.live_grep, ":<CMD>Telescope live_grep<CR>")
+  keymap("n", cfg.keys.live_grep_args, ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
   pcall(telescope.load_extension, "env")
   -- To get ui-select loaded and working with telescope, you need to call

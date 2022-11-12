@@ -12,27 +12,27 @@ local M = {}
 
 M.keyAttach = function()
   -- run
-  keymap("n", "<leader>dc", dap.continue())
+  keymap("n", "<leader>dc", dap.continue)
   -- nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
 
   --  stepOver, stepInto, stepOut,
-  keymap("n", "<leader>dj", dap.step_over())
-  keymap("n", "<leader>di", dap.step_into())
-  keymap("n", "<leader>do", dap.step_out())
+  keymap("n", "<leader>dj", dap.step_over)
+  keymap("n", "<leader>di", dap.step_into)
+  keymap("n", "<leader>do", dap.step_out)
 
   -- 设置断点
-  keymap("n", "<leader>dt", dap.toggle_breakpoint())
+  keymap("n", "<leader>dt", dap.toggle_breakpoint)
   -- nnoremap <silent> <Leader>B <Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
   -- nnoremap <silent> <Leader>lp <Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
-  keymap("n", "<leader>dT", dap.clear_breakpoints())
+  keymap("n", "<leader>dT", dap.clear_breakpoints)
 
   -- 弹窗
-  keymap("n", "<leader>dh", dapui.eval())
+  keymap("n", "<leader>dh", dapui.eval)
   -- nnoremap <silent> <Leader>dr <Cmd>lua require'dap'.repl.open()<CR>
 
   -- 结束
 
-  keymap("n", "<leader>de", dap.terminate())
+  keymap("n", "<leader>de", dap.terminate)
   -- keymap(
   --   "n",
   --   "<leader>de",

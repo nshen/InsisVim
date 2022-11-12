@@ -20,23 +20,14 @@ function M.setup(user_config)
   packer.setup()
 
   -- pRequire("impatient")
-  -- 基础配置
   require("insis.basic")
-  -- 快捷键映射
   require("insis.keybindings")
-  -- 主题设置
   require("insis.colorscheme")
-  -- 自动命令
   require("insis.autocmds")
-  -- 内置LSP
   require("insis.lsp")
-  -- 自动补全
   require("insis.cmp")
-  -- 格式化
   require("insis.format")
-  -- DAP
   require("insis.dap")
-  -- 复制到windows剪贴板
   -- require('utils.fix-yank')
 end
 

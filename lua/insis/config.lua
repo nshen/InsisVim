@@ -3,7 +3,9 @@ return {
   -- config_path = vim.fn.stdpath("config"),
 
   lock_plugin_commit = false,
-  enable_magic_search = true,
+  -- very magic mode
+  -- https://www.youtube.com/watch?v=VjOcINs6QWs
+  enable_very_magic_search = true,
   -- disable code hightlight on big file for performance
   disalbe_highlight_line_count = 10000,
 
@@ -115,25 +117,28 @@ return {
   },
 
   -- super window
+  -- will disable default s key
+
   s_windows = {
 
     enable = true,
 
     keys = {
 
-      -- 窗口开关
       split_vertically = "sv",
       split_horizontally = "sh",
+      -- close current
       close = "sc",
+      -- close others
       close_others = "so",
 
-      -- 窗口跳转
+      -- jump between windows
       jump_left = { "<A-h>", "<leader>h" },
       jump_right = { "<A-l>", "<leader>l" },
       jump_up = { "<A-k>", "<leader>k" },
       jump_down = { "<A-j>", "<leader>j" },
 
-      -- 窗口比例控制
+      -- control windows size
       width_decrease = "s,",
       width_increase = "s.",
       height_decrease = "sj",
@@ -265,9 +270,8 @@ return {
 
   -- TODO: mirror
   mirror = {
-    -- https://github.com/nvim-treesitter/nvim-treesitter#i-want-to-use-a-mirror-instead-of-httpsgithubcom
-    treesitter = "",
-    packer = "",
+    treesitter = "https://github.com/",
+    packer = "https://github.com/",
   },
 
   venn = {
@@ -327,28 +331,25 @@ return {
   keys = {
 
     leader_key = " ",
+    -- no highlight
+    nohl = "<ESC><ESC>",
 
-    -- : 模式
-    c_next_item = "<C-j>",
-    c_prev_item = "<C-k>",
-
-    -- normal 模式
+    -- quick save / quite
     n_save = "<leader>w", -- :w
     n_save_quit = "<leader>wq", --:wq
     n_save_all = "<leader>wa", -- :wa
     -- n_save_all_quit = "<leader>qa", -- :wqa
     n_force_quit = "<leader>q", -- :qa!
 
+    -- quick move
     n_v_5j = "<C-j>",
     n_v_5k = "<C-k>",
-
     n_v_10k = "<C-u>",
     n_v_10j = "<C-d>",
 
     fold = {
       open = "zo",
       close = "zc",
-      toggle = "za",
     },
 
     terminal_to_normal = "<Esc>",
