@@ -1,6 +1,6 @@
-local status, formatter = pcall(require, "formatter")
-if not status then
-  vim.notify("没有找到 formatter")
+-- DEPRECATED
+local formatter = pRequire("formatter")
+if not formatter then
   return
 end
 
