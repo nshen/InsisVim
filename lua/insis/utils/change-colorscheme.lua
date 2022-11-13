@@ -4,10 +4,10 @@ local finders = require("telescope.finders")
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local themes = require("telescope.themes")
+-- local themes = require("telescope.themes")
 
 -- local colors = vim.fn.getcompletion("", "color")
-local mycolors = { "zephyr", "nord", "onedark", "gruvbox", "tokyonight", "nightfox", "nordfox", "duskfox" }
+local mycolors = { "nord", "onedark", "gruvbox", "tokyonight", "nightfox", "nordfox", "duskfox" }
 
 local mini = {
   layout_strategy = "vertical",
@@ -24,13 +24,7 @@ local mini = {
 local function enter(prompt_buffer)
   local selected = action_state.get_selected_entry()
   local cmd = "colorscheme " .. selected[1]
-  -- 执行命令，不保存
   vim.cmd(cmd)
-  -- 修改文件
-  -- vim.cmd(
-  --   'silent !echo "-- Do not change this file, use :ChangeColorScheme instead" > ~/.config/nvim/lua/colorscheme.lua'
-  -- )
-  -- vim.cmd("silent !echo \"vim.cmd('" .. cmd .. "')\" >> ~/.config/nvim/lua/colorscheme.lua")
   actions.close(prompt_buffer)
 end
 
@@ -71,7 +65,7 @@ function CC()
   colorPicker:find()
 end
 
-vim.api.nvim_add_user_command("ChangeColorScheme", CC, {})
+vim.api.nvim_create_user_command("ChangeColorScheme", CC, {})
 
 -- vim.g.tokyonight_style = "night"
 -- vim.g.tokyonight_italic_functions = true

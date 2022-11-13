@@ -209,25 +209,20 @@ return {
     end,
   },
   -- OceanicNext
-  -- { "mhartington/oceanic-next", event = "VimEnter" }
+  { "mhartington/oceanic-next" },
 
   -- gruvbox
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   requires = { "rktjmp/lush.nvim" },
-  -- }
-
-  -- zephyr
-  -- ("glepnir/zephyr-nvim")
+  { "rktjmp/lush.nvim" },
+  { "ellisonleao/gruvbox.nvim" },
 
   -- nord
-  -- ("shaunsingh/nord.nvim")
+  { "shaunsingh/nord.nvim" },
 
   -- onedark
-  -- ("ful1e5/onedark.nvim")
+  { "ful1e5/onedark.nvim" },
 
   -- nightfox
-  -- ("EdenEast/nightfox.nvim")
+  { "EdenEast/nightfox.nvim" },
 
   --------------------- git ---------------------------------------------------
 

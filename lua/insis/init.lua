@@ -28,6 +28,7 @@ function M.setup(user_config)
   require("insis.cmp")
   require("insis.format")
   require("insis.dap")
+  require("insis.utils.change-colorscheme")
   -- require('utils.fix-yank')
 end
 
