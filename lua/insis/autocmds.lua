@@ -24,7 +24,7 @@ autocmd("TermOpen", {
 -- 保存时自动格式化
 autocmd("BufWritePre", {
   group = myAutoGroup,
-  pattern = { "*.lua", "*.py", "*.sh" },
+  pattern = require("insis.utils.config-helper").getFormatOnSavePattern(),
   callback = function()
     vim.lsp.buf.format()
   end,
