@@ -2,34 +2,6 @@ local treesitter = pRequire("nvim-treesitter.configs")
 local cfg = require("insis").config
 
 if treesitter then
-  -- get parsers from config file
-  local getEnsureInstalled = function(config)
-    local parserSet = { json = true, lua = true }
-
-    if config.frontend and config.frontend.enable then
-      for _, value in pairs(config.frontend.highlight) do
-        parserSet[value] = true
-      end
-    end
-
-    if config.go and config.golang.enable then
-      parserSet["go"] = true
-    end
-
-    if config.rust and config.rust.enable then
-      parserSet["rust"] = true
-    end
-
-    if config.markdown and config.markdown.enable then
-      parserSet["markdown"] = true
-    end
-
-    local ensureInstalled = {}
-    for key, _ in pairs(parserSet) do
-      table.insert(ensureInstalled, key)
-    end
-  end
-
   pRequire("nvim-treesitter.install").prefer_git = true
 
   if cfg.mirror.treesitter then
@@ -40,11 +12,9 @@ if treesitter then
 
   treesitter.setup({
     sync_install = false,
-    -- language parser
     -- :TSInstallInfo
-    -- ensure_installed = { "json", "html", "css", "vim", "lua", "javascript", "typescript", "tsx", "markdown" },
     -- ensure_installed = "maintained",
-    ensure_installed = getEnsureInstalled(cfg),
+    ensure_installed = require("insis.utils.config-helper").getTSEnsureList(),
 
     highlight = {
       enable = true,
@@ -105,7 +75,7 @@ if treesitter then
         -- Set to false if you have an `updatetime` of ~100.
         clear_on_cursor_move = true,
       },
-      highlight_current_scope = { enable = true },
+      highlight_current_scope = { enable = false },
     },
     -- nvim-treesitter/nvim-treesitter-textobjects
     textobjects = {
