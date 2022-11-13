@@ -191,13 +191,16 @@ return {
     enable = true,
     -- treesitter code highlight
     highlight = { "html", "css", "javascript", "typescript", "tsx", "vue" },
-
+    -- mason lsp ensure list
+    lsp = { "tsserver", "tailwindcss", "cssls", "emmet_ls", "html" },
+    -- null-ls ensure list
     -- npm install -g eslint_d
     linter = "eslint_d",
     code_actions = "eslint_d",
     formatter = "eslint_d", -- eslint_d | prettier
-
+    -- extra lsp command provided by typescript.nvim
     typescript = {
+      format_on_save = false,
       keys = {
         ts_organize = "gs",
         ts_rename_file = "gR",
@@ -210,53 +213,64 @@ return {
   },
 
   golang = {
-    enable = false,
+    enable = true,
+    lsp = "gopls",
     linter = "golangci-lint",
     formatter = "gofmt",
+    format_on_save = false,
   },
 
   lua = {
-    enable = true,
+    enable = false,
+    lsp = "sumneko_lua",
     formatter = "stylua",
+    format_on_save = true,
   },
 
   rust = {
-    enable = false,
+    enable = true,
+    lsp = "rust_analyzer",
     -- rustup component add rustfmt
     formatter = "rustfmt",
+    format_on_save = false,
   },
 
   sh = {
-    enable = false,
+    enable = true,
+    lsp = "bashls",
     --  brew install shfmt
     formatter = "shfmt",
+    format_on_save = false,
   },
 
   python = {
-    enable = false,
-
+    enable = true,
+    -- can be pylsp or pyright
+    lsp = "pylsp",
     -- pip install black
     -- asdf reshim python
     formatter = "black",
+    format_on_save = false,
   },
 
   ruby = {
-    enable = false,
+    enable = true,
+    lsp = "ruby_ls",
     -- gem install rubocop
     formatter = "rubocop",
+    format_on_save = false,
   },
 
   json = {
-    enable = false,
-
+    enable = true,
+    lsp = "jsonls",
     -- npm install -g fixjson
     formatter = "fixjson",
+    format_on_save = false,
   },
 
   markdown = {
-
     enable = false,
-
     mkdnflow = {
       next_link = "gn",
       prev_link = "gp",
@@ -266,6 +280,29 @@ return {
       follow_link = "gd",
       toggle_item = "tt",
     },
+  },
+
+  toml = {
+    enable = true,
+    lsp = "taplo",
+  },
+
+  yaml = {
+    enable = true,
+    lsp = "yamlls",
+    formatter = "prettier",
+    format_on_save = false,
+  },
+
+  git = {
+    enable = true,
+    code_actions = "gitsigns",
+    -- sign display
+    signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+    numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+    linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+    word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
   },
 
   -- TODO: mirror
@@ -295,17 +332,6 @@ return {
     keys = {
       toggle = "<leader>z",
     },
-  },
-
-  git = {
-    enable = true,
-
-    -- sign display
-    signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-    numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-    linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-    word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
   },
 
   cmp = {
