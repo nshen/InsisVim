@@ -36,21 +36,33 @@ return {
 
     keys = {
 
-      toggle = "<A-m>",
-      -- toggle = "<leader>m"
+      toggle = { "<A-m>", "<leader>m" },
+      refresh = "R",
+
+      -- open / close --
       edit = { "o", "<2-LeftMouse>" },
+      close = "<BS>",
       system_open = "<CR>",
       vsplit = "sv",
       split = "sh",
-      -- toggle .gitignore (git enable)
-      toggle_git_ignored = "i",
-      -- Hide (dotfiles)
-      toggle_dotfiles = ".",
-      -- togglle custom config
-      toggle_custom = "u",
+      tabnew = "gh",
 
-      refresh = "R",
-      -- file operate
+      -- movement --
+      parent_node = "P",
+      cd = "]",
+      dir_up = "[",
+      prev_sibling = "<",
+      next_sibling = ">",
+      first_sibling = "K",
+      last_sibling = "J",
+
+      -- file toggle --
+      toggle_git_ignored = "i", --.gitignore (git enable)
+      toggle_dotfiles = ".", -- Hide (dotfiles)
+      toggle_custom = "u", -- togglle custom config
+      toggle_file_info = "gh",
+
+      -- file operate --
       create = "a",
       remove = "d",
       rename = "r",
@@ -60,10 +72,6 @@ return {
       copy_name = "y",
       copy_path = "Y",
       copy_absolute_path = "gy",
-      toggle_file_info = "I",
-      tabnew = "t",
-      cd = "]",
-      dir_up = "[",
     },
   },
 
