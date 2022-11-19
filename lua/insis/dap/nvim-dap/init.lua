@@ -1,80 +1,80 @@
--- local dap_install = require("dap-install")
--- dap_install.setup({
---   installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
--- })
-local status, dap = pcall(require, "dap")
-if not status then
-  return
-end
+local dap = pRequire("dap")
+local dapui = pRequire("dapui")
+local vt = pRequire("nvim-dap-virtual-text")
 
-local status, dapui = pcall(require, "dapui")
-if not status then
-  return
-end
+if dap and dapui and vt then
+  local cfg = require("insis").config
+  require("insis.dap.nvim-dap.ui")
 
-local status, vt = pcall(require, "nvim-dap-virtual-text")
-if not status then
-  return
-end
+  vt.setup({
+    commented = true,
+  })
 
-require("insis.dap.nvim-dap.ui")
-
-vt.setup({
-  commented = true,
-})
-
--- https://github.com/rcarriga/nvim-dap-ui
-dapui.setup({
-  element_mappings = {
-    scopes = {
-      open = "<CR>",
-      edit = "e",
-      expand = "o",
-      repl = "r",
-    },
-  },
-
-  layouts = {
-    {
-      elements = {
-        -- Elements can be strings or table with id and size keys.
-        { id = "scopes", size = 0.4 },
-        "stacks",
-        "watches",
-        "breakpoints",
-        "console",
+  dapui.setup({
+    element_mappings = {
+      scopes = {
+        open = "<CR>",
+        edit = "e",
+        expand = "o",
+        repl = "r",
       },
-      size = 0.35, -- 40 columns
-      position = "left",
     },
-    {
-      elements = {
-        "repl",
+    layouts = {
+      {
+        elements = {
+          -- Elements can be strings or table with id and size keys.
+          { id = "scopes", size = 0.4 },
+          "stacks",
+          "watches",
+          "breakpoints",
+          "console",
+        },
+        size = 0.35, -- 40 columns
+        position = "left",
       },
-      size = 0.25, -- 25% of total lines
-      position = "bottom",
+      {
+        elements = {
+          "repl",
+        },
+        size = 0.25, -- 25% of total lines
+        position = "bottom",
+      },
     },
-  },
+    floating = {
+      max_height = nil, -- These can be integers or a float between 0 and 1.
+      max_width = nil, -- Floats will be treated as percentage of your screen.
+      border = "rounded", -- Border style. Can be "single", "double" or "rounded"
+      mappings = {
+        close = { "q", "<Esc>" },
+      },
+    },
+  })
 
-  floating = {
-    max_height = nil, -- These can be integers or a float between 0 and 1.
-    max_width = nil, -- Floats will be treated as percentage of your screen.
-    border = "rounded", -- Border style. Can be "single", "double" or "rounded"
-    mappings = {
-      close = { "q", "<Esc>" },
-    },
-  },
-}) -- use default
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
+  dap.listeners.after.event_initialized["dapui_config"] = function()
+    dapui.open()
+  end
+  dap.listeners.before.event_terminated["dapui_config"] = function()
+    dapui.close()
+  end
+  dap.listeners.before.event_exited["dapui_config"] = function()
+    dapui.close()
+  end
+
+  if cfg.lua and cfg.lua.enable then
+    require("insis.dap.nvim-dap.config.lua").setup()
+  end
+
+  if cfg.golang and cfg.golang.enable then
+    require("dap-go").setup()
+  end
+
+  -- if cfg.cpp and cfg.cpp.enable then
+  --   require("insis.dap.nvim-dap.config.cpp").setup()
+  -- end
+
+  if cfg.frontend and cfg.frontend.enable then
+    require("insis.dap.nvim-dap.config.vscode-js")
+  end
+
+  require("insis.dap.nvim-dap.common-config").keyAttach()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
-require("insis.dap.nvim-dap.config.lua").setup()
-require("insis.dap.nvim-dap.config.cpp").setup()
-require("dap-go").setup()
-require("insis.dap.nvim-dap.common-config").keyAttach()

@@ -195,6 +195,46 @@ return {
   ------------------------------------
   -- Languages
 
+  lsp = {
+    -- jumps to the declaration
+    definition = "gd",
+    -- jumps to the declaration, many servers do not implement this method
+    declaration = false,
+    -- displays hover information
+    hover = "gh",
+    -- lists all the implementations
+    implementation = "gi",
+    -- lists all the references to the symbol
+    references = "gr",
+
+    rename = "<leader>rn",
+    code_action = "<leader>ca",
+    format = "<leader>f",
+    -- diagnostic
+    open_flow = "gp",
+    goto_next = "gj",
+    goto_prev = "gk",
+    list = "gl",
+  },
+
+  dap = {
+
+    -- start, stop
+    continue = "<leader>dc",
+    terminate = "<leader>de",
+
+    --  stepOver, stepInto, stepOut,
+    step_over = "<leader>dj",
+    step_into = "<leader>di",
+    step_out = "<leader>do",
+
+    -- breakpoints
+    toggle_breakpoint = "<leader>dt",
+    clear_breakpoints = "<leader>dT",
+
+    eval = "<leader>dh",
+  },
+
   frontend = {
     enable = true,
     -- treesitter code highlight
@@ -225,7 +265,7 @@ return {
     lsp = "gopls",
     linter = "golangci-lint",
     formatter = "gofmt",
-    format_on_save = false,
+    format_on_save = true,
   },
 
   lua = {
@@ -262,7 +302,7 @@ return {
   },
 
   ruby = {
-    enable = true,
+    enable = false,
     lsp = "ruby_ls",
     -- gem install rubocop
     formatter = "rubocop",
@@ -278,7 +318,7 @@ return {
   },
 
   markdown = {
-    enable = false,
+    enable = true,
     mkdnflow = {
       next_link = "gn",
       prev_link = "gp",
@@ -416,28 +456,5 @@ return {
     toggle_window_B = "<leader>tb",
     -- <leader>tc 下方命令行窗口
     toggle_window_C = "<leader>tc",
-  },
-
-  lsp = {
-
-    -- jumps to the declaration
-    definition = "gd",
-    -- jumps to the declaration, many servers do not implement this method
-    declaration = false,
-    -- displays hover information
-    hover = "gh",
-    -- lists all the implementations
-    implementation = "gi",
-    -- lists all the references to the symbol
-    references = "gr",
-
-    rename = "<leader>rn",
-    code_action = "<leader>ca",
-    format = "<leader>f",
-    -- diagnostic
-    open_flow = "gp",
-    goto_next = "gj",
-    goto_prev = "gk",
-    list = "gl",
   },
 }

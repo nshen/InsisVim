@@ -236,14 +236,14 @@ return {
   --------------------- DAP ---------------------------------------------------
 
   -- vimspector
-  {
-    "puremourning/vimspector",
-    cmd = { "VimspectorInstall", "VimspectorUpdate" },
-    fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
-    config = function()
-      require("dap.vimspector")
-    end,
-  },
+  -- {
+  --   "puremourning/vimspector",
+  --   cmd = { "VimspectorInstall", "VimspectorUpdate" },
+  --   fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
+  --   config = function()
+  --     require("dap.vimspector")
+  --   end,
+  -- },
 
   -- nvim-dap
   { "mfussenegger/nvim-dap" },
@@ -251,14 +251,7 @@ return {
   { "rcarriga/nvim-dap-ui" },
 
   -- node
-  {
-    "mxsdev/nvim-dap-vscode-js",
-    requires = { "mfussenegger/nvim-dap" },
-    config = function()
-      -- NOTICE: require dap config
-      require("insis.dap.nvim-dap.config.vscode-js")
-    end,
-  },
+  { "mxsdev/nvim-dap-vscode-js" },
 
   -- go
   { "leoluz/nvim-dap-go" },
@@ -278,6 +271,9 @@ return {
   }
 
   --]]
+
   ----------------- custom ----------------------------
+
   { "solarnz/thrift.vim" },
+  { "jose-elias-alvarez/nvim-lsp-ts-utils" },
 }

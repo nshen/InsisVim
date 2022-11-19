@@ -1,4 +1,5 @@
--- TODO:
+-- lua/insis/lsp/config/rust.lua
+-- TODO: change path
 local extension_path =
   "/Users/nn/.local/share/nvim/site/pack/packer/start/vimspector/gadgets/macos/download/CodeLLDB/v1.6.10/root/extension/"
 local codelldb_path = extension_path .. "adapter/codelldb"
