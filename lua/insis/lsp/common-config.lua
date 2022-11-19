@@ -15,7 +15,7 @@ M.keyAttach = function(bufnr)
   keymap("n", lsp.definition, require("telescope.builtin").lsp_definitions, opt)
   keymap("n", lsp.declaration, vim.lsp.buf.declaration, opt)
   keymap("n", lsp.hover, vim.lsp.buf.hover, opt)
-  keymap("n", lsp.implementation, vim.lsp.buf.implementation, opt)
+  keymap("n", lsp.implementation, require("telescope.builtin").lsp_implementations, opt)
   keymap(
     "n",
     lsp.references,
