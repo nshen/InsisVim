@@ -450,11 +450,14 @@ return {
   toggleterm = {
     enable = true,
 
-    -- <leader>ta 浮动命令行窗口
+    -- <leader>ta float terminal window
     toggle_window_A = "<leader>ta",
-    -- <leader>tb 右侧命令行窗口
+    toggle_window_A_command = nil,
+    -- <leader>tb right side terminal window
     toggle_window_B = "<leader>tb",
-    -- <leader>tc 下方命令行窗口
+    toggle_window_B_command = nil,
+    -- <leader>tc bottom terminal window
     toggle_window_C = "<leader>tc",
+    toggle_window_C_command = nil,
   },
 }

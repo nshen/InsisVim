@@ -74,7 +74,7 @@ if toggleterm and cfg and cfg.enable then
     end
   end
 
-  M.toggleB = function()
+  M.toggleB = function(cmd)
     if tb:is_open() then
       tb:close()
       return
@@ -82,9 +82,12 @@ if toggleterm and cfg and cfg.enable then
     ta:close()
     tc:close()
     tb:open()
+    if cmd ~= nil then
+      tb:send(cmd)
+    end
   end
 
-  M.toggleC = function()
+  M.toggleC = function(cmd)
     if tc:is_open() then
       tc:close()
       return
@@ -92,20 +95,22 @@ if toggleterm and cfg and cfg.enable then
     ta:close()
     tb:close()
     tc:open()
+    if cmd ~= nil then
+      tc:send(cmd)
+    end
   end
 
   M.toggleG = function()
     lazygit:toggle()
   end
 
-  vim.keymap.set({ "n", "t" }, cfg.toggle_window_A, M.toggleA)
-  vim.keymap.set({ "n", "t" }, cfg.toggle_window_B, M.toggleB)
-  vim.keymap.set({ "n", "t" }, cfg.toggle_window_C, M.toggleC)
-
-  --[[ 
-vim.keymap.set({ "n", "t" }, "<leader>tj", function()
-  M.toggleA("pnpm test")
-end)
-vim.keymap.set({ "n", "t" }, "<leader>tg", M.toggleG)
-]]
+  vim.keymap.set({ "n", "t" }, cfg.toggle_window_A, function()
+    M.toggleA(cfg.toggle_window_A_command)
+  end)
+  vim.keymap.set({ "n", "t" }, cfg.toggle_window_B, function()
+    M.toggleB(cfg.toggle_window_B_command)
+  end)
+  vim.keymap.set({ "n", "t" }, cfg.toggle_window_C, function()
+    M.toggleC(cfg.toggle_window_C_command)
+  end)
 end
