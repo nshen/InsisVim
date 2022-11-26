@@ -235,6 +235,20 @@ return {
     eval = "<leader>dh",
   },
 
+  ------------------------------------
+  -- shared Test keys
+  ------------------------------------
+
+  ---@class NeotestConfig
+  neotest = {
+    toggle = "<leader>nt",
+    run = "<leader>nr",
+    run_file = "<leader>nf",
+    run_dap = "<leader>nd",
+    run_stop = "<leader>ns",
+    output_open = "<leader>gh",
+  },
+
   frontend = {
     enable = true,
     -- treesitter code highlight

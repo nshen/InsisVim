@@ -272,6 +272,15 @@ return {
 
   --]]
 
+  ----------------- neotest ---------------------------
+  { "nvim-neotest/neotest-go" },
+  {
+    "nvim-neotest/neotest",
+    config = function()
+      require("insis.plugins.neotest")
+    end,
+  },
+
   ----------------- custom ----------------------------
 
   { "solarnz/thrift.vim" },

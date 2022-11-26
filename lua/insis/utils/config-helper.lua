@@ -319,4 +319,21 @@ M.getMasonEnsureList = function()
   return ensureInstalled, servers
 end
 
+M.getNeotestAdapters = function()
+  local cfg = require("insis").config
+  local adapters = {}
+  if cfg.golang and cfg.golang.enable then
+    table.insert(
+      adapters,
+      pRequire("neotest-go")({
+        experimental = {
+          test_table = true,
+        },
+        args = { "-count=1", "-timeout=60s" },
+      })
+    )
+  end
+  return adapters
+end
+
 return M
