@@ -1,24 +1,21 @@
 local M = {}
 
+---@type UserConfig
 M.config = require("insis.config")
 
+--- @param user_config UserConfig
 function M.setup(user_config)
   require("insis.utils.global")
-
   -- user config override
   M.config = vim.tbl_deep_extend("force", M.config, user_config)
-  -- log(M.config)
-
   -- check packer.nvim exists
   local packer = require("insis.packer")
   if not packer.avaliable() then
-    vim.notify("please use install script to install insisVim")
-    -- packer.install()
+    -- better to use install script to install insisVim
+    packer.install()
     return
   end
-
   packer.setup()
-
   -- pRequire("impatient")
   require("insis.basic")
   require("insis.keybindings")
@@ -29,7 +26,9 @@ function M.setup(user_config)
   require("insis.format")
   require("insis.dap")
   require("insis.utils.change-colorscheme")
-  -- require('utils.fix-yank')
+  if M.config.fix_windows_clipboard then
+    require("utils.fix-yank")
+  end
 end
 
 return M
