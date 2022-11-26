@@ -20,7 +20,7 @@ if treesitter then
       enable = true,
       additional_vim_regex_highlighting = false,
       disable = function(_, bufnr) -- Disable in large buffers
-        return vim.api.nvim_buf_line_count(bufnr) > cfg.disalbe_highlight_line_count
+        return vim.api.nvim_buf_line_count(bufnr) > cfg.max_highlight_line_count
       end,
     },
 
@@ -42,7 +42,7 @@ if treesitter then
       enable = true,
       -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
       extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-      max_file_lines = 10000, -- Do not enable for files with more than n lines, int
+      max_file_lines = cfg.max_highlight_line_count, -- Do not enable for files with more than n lines, int
       colors = {
         "#95ca60",
         "#ee6985",
@@ -135,7 +135,7 @@ if treesitter then
   vim.opt.foldmethod = "expr"
   vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
   vim.opt.foldenable = false
-  vim.opt.foldtext = "v:lua.require('insis.utils.simple_fold').simple_fold()"
+  vim.opt.foldtext = "v:lua.require('insis.utils.simple-fold').simple_fold()"
   -- https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
   -- vim.opt.foldlevel = 99
 end
