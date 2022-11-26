@@ -104,13 +104,13 @@ if toggleterm and cfg and cfg.enable then
     lazygit:toggle()
   end
 
-  vim.keymap.set({ "n", "t" }, cfg.toggle_window_A, function()
-    M.toggleA(cfg.toggle_window_A_command)
+  vim.keymap.set({ "n", "t" }, cfg.toggle_float_window, function()
+    M.toggleA(cfg.toggle_float_window_command)
   end)
-  vim.keymap.set({ "n", "t" }, cfg.toggle_window_B, function()
-    M.toggleB(cfg.toggle_window_B_command)
+  vim.keymap.set({ "n", "t" }, cfg.toggle_side_window, function()
+    M.toggleB(cfg.toggle_side_window_command)
   end)
-  vim.keymap.set({ "n", "t" }, cfg.toggle_window_C, function()
-    M.toggleC(cfg.toggle_window_C_command)
+  vim.keymap.set({ "n", "t" }, cfg.toggle_bottom_window, function()
+    M.toggleC(cfg.toggle_bottom_window_command)
   end)
 end
