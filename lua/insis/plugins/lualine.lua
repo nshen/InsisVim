@@ -4,10 +4,8 @@ local lualine = pRequire("lualine")
 if lualine then
   lualine.setup({
     options = {
-      -- TODO:
       -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
-      theme = "tokyonight",
-      -- 分割线
+      theme = pRequire("insis").config.colorscheme or "tokyonight",
       component_separators = {
         left = "|",
         right = "|",

@@ -4,10 +4,7 @@ local finders = require("telescope.finders")
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
--- local themes = require("telescope.themes")
-
--- local colors = vim.fn.getcompletion("", "color")
-local mycolors = { "nord", "onedark", "gruvbox", "tokyonight", "nightfox", "nordfox", "duskfox" }
+local mycolors = { "nord", "onedark", "gruvbox", "tokyonight", "nightfox", "nordfox", "duskfox", "dracula" }
 
 local mini = {
   layout_strategy = "vertical",
@@ -18,8 +15,6 @@ local mini = {
   },
   sorting_strategy = "ascending",
 }
-
--- local dropdown = themes.get_dropdown()
 
 local function enter(prompt_buffer)
   local selected = action_state.get_selected_entry()
@@ -57,7 +52,6 @@ local opts = {
     return true
   end,
 }
--- print(vim.inspect(dropdown))
 
 local colorPicker = pickers.new(mini, opts)
 
@@ -65,13 +59,4 @@ function CC()
   colorPicker:find()
 end
 
-vim.api.nvim_create_user_command("ChangeColorScheme", CC, {})
-
--- vim.g.tokyonight_style = "night"
--- vim.g.tokyonight_italic_functions = true
--- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
--- Change the "hint" color to the "orange" color, and make the "error" color bright red
--- vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
-
--- Load the colorscheme
--- vim.cmd([[colorscheme tokyonight]])
+vim.api.nvim_create_user_command("ColorPreview", CC, {})

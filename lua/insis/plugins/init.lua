@@ -208,8 +208,6 @@ return {
       require("insis.plugins.tokyonight")
     end,
   },
-  -- OceanicNext
-  { "mhartington/oceanic-next" },
 
   -- gruvbox
   { "rktjmp/lush.nvim" },
@@ -223,6 +221,8 @@ return {
 
   -- nightfox
   { "EdenEast/nightfox.nvim" },
+
+  { "Mofiqul/dracula.nvim" },
 
   --------------------- git ---------------------------------------------------
 
