@@ -7,6 +7,7 @@ local opts = {
     -- common.disableFormat(client)
   end,
   -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim
+  -- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
   settings = {
     gopls = {
       analyses = {

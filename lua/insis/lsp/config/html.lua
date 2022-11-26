@@ -6,6 +6,14 @@ local opts = {
     -- common.disableFormat(client)
     common.keyAttach(bufnr)
   end,
+  init_options = {
+    configurationSection = { "html", "css", "javascript" },
+    embeddedLanguages = {
+      css = true,
+      javascript = true,
+    },
+    provideFormatter = true,
+  },
 }
 return {
   on_setup = function(server)

@@ -1,85 +1,77 @@
--- utf8
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = "utf-8"
--- jkhl 移动时光标周围保留8行
+-- jkhl padding
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
--- 使用相对行号
+-- use relative number
 vim.wo.number = true
 vim.wo.relativenumber = true
--- 高亮所在行
+-- highlight current row /column
 vim.wo.cursorline = true
--- 显示左侧图标指示列
+vim.wo.cursorcolumn = false
+-- left sign column
 vim.wo.signcolumn = "yes"
--- 右侧参考线，超过表示代码太长了，考虑换行
-vim.wo.colorcolumn = "80"
--- 缩进2个空格等于一个Tab
+-- line of reference on right
+-- vim.wo.colorcolumn = "80"
+-- 2 space = 1 tab
 vim.o.tabstop = 2
 vim.bo.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftround = true
--- >> << 时移动长度
+-- >> << move
 vim.o.shiftwidth = 2
 vim.bo.shiftwidth = 2
--- 空格替代tab
+-- space instead tab
 vim.o.expandtab = true
 vim.bo.expandtab = true
--- 新行对齐当前行
+-- copy indent from current line when starting a new line
 vim.o.autoindent = true
 vim.bo.autoindent = true
 vim.o.smartindent = true
--- 搜索大小写不敏感，除非包含大写
+-- ignore case except uppercase
 vim.o.ignorecase = true
 vim.o.smartcase = true
--- 搜索不要高亮
+-- search hight
 vim.opt.hlsearch = false
--- 边输入边搜索
 vim.o.incsearch = true
--- 命令行高为2，提供足够的显示空间
 vim.o.cmdheight = 1
--- 当文件被外部程序修改时，自动加载
+-- auto load when file edit outside
 vim.o.autoread = true
 vim.bo.autoread = true
--- 禁止折行
+-- no wrap for code
 vim.wo.wrap = false
--- 光标在行首尾时<Left><Right>可以跳到下一行
 vim.o.whichwrap = "<,>,[,]"
--- 允许隐藏被修改过的buffer
 vim.o.hidden = true
--- 鼠标支持
 vim.o.mouse = "a"
--- 禁止创建备份文件
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
 -- smaller updatetime
-vim.o.updatetime = 300
--- 设置 timeoutlen 为等待键盘快捷键连击时间500毫秒，可根据需要设置
--- 遇到问题详见：https://github.com/nshen/learn-neovim-lua/issues/1
+vim.o.updatetime = 500
+-- Time in milliseconds to wait for a mapped sequence to complete.
 vim.o.timeoutlen = 500
--- split window 从下边和右边出现
+-- split window right and below
 vim.o.splitbelow = true
 vim.o.splitright = true
--- 自动补全不自动选中
-vim.g.completeopt = "menu,menuone,noselect,noinsert"
--- 样式
+
 vim.o.termguicolors = true
 vim.opt.termguicolors = true
--- 是否显示不可见字符
+-- invisible chars display
 vim.o.list = false
--- 不可见字符的显示，这里只把空格显示为一个点
 vim.o.listchars = "space:·,tab:··"
--- 补全增强
+-- cmp
+vim.g.completeopt = "menu,menuone,noselect,noinsert"
+--command-line completion is enhanced
 vim.o.wildmenu = true
 -- Dont' pass messages to |ins-completin menu|
 vim.o.shortmess = vim.o.shortmess .. "c"
--- 补全最多显示10行
+-- popup menu 10 items in max
 vim.o.pumheight = 10
--- 永远显示 tabline
+-- always display tabline
 vim.o.showtabline = 2
--- 使用增强状态栏插件后不再需要 vim 的模式提示
+-- use lualine plugin instead
 vim.o.showmode = false
--- 配置剪切板
+-- system clipboard
 vim.opt.clipboard = "unnamedplus"
 -- disable netrw at the very start of your init.lua (strongly advised) nvim-tree
 vim.g.loaded_netrw = 1

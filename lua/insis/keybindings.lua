@@ -20,10 +20,10 @@ keymap("n", keys.nohl, "<CMD>nohlsearch<CR>")
 
 -- save && quit
 keymap("n", keys.n_save, "<CMD>w<CR>")
-keymap("n", keys.n_save_quit, "<CMD>wq<CR>")
-keymap("n", keys.n_save_all, "<CMD>wa<CR>")
-keymap("n", keys.n_save_all_quit, "<CMD>wqa<CR>")
 keymap("n", keys.n_force_quit, "<CMD>qa!<CR>")
+-- keymap("n", keys.n_save_quit, "<CMD>wq<CR>")
+-- keymap("n", keys.n_save_all, "<CMD>wa<CR>")
+-- keymap("n", keys.n_save_all_quit, "<CMD>wqa<CR>")
 
 -- $ jump to the end without space (swap $ and g_)
 keymap({ "v", "n" }, "$", "g_")

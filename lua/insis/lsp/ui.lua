@@ -1,4 +1,3 @@
--- 自定义图标
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
