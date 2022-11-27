@@ -17,7 +17,7 @@ require("insis").setup({
 
 TODO
 
-## 🚀 Stellar Features
+##  Stellar Features
 
 ## Requirements
 
@@ -27,7 +27,7 @@ TODO
 
 ## 🛠 Installation
 
-TODO
+`npx zx https://insisvim.github.io/install.mjs`
 
 ## License
 
