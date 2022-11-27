@@ -1,6 +1,11 @@
 local cfg = require("insis").config.comment
 local comment = pRequire("Comment")
 
+local preHook = pRequire("ts_context_commentstring.integrations.comment_nvim")
+if preHook ~= nil then
+  preHook = preHook.create_pre_hook()
+end
+
 if comment and cfg and cfg.enable then
   comment.setup({
     mappings = {
@@ -21,6 +26,6 @@ if comment and cfg and cfg.enable then
 
     -- context_commentstring
     -- also see treesitter.lua
-    pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+    pre_hook = preHook,
   })
 end

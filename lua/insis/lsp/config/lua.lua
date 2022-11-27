@@ -49,7 +49,10 @@ local opts = {
 
 return {
   on_setup = function(server)
-    require("neodev").setup()
+    local neodev = pRequire("neodev")
+    if neodev then
+      neodev.setup()
+    end
     server.setup(opts)
   end,
 }

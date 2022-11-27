@@ -56,17 +56,10 @@ return {
   {
     "goolord/alpha-nvim",
     config = function()
-      require("alpha").setup(require("insis.plugins.alpha").config)
+      require("insis.plugins.alpha")
     end,
   },
-
   -- treesitter
-  { "p00f/nvim-ts-rainbow" },
-  { "JoosepAlviste/nvim-ts-context-commentstring" }, -- comment
-  { "windwp/nvim-ts-autotag" },
-  { "nvim-treesitter/nvim-treesitter-refactor" },
-  { "nvim-treesitter/nvim-treesitter-textobjects" },
-  { "RRethy/nvim-treesitter-endwise" },
   {
     "nvim-treesitter/nvim-treesitter",
     run = function()
@@ -77,6 +70,12 @@ return {
       require("insis.plugins.treesitter")
     end,
   },
+  { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
+  { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" }, -- comment
+  { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+  { "nvim-treesitter/nvim-treesitter-refactor", after = { "nvim-treesitter" } },
+  { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+  { "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" },
 
   -- Comment
   {

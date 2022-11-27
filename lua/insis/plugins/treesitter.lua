@@ -1,14 +1,12 @@
 local treesitter = pRequire("nvim-treesitter.configs")
 local cfg = require("insis").config
 
+local treesitterQuery = pRequire("nvim-treesitter.query")
+if not treesitterQuery then
+  return
+end
 if treesitter then
   pRequire("nvim-treesitter.install").prefer_git = true
-
-  if cfg.mirror.treesitter then
-    for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
-      config.install_info.url = config.install_info.url:gsub("https://github.com/", cfg.mirror.treesitter)
-    end
-  end
 
   treesitter.setup({
     sync_install = false,
@@ -131,6 +129,11 @@ if treesitter then
     },
   })
 
+  -- if cfg.mirror.treesitter then
+  --   for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
+  --     config.install_info.url = config.install_info.url:gsub("https://github.com/", cfg.mirror.treesitter)
+  --   end
+  -- end
   -- Folding mode
   vim.opt.foldmethod = "expr"
   vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

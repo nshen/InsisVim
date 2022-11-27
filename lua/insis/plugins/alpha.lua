@@ -4,12 +4,16 @@ if not alpha then
   return
 end
 
-local path_ok, plenary_path = pcall(require, "plenary.path")
-if not path_ok then
+local dashboard = pRequire("alpha.themes.dashboard")
+if not dashboard then
   return
 end
 
-local dashboard = require("alpha.themes.dashboard")
+local plenary_path = pRequire("plenary.path")
+if not plenary_path then
+  return
+end
+
 local cdir = vim.fn.getcwd()
 local if_nil = vim.F.if_nil
 
@@ -237,17 +241,19 @@ local config = {
       vim.api.nvim_create_autocmd("DirChanged", {
         pattern = "*",
         callback = function()
-          require("alpha").redraw()
+          alpha.redraw()
         end,
       })
     end,
   },
 }
 
-return {
-  header = header,
-  buttons = buttons,
-  mru_opts = mru_opts,
-  config = config,
-  nvim_web_devicons = nvim_web_devicons,
-}
+alpha.setup(config)
+
+-- return {
+--   header = header,
+--   buttons = buttons,
+--   mru_opts = mru_opts,
+--   config = config,
+--   nvim_web_devicons = nvim_web_devicons,
+-- }
