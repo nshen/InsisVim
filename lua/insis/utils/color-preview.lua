@@ -17,15 +17,18 @@ local mini = {
 }
 
 local function enter(prompt_buffer)
-  local selected = action_state.get_selected_entry()
-  local cmd = "colorscheme " .. selected[1]
-  vim.cmd(cmd)
+  -- local selected = action_state.get_selected_entry()
+  -- local cmd = "colorscheme " .. selected[1]
+  -- vim.cmd(cmd)
   actions.close(prompt_buffer)
 end
 
 local function next_color(prompt_buffer)
   actions.move_selection_next(prompt_buffer)
   local selected = action_state.get_selected_entry()
+  require("insis").config.colorscheme = selected[1]
+  package.loaded["insis.plugins.lualine"] = nil
+  require("insis.plugins.lualine")
   local cmd = "colorscheme " .. selected[1]
   vim.cmd(cmd)
 end
@@ -33,6 +36,9 @@ end
 local function prev_color(prompt_buffer)
   actions.move_selection_previous(prompt_buffer)
   local selected = action_state.get_selected_entry()
+  require("insis").config.colorscheme = selected[1]
+  package.loaded["insis.plugins.lualine"] = nil
+  require("insis.plugins.lualine")
   local cmd = "colorscheme " .. selected[1]
   vim.cmd(cmd)
 end
