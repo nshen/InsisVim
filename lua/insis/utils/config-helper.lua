@@ -77,10 +77,10 @@ M.getNulllsSources = function()
         "scss",
         "less",
         "html",
-        "json",
-        "yaml",
         "graphql",
-        "markdown",
+        -- "json",
+        -- "yaml",
+        -- "markdown",
       },
       timeout = 10000,
       prefer_local = "node_modules/.bin",
@@ -152,17 +152,27 @@ M.getNulllsSources = function()
       table.insert(sources, formatter)
     end
   end
+
   if cfg.json and cfg.json.enable then
-    local formatter = formatterMap[cfg.json.formatter]
-    if formatter then
-      table.insert(sources, formatter)
+    if cfg.json.formatter == "fixjson" then
+      table.insert(sources, formatting.fixjson)
+    elseif cfg.json.formatter == "prettier" then
+      table.insert(
+        sources,
+        formatting.prettier.with({
+          filetypes = { "json" },
+        })
+      )
     end
   end
   if cfg.yaml and cfg.yaml.enable then
-    local formatter = formatterMap[cfg.yaml.formatter]
-    if formatter then
-      -- FIXME: shouldn't add 2 prettier sources
-      table.insert(sources, formatter)
+    if cfg.yaml.formatter == "prettier" then
+      table.insert(
+        sources,
+        formatting.prettier.with({
+          filetypes = { "yaml" },
+        })
+      )
     end
   end
   if cfg.git and cfg.git.enable then
@@ -307,9 +317,9 @@ M.getMasonEnsureList = function()
     end
   end
 
-  if cfg.markdown and cfg.markdown.enable then
-    -- not used
-  end
+  -- if cfg.markdown and cfg.markdown.enable then
+  -- not used
+  -- end
 
   local ensureInstalled = {}
   for key, _ in pairs(servers) do
