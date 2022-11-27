@@ -438,7 +438,7 @@ local UserConfig = {
 
   ---@class MarkdownConfig
   markdown = {
-    enable = true,
+    enable = false,
     mkdnflow = {
       next_link = "gn",
       prev_link = "gp",

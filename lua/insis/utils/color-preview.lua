@@ -1,4 +1,9 @@
 -- based on https://www.youtube.com/playlist?list=PLOe6AggsTaVsMfLjXeavVwzkmOfAZnfQb
+local telescope = pRequire("telescope")
+if not telescope then
+  return
+end
+
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local sorters = require("telescope.sorters")

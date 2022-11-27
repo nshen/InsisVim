@@ -1,8 +1,8 @@
 local telescope = pRequire("telescope")
 local cfg = require("insis").config.telescope
-local lga_actions = require("telescope-live-grep-args.actions")
+local lga_actions = pRequire("telescope-live-grep-args.actions")
 
-if telescope and cfg and cfg.enable then
+if telescope and lga_actions and cfg and cfg.enable then
   -- local actions = require("telescope.actions")
   telescope.setup({
     defaults = {

@@ -1,4 +1,8 @@
 -- originally authored by @AdamWhittingham
+local alpha = pRequire("alpha")
+if not alpha then
+  return
+end
 
 local path_ok, plenary_path = pcall(require, "plenary.path")
 if not path_ok then
