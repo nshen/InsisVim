@@ -30,13 +30,7 @@ M.install = function()
   end
 end
 
-M.setup = function()
-  local status_ok, packer = pcall(require, "packer")
-  if not status_ok then
-    vim.notify("require packer.nvim failed")
-    return
-  end
-
+local function getPluginList()
   local snapshotPath = p.join(p.getConfig(), "snapshots", "plugins.json")
   local snapshot = vim.fn.json_decode(vim.fn.readfile(snapshotPath))
   package.loaded["insis.plugins"] = nil
@@ -49,7 +43,16 @@ M.setup = function()
       end
     end
   end
+  return pluginList
+end
 
+M.setup = function()
+  local status_ok, packer = pcall(require, "packer")
+  if not status_ok then
+    vim.notify("require packer.nvim failed")
+    return
+  end
+  local pluginList = getPluginList()
   packer.reset()
   packer.startup({
     function(use)
@@ -60,17 +63,15 @@ M.setup = function()
     config = {
       -- snapshots folder
       snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
-      -- snapshot = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots") .. "/v1",
-      -- snapshot = "v1",
-
-      max_jobs = 10,
-      clone_timeout = 60,
+      max_jobs = nil,
+      clone_timeout = 100,
       -- custom source
       git = {
         -- default_url_format = "https://hub.fastgit.xyz/%s",
         -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
         -- default_url_format = "https://gitcode.net/mirrors/%s",
-        default_url_format = "https://github.com/%s",
+        -- default_url_format = "https://github.com/%s",
+        default_url_format = cfg.mirror.packer .. "%s",
       },
       display = {
         open_fn = function()
@@ -79,42 +80,19 @@ M.setup = function()
       },
     },
   })
-
-  --[[ packer.init({
-    -- snapshots folder
-    snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
-    -- snapshot = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots") .. "/v1",
-    -- snapshot = "v1",
-
-    max_jobs = 10,
-    clone_timeout = 60,
-    -- custom source
-    git = {
-      -- default_url_format = "https://hub.fastgit.xyz/%s",
-      -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
-      -- default_url_format = "https://gitcode.net/mirrors/%s",
-      default_url_format = "https://github.com/%s",
-    },
-    display = {
-      open_fn = function()
-        return require("packer.util").float({ border = "rounded" })
-      end,
-    },
-  }) ]]
 end
 
 M.sync = function()
   local snapshotPath = p.join(p.getConfig(), "snapshots", "plugins.json")
   local snapshot = vim.fn.json_decode(vim.fn.readfile(snapshotPath))
-
   local status_ok, packer = pcall(require, "packer")
   if not status_ok then
     vim.notify("require packer.nvim failed")
     return
   end
-
-  package.loaded["insis.plugins"] = nil
-  local pluginList = require("insis.plugins")
+  -- package.loaded["insis.plugins"] = nil
+  -- local pluginList = require("insis.plugins")
+  local pluginList = getPluginList()
   packer.reset()
   packer.sync()
 end
