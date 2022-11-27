@@ -31,7 +31,7 @@ M.install = function()
 end
 
 local function getPluginList()
-  local snapshotPath = p.join(p.getConfig(), "snapshots", "plugins.json")
+  local snapshotPath = p.join(p.getConfig(), "snapshots.json")
   local snapshot = vim.fn.json_decode(vim.fn.readfile(snapshotPath))
   package.loaded["insis.plugins"] = nil
   local pluginList = require("insis.plugins")
@@ -62,7 +62,7 @@ M.setup = function()
     end,
     config = {
       -- snapshots folder
-      snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
+      snapshot_path = p.getConfig(),
       max_jobs = nil,
       clone_timeout = 100,
       -- custom source
