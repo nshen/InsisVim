@@ -89,7 +89,7 @@ local UserConfig = {
 
   ---@class STabConfig
   s_tab = {
-    enable = true,
+    enable = false,
     keys = {
       split = "ts",
       prev = "th",
@@ -428,7 +428,7 @@ local UserConfig = {
 
   ---@class JsonConfig
   json = {
-    enable = true,
+    enable = false,
     lsp = "jsonls",
     -- npm install -g fixjson
     ---@type "fixjson" | "prettier"
@@ -460,6 +460,7 @@ local UserConfig = {
   yaml = {
     enable = false,
     lsp = "yamlls",
+    ---@type "prettier" | false
     formatter = "prettier",
     format_on_save = false,
   },
