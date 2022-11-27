@@ -1,27 +1,29 @@
+local cfg = require("insis").config
 local myAutoGroup = vim.api.nvim_create_augroup("myAutoGroup", {
   clear = true,
 })
 
 local autocmd = vim.api.nvim_create_autocmd
 
--- 自动切换输入法，需要安装 im-select
--- https://github.com/daipeihust/im-select
-autocmd("InsertLeave", {
-  group = myAutoGroup,
-  callback = require("insis.utils.im-select").insertLeave,
-})
-autocmd("InsertEnter", {
-  group = myAutoGroup,
-  callback = require("insis.utils.im-select").insertEnter,
-})
+if cfg.enable_imselect then
+  autocmd("InsertLeave", {
+    group = myAutoGroup,
+    callback = require("insis.utils.im-select").insertLeave,
+  })
 
--- 进入Terminal 自动进入插入模式
+  autocmd("InsertEnter", {
+    group = myAutoGroup,
+    callback = require("insis.utils.im-select").insertEnter,
+  })
+end
+
+-- auto insert mode when TermOpen
 autocmd("TermOpen", {
   group = myAutoGroup,
   command = "startinsert",
 })
 
--- 保存时自动格式化
+-- format on save
 autocmd("BufWritePre", {
   group = myAutoGroup,
   pattern = require("insis.utils.config-helper").getFormatOnSavePattern(),
@@ -30,31 +32,29 @@ autocmd("BufWritePre", {
   end,
 })
 
--- 修改lua/plugins.lua 自动更新插件
--- autocmd("BufWritePost", {
---   group = myAutoGroup,
---   -- autocmd BufWritePost plugins.lua source <afile> | PackerSync
---   callback = function()
---     if vim.fn.expand("<afile>") == "lua/plugins.lua" then
---       vim.api.nvim_command("source lua/plugins.lua")
---       vim.api.nvim_command("PackerSync")
---     end
---   end,
--- })
+-- set wrap only in markdown
+autocmd("FileType", {
+  group = myAutoGroup,
+  pattern = { "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
+})
 
+-- auto run PackerSync when pluginlist is modified
 autocmd("BufWritePost", {
   group = myAutoGroup,
   -- autocmd BufWritePost plugins.lua source <afile> | PackerSync
   callback = function()
     if vim.fn.expand("<afile>") == "lua/insis/plugins/init.lua" then
-      -- vim.api.nvim_command("source lua/insis/plugins/init.lua")
+      vim.api.nvim_command("source lua/insis/plugins/init.lua")
       require("insis.packer").setup()
       vim.api.nvim_command("PackerSync")
     end
   end,
 })
 
--- Highlight on yank
+-- highlight on yank
 autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
@@ -63,7 +63,7 @@ autocmd("TextYankPost", {
   pattern = "*",
 })
 
--- 用o换行不要延续注释
+-- do not continue comments when type o
 autocmd("BufEnter", {
   group = myAutoGroup,
   pattern = "*",
@@ -74,14 +74,26 @@ autocmd("BufEnter", {
   end,
 })
 
--- 保存Fold
-local saveable_type = { "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = {
+    "help",
+    "man",
+    "neotest-output",
+  },
+  callback = function()
+    keymap({ "i", "n" }, { "q", "<esc>" }, "<esc>:close<CR>", { buffer = true })
+  end,
+})
 
+-- TODO: research treesitter fold problem
+-- save fold
+local saveable_type = { "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
 autocmd("BufWinEnter", {
   group = myAutoGroup,
   pattern = saveable_type,
   command = "silent! loadview",
 })
+
 autocmd("BufWrite", {
   group = myAutoGroup,
   pattern = saveable_type,
