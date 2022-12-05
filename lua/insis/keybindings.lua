@@ -16,8 +16,6 @@ local keys = cfg.keys
 vim.g.mapleader = keys.leader_key
 vim.g.maplocalleader = keys.leader_key
 
-keymap("n", keys.nohl, "<CMD>nohlsearch<CR>")
-
 -- save && quit
 keymap("n", keys.n_save, "<CMD>w<CR>")
 keymap("n", keys.n_force_quit, "<CMD>qa!<CR>")

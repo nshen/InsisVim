@@ -29,6 +29,7 @@
 ---@field python PythonConfig python development user config
 ---@field ruby RubyConfig ruby development user config
 ---@field json JsonConfig Json user config
+---@field markdown MarkdownConfig
 ---@field toml TomlConfig Toml user config
 ---@field yaml YamlConfig Yaml user config
 ---@field git GitConfig git user config
@@ -59,8 +60,6 @@ local UserConfig = {
       close = "zc",
     },
     terminal_to_normal = "<Esc>",
-    -- no highlight
-    nohl = "<ESC><ESC>",
   },
 
   ---@class SWindowConfig
