@@ -22,6 +22,7 @@
 ---@field lsp LSPConfig LSP common config
 ---@field dap DAPConfig DAP common config
 ---@field frontend FrontendConfig Frontend development user config
+---@field clangd ClangdConfig Clangd user config
 ---@field golang GolangConfig Golang development user config
 ---@field lua LuaConfig Lua development user config
 ---@field rust RustConfig Rust development user config
@@ -368,6 +369,15 @@ local UserConfig = {
         ts_goto_source = "gD",
       },
     },
+  },
+
+  ---@class ClangdConfig
+  clangd = {
+    enable = false,
+    lsp = "clangd",
+    -- linter = "clangd-tidy",
+    formatter = "clang-format",
+    format_on_save = false,
   },
 
   ---@class GolangConfig
