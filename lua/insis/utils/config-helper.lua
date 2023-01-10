@@ -11,6 +11,11 @@ M.getTSEnsureList = function()
     end
   end
 
+  if cfg.clangd and cfg.clangd.enable then
+    parserSet["cpp"] = true
+    parserSet["c"] = true
+  end
+
   if cfg.golang and cfg.golang.enable then
     parserSet["go"] = true
   end
@@ -193,6 +198,13 @@ M.getFormatOnSavePattern = function()
       table.insert(pattern, "*.tsx")
     end
   end
+  if cfg.clangd and cfg.clangd.enable then
+    if cfg.clangd.format_on_save then
+      table.insert(pattern, "*.c")
+      table.insert(pattern, "*.cpp")
+      table.insert(pattern, "*.cc")
+    end
+  end
   if cfg.golang and cfg.golang.enable then
     if cfg.golang.format_on_save then
       table.insert(pattern, "*.go")
@@ -275,6 +287,13 @@ M.getMasonEnsureList = function()
       end
     end
   end
+
+  if cfg.clangd and cfg.clangd.enable then
+    if configMap[cfg.clangd.lsp] then
+      servers[cfg.clangd.lsp] = configMap[cfg.clangd.lsp]
+    end
+  end
+
   if cfg.golang and cfg.golang.enable then
     if configMap[cfg.golang.lsp] then
       servers[cfg.golang.lsp] = configMap[cfg.golang.lsp]
