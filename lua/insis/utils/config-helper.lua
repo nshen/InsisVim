@@ -279,8 +279,12 @@ M.getMasonEnsureList = function()
     -- remark_ls = require("insis.lsp.config.markdown"),
   }
 
+  -- servers
+  -- key : lspconfig server name
+  -- vale: my config file
   local servers = {}
   if cfg.frontend and cfg.frontend.enable then
+    -- frontend need several lsp servers
     for _, value in pairs(cfg.frontend.lsp) do
       if configMap[value] then
         servers[value] = configMap[value]
