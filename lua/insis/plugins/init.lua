@@ -162,6 +162,7 @@ return {
   -- Installer
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
+  { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
   -- Lspconfig
   { "neovim/nvim-lspconfig" },
   -- Completion engine
