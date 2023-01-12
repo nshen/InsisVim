@@ -44,3 +44,29 @@ function _G.arrayConcat(t1, t2)
     table.insert(t1, v)
   end
 end
+
+function _G.isWSL()
+  local output = vim.fn.systemlist("uname -r")
+  return not not string.find(output[1] or "", "WSL")
+end
+
+function _G.isMAC()
+  return vim.fn.has("maxunic") == 1
+end
+
+function _G.isLinux(self)
+  return not self.is_wsl() and not self.is_mac()
+end
+
+table.indexOf = function(t, object)
+  if "table" == type(t) then
+    for i = 1, #t do
+      if object == t[i] then
+        return i
+      end
+    end
+    return -1
+  else
+    error("table.indexOf expects table for first argument, " .. type(t) .. " given")
+  end
+end
