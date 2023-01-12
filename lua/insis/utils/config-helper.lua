@@ -58,10 +58,11 @@ end
 -- add sources based on config file
 M.getNulllsSources = function()
   local null_ls = pRequire("null-ls")
-  local cfg = require("insis").config
   if not null_ls then
     return nil
   end
+
+  local cfg = require("insis").config
   local formatting = null_ls.builtins.formatting
   local diagnostics = null_ls.builtins.diagnostics
   local code_actions = null_ls.builtins.code_actions
@@ -250,9 +251,9 @@ M.getFormatOnSavePattern = function()
   return pattern
 end
 
-M.getMasonEnsureList = function()
+M.getMasonConfig = function()
   local cfg = require("insis").config
-
+  -- all supported lsp server for now
   -- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
   -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
   local configMap = {
@@ -279,10 +280,23 @@ M.getMasonEnsureList = function()
     -- remark_ls = require("insis.lsp.config.markdown"),
   }
 
-  -- servers
+  -- enabled lsp server map
   -- key : lspconfig server name
-  -- vale: my config file
+  -- vale: lsp config file
   local servers = {}
+  -- linter and formatter ensure list
+  local toolList = {}
+
+  if cfg.lua and cfg.lua.enable then
+    if configMap[cfg.lua.lsp] then
+      -- sumneko_lua
+      servers[cfg.lua.lsp] = configMap[cfg.lua.lsp]
+    end
+    if cfg.lua.formatter == "stylua" then
+      table.insert(toolList, "stylua")
+    end
+  end
+
   if cfg.frontend and cfg.frontend.enable then
     -- frontend need several lsp servers
     for _, value in pairs(cfg.frontend.lsp) do
@@ -290,11 +304,21 @@ M.getMasonEnsureList = function()
         servers[value] = configMap[value]
       end
     end
+    if cfg.frontend.linter == "eslint_d" or cfg.frontend.formatter == "eslint_d" then
+      table.insert(toolList, "eslint_d")
+    end
+    if cfg.frontend.formatter == "prettier" then
+      table.insert(toolList, "prettier")
+    end
   end
 
   if cfg.clangd and cfg.clangd.enable then
     if configMap[cfg.clangd.lsp] then
       servers[cfg.clangd.lsp] = configMap[cfg.clangd.lsp]
+    end
+    -- TODO: linter
+    if cfg.clangd.formatter == "clang-format" then
+      table.insert(toolList, "clang-format")
     end
   end
 
@@ -302,11 +326,8 @@ M.getMasonEnsureList = function()
     if configMap[cfg.golang.lsp] then
       servers[cfg.golang.lsp] = configMap[cfg.golang.lsp]
     end
-  end
-
-  if cfg.lua and cfg.lua.enable then
-    if configMap[cfg.lua.lsp] then
-      servers[cfg.lua.lsp] = configMap[cfg.lua.lsp]
+    if cfg.golang.linter == "golangci-lint" then
+      table.insert(toolList, "golangci-lint")
     end
   end
 
@@ -314,11 +335,17 @@ M.getMasonEnsureList = function()
     if configMap[cfg.rust.lsp] then
       servers[cfg.rust.lsp] = configMap[cfg.rust.lsp]
     end
+    if cfg.rust.formatter == "rustfmt" then
+      table.insert(toolList, "rustfmt")
+    end
   end
 
   if cfg.sh and cfg.sh.enable then
     if configMap[cfg.sh.lsp] then
       servers[cfg.sh.lsp] = configMap[cfg.sh.lsp]
+    end
+    if cfg.sh.formatter == "shfmt" then
+      table.insert(toolList, "shfmt")
     end
   end
 
@@ -326,11 +353,17 @@ M.getMasonEnsureList = function()
     if configMap[cfg.python.lsp] then
       servers[cfg.python.lsp] = configMap[cfg.python.lsp]
     end
+    if cfg.python.formatter == "black" then
+      table.insert(toolList, "black")
+    end
   end
 
   if cfg.ruby and cfg.ruby.enable then
     if configMap[cfg.ruby.lsp] then
       servers[cfg.ruby.lsp] = configMap[cfg.ruby.lsp]
+    end
+    if cfg.ruby.formatter == "rubocop" then
+      table.insert(toolList, "rubocop")
     end
   end
 
@@ -338,18 +371,25 @@ M.getMasonEnsureList = function()
     if configMap[cfg.json.lsp] then
       servers[cfg.json.lsp] = configMap[cfg.json.lsp]
     end
+    if cfg.json.formatter == "fixjson" then
+      table.insert(toolList, "fixjson")
+    elseif cfg.json.formatter == "prettier" then
+      if table.indexOf(toolList, "prettier") == -1 then
+        table.insert(toolList, "prettier")
+      end
+    end
   end
 
   -- if cfg.markdown and cfg.markdown.enable then
   -- not used
   -- end
 
-  local ensureInstalled = {}
+  -- mason lsp ensure list
+  local lspList = {}
   for key, _ in pairs(servers) do
-    table.insert(ensureInstalled, key)
+    table.insert(lspList, key)
   end
-
-  return ensureInstalled, servers
+  return lspList, servers, toolList
 end
 
 M.getNeotestAdapters = function()
