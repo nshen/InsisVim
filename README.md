@@ -13,11 +13,26 @@ require("insis").setup({
   },
 })
 ```
+
+## 🛠 Installation
+
+`npx zx https://insisvim.github.io/install.mjs`
+
+>Note: The installation will stop if you miss any of `git`, `wget`, `curl`, `ripgrep`, `node.js v16+`, `nvim v0.8.x`.
+
+On Mac you can `brew install` anything above.
+
+On Ubuntu you can check [Ubuntu installation guide](https://github.com/nshen/InsisVim/issues/5).
+
+Then try again.
+
 ## Preview
 
 TODO
 
-##  Stellar Features
+## Setup and Configuration
+
+TODO
 
 ## Requirements
 
@@ -25,12 +40,12 @@ TODO
 - Node.js v16+.
 - Nerd Fonts.
 
-## 🛠 Installation
 
-`npx zx https://insisvim.github.io/install.mjs`
 
 ## License
 
 MIT
+
+PR is Welcome.
 
 
