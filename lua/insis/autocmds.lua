@@ -32,6 +32,13 @@ autocmd("BufWritePre", {
   end,
 })
 
+-- set *.mdx to filetype to markdown
+autocmd({ "BufNewFile", "BufRead" }, {
+  group = myAutoGroup,
+  pattern = "*.mdx",
+  command = "setfiletype markdown",
+})
+
 -- set wrap only in markdown
 autocmd("FileType", {
   group = myAutoGroup,
