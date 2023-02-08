@@ -47,12 +47,9 @@ if nvimTree and cfg and cfg.enable then
   }
 
   nvimTree.setup({
-    --automatically open the tree when running setup if startup buffer is a directory
-    open_on_setup = true,
-    disable_netrw = true,
     update_focused_file = {
       enable = true,
-      update_cwd = false,
+      update_root = true,
     },
     git = {
       enable = true,
@@ -105,8 +102,25 @@ if nvimTree and cfg and cfg.enable then
     },
   })
 
+  -- open after created file
   local api = require("nvim-tree.api")
   api.events.subscribe(api.events.Event.FileCreated, function(file)
     vim.cmd("edit " .. file.fname)
   end)
+
+  -- open_on_setup
+  -- automatically open the tree when running setup if startup buffer is a directory
+  -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup
+  local function open_nvim_tree(data)
+    local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+    local directory = vim.fn.isdirectory(data.file) == 1
+    if not no_name and not directory then
+      return
+    end
+    if directory then
+      vim.cmd.cd(data.file)
+    end
+    require("nvim-tree.api").tree.open()
+  end
+  vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 end
