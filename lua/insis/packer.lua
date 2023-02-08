@@ -31,7 +31,7 @@ M.install = function()
 end
 
 local function getPluginList()
-  local snapshotPath = p.join(p.getConfig(), "snapshots.json")
+  local snapshotPath = p.join(p.getConfig(), "snapshots-" .. require("insis").version .. ".json")
   local snapshot = vim.fn.json_decode(vim.fn.readfile(snapshotPath))
   package.loaded["insis.plugins"] = nil
   local pluginList = require("insis.plugins")
@@ -83,8 +83,6 @@ M.setup = function()
 end
 
 M.sync = function()
-  local snapshotPath = p.join(p.getConfig(), "snapshots", "plugins.json")
-  local snapshot = vim.fn.json_decode(vim.fn.readfile(snapshotPath))
   local status_ok, packer = pcall(require, "packer")
   if not status_ok then
     vim.notify("require packer.nvim failed")
@@ -92,9 +90,15 @@ M.sync = function()
   end
   -- package.loaded["insis.plugins"] = nil
   -- local pluginList = require("insis.plugins")
-  local pluginList = getPluginList()
+  getPluginList()
   packer.reset()
   packer.sync()
 end
+
+local function createSnapshots()
+  vim.api.nvim_command("PackerSnapshot snapshots-" .. require("insis").version .. ".json")
+end
+
+vim.api.nvim_create_user_command("InsisCreateSnapshots", createSnapshots, {})
 
 return M

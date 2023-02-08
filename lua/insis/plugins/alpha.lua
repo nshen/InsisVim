@@ -187,27 +187,17 @@ local buttons = {
   position = "left",
 }
 
-local copyright = function()
-  local date = os.date("  %d/%m/%Y ")
-  local time = os.date("  %H:%M:%S ")
-  local plugins = "  " .. #vim.tbl_keys(packer_plugins) .. " plugins "
-
+local nvimInfo = function()
   local v = vim.version()
   ---@diagnostic disable-next-line: need-check-nil
-  local version = "  v" .. v.major .. "." .. v.minor .. "." .. v.patch
-
-  return date .. time .. plugins .. version
+  local nvimVersion = "nvim v" .. v.major .. "." .. v.minor .. "." .. v.patch
+  ---@diagnostic disable-next-line: undefined-global
+  return nvimVersion .. " with" .. "  " .. #vim.tbl_keys(packer_plugins) .. " plugins "
 end
 
-local neovimVersion = function()
-  local v = vim.version()
-  ---@diagnostic disable-next-line: need-check-nil
-  return " v" .. v.major .. "." .. v.minor .. "." .. v.patch
-end
-
-local version = {
+local nvimInfoSection = {
   type = "text",
-  val = "v1.0.0 with" .. "  " .. #vim.tbl_keys(packer_plugins) .. " neovim plugins",
+  val = nvimInfo(),
   opts = {
     position = "center",
     hl = "Type",
@@ -215,9 +205,9 @@ local version = {
   },
 }
 
-local love = {
+local versionSection = {
   type = "text",
-  val = "make with ♥ version 1.0.0",
+  val = require("insis").version .. " make with ♥",
   opts = {
     position = "center",
     hl = "Type",
@@ -232,8 +222,9 @@ local config = {
     section_mru,
     { type = "padding", val = 2 },
     buttons,
-    { type = "padding", val = 2 },
-    love,
+    { type = "padding", val = 3 },
+    versionSection,
+    nvimInfoSection,
   },
   opts = {
     margin = 5,

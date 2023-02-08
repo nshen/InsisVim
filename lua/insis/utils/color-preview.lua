@@ -66,8 +66,8 @@ local opts = {
 
 local colorPicker = pickers.new(mini, opts)
 
-function CC()
+local function colorPreview()
   colorPicker:find()
 end
 
-vim.api.nvim_create_user_command("ColorPreview", CC, {})
+vim.api.nvim_create_user_command("InsisColorPreview", colorPreview, {})
