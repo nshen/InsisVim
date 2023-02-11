@@ -24,7 +24,7 @@ if comment and cfg and cfg.enable then
       bock = cfg.opleader.block,
     },
 
-    -- context_commentstring
+    -- context_commentstring for JSX
     -- also see treesitter.lua
     pre_hook = preHook,
   })
