@@ -257,7 +257,7 @@ M.getMasonConfig = function()
   -- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
   -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
   local configMap = {
-    sumneko_lua = require("insis.lsp.config.lua"), -- lua/lsp/config/lua.lua
+    lua_ls = require("insis.lsp.config.lua"), -- lua/lsp/config/lua.lua
     bashls = require("insis.lsp.config.bash"),
     pyright = require("insis.lsp.config.pyright"),
     pylsp = require("insis.lsp.config.pylsp"),
@@ -289,7 +289,7 @@ M.getMasonConfig = function()
 
   if cfg.lua and cfg.lua.enable then
     if configMap[cfg.lua.lsp] then
-      -- sumneko_lua
+      -- lua_ls
       servers[cfg.lua.lsp] = configMap[cfg.lua.lsp]
     end
     if cfg.lua.formatter == "stylua" then

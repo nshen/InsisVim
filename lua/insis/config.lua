@@ -392,7 +392,7 @@ local UserConfig = {
   ---@class LuaConfig
   lua = {
     enable = true,
-    lsp = "sumneko_lua",
+    lsp = "lua_ls",
     formatter = "stylua",
     format_on_save = true,
   },
