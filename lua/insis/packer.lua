@@ -30,9 +30,16 @@ M.install = function()
   end
 end
 
-local function getPluginList()
+local function readSnapshotJSON()
   local snapshotPath = p.join(p.getConfig(), "snapshots-" .. require("insis").version .. ".json")
-  local snapshot = vim.fn.json_decode(vim.fn.readfile(snapshotPath))
+  return vim.fn.json_decode(vim.fn.readfile(snapshotPath))
+end
+
+local function getPluginList()
+  local status_ok, snapshot = pcall(readSnapshotJSON)
+  if not status_ok then
+    log("ERROR: read " .. "snapshots-" .. require("insis").version .. ".json failed!")
+  end
   package.loaded["insis.plugins"] = nil
   local pluginList = require("insis.plugins")
   if cfg.lock_plugin_commit then

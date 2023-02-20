@@ -1,5 +1,5 @@
 local M = {}
-M.version = "v0.9.0"
+M.version = "v0.9.1"
 
 ---@type UserConfig
 M.config = require("insis.config")
@@ -17,7 +17,6 @@ function M.setup(user_config)
     return
   end
   packer.setup()
-  -- pRequire("impatient")
   require("insis.basic")
   require("insis.keybindings")
   require("insis.autocmds")
