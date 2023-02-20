@@ -6,8 +6,8 @@ if typescript and cfg and cfg.enable then
   local opts = {
     capabilities = common.capabilities,
     flags = common.flags,
-    on_attach = function(_, bufnr)
-      -- common.disableFormat(client)
+    on_attach = function(client, bufnr)
+      common.disableFormat(client)
       common.keyAttach(bufnr)
 
       --[[ 
@@ -36,6 +36,7 @@ if typescript and cfg and cfg.enable then
         go_to_source_definition = {
           fallback = true, -- fall back to standard LSP definition on failure
         },
+        -- pass options to lspconfig's setup method
         server = opts,
       })
     end,

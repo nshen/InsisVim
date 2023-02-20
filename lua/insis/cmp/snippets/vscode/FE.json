@@ -43,8 +43,8 @@
     "For Loop": {
         "prefix": "for",
         "body": [
-            "for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {",
-            "\tconst ${3:element} = ${2:array}[${1:index}];",
+            "for (let ${1:i} = 0; ${1:i} < ${2:arr}.length; ${1:i}++) {",
+            "\tconst ${3:element} = ${2:arr}[${1:i}];",
             "\t$0",
             "}"
         ],
@@ -218,14 +218,15 @@
         "body": [
             "import React from 'react'",
             "",
-            "type ${2}Props = {}",
+            "type ${1}Props = {}",
             "",
-            "export const ${1:${TM_FILENAME_BASE}} = (props: ${2}Props) => {",
+            "const ${1:${TM_FILENAME_BASE}} = (props: ${1}Props) => {",
             "  return (",
             "    <div>${1:first}</div>",
             "  )",
             "}",
-            ""
+            "",
+            "export default ${1}"
         ],
         "description": "Creates a React Functional Component with ES7 module system and TypeScript interface",
         "scope": "typescript,typescriptreact,javascript,javascriptreact"

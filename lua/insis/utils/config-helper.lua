@@ -116,6 +116,7 @@ M.getNulllsSources = function()
     end
     if ca then
       table.insert(sources, ca)
+      table.insert(sources, require("typescript.extensions.null-ls.code-actions"))
     end
   end
   if cfg.golang and cfg.golang.enable then
