@@ -100,17 +100,28 @@ autocmd({ "FileType" }, {
   end,
 })
 
--- TODO: research treesitter fold problem
 -- save fold
-local saveable_type = { "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
+-- local saveable_type = { "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
 autocmd("BufWinEnter", {
   group = myAutoGroup,
-  pattern = saveable_type,
+  pattern = "*",
   command = "silent! loadview",
 })
 
 autocmd("BufWrite", {
   group = myAutoGroup,
-  pattern = saveable_type,
+  pattern = "*",
   command = "mkview",
+})
+
+-- fix E490 no fold found
+-- https://github.com/tmhedberg/SimpylFold/issues/130#issuecomment-1074049490
+autocmd("BufRead", {
+  group = myAutoGroup,
+  callback = function()
+    vim.api.nvim_create_autocmd("BufWinEnter", {
+      once = true,
+      command = "normal! zx zR",
+    })
+  end,
 })
