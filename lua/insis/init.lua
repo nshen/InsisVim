@@ -17,6 +17,7 @@ function M.setup(user_config)
     return
   end
   packer.setup()
+  require("insis.env").init(M.config)
   require("insis.basic")
   require("insis.keybindings")
   require("insis.autocmds")

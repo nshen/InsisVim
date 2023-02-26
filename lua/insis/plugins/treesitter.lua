@@ -12,7 +12,7 @@ if treesitter then
     sync_install = false,
     -- :TSInstallInfo
     -- ensure_installed = "maintained",
-    ensure_installed = require("insis.utils.config-helper").getTSEnsureList(),
+    ensure_installed = require("insis.env").getTSEnsureList(),
 
     highlight = {
       enable = true,

@@ -26,7 +26,7 @@
 ---@field golang GolangConfig Golang development user config
 ---@field lua LuaConfig Lua development user config
 ---@field rust RustConfig Rust development user config
----@field sh SHConfig sh development user config
+---@field bash BashConfig sh development user config
 ---@field python PythonConfig python development user config
 ---@field ruby RubyConfig ruby development user config
 ---@field json JsonConfig Json user config
@@ -347,19 +347,12 @@ local UserConfig = {
   ---@class FrontendConfig
   frontend = {
     enable = false,
-    -- treesitter code highlight
-    highlight = { "html", "css", "javascript", "typescript", "tsx", "vue" },
-    -- mason lsp ensure list
-    lsp = { "tsserver", "tailwindcss", "cssls", "emmet_ls", "html" },
-    -- null-ls ensure list
-    -- npm install -g eslint_d
     linter = "eslint_d",
-    code_actions = "eslint_d",
     ---@type "eslint_d" | "prettier"
-    formatter = "eslint_d",
+    formatter = "prettier",
+    format_on_save = false,
     -- extra lsp command provided by typescript.nvim
     typescript = {
-      format_on_save = false,
       keys = {
         ts_organize = "gs",
         ts_rename_file = "gR",
@@ -406,8 +399,8 @@ local UserConfig = {
     format_on_save = false,
   },
 
-  ---@class SHConfig
-  sh = {
+  ---@class BashConfig
+  bash = {
     enable = false,
     lsp = "bashls",
     --  brew install shfmt
@@ -457,6 +450,8 @@ local UserConfig = {
       follow_link = "gd",
       toggle_item = "tt",
     },
+    formatter = "prettier",
+    format_on_save = false,
   },
 
   ---@class TomlConfig

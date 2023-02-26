@@ -31,11 +31,11 @@ local lspList, servers, toolList = require("insis.utils.config-helper").getMason
 -- log(lspList)
 -- log(toolList)
 mason_config.setup({
-  ensure_installed = lspList,
+  ensure_installed = require("insis.env").getLSPEnsureList(),
 })
 
 mason_tool.setup({
-  ensure_installed = toolList,
+  ensure_installed = require("insis.env").getToolEnsureList(),
 })
 
 for name, config in pairs(servers) do

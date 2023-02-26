@@ -14,7 +14,7 @@ if neotest and cfg then
   }, neotest_ns)
   ----------------------------------------------------------------
   neotest.setup({
-    adapters = require("insis.utils.config-helper").getNeotestAdapters(),
+    adapters = require("insis.env").getNeotestAdapters(),
 
     summary = {
       animated = true,

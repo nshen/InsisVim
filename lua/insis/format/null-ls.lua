@@ -6,7 +6,7 @@ end
 
 null_ls.setup({
   debug = false,
-  sources = require("insis.utils.config-helper").getNulllsSources(),
+  sources = require("insis.env").getNulllsSources(),
   -- #{m}: message
   -- #{s}: source name (defaults to null-ls if not specified)
   -- #{c}: code (if available)

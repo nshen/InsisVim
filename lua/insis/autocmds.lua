@@ -26,7 +26,7 @@ autocmd("TermOpen", {
 -- format on save
 autocmd("BufWritePre", {
   group = myAutoGroup,
-  pattern = require("insis.utils.config-helper").getFormatOnSavePattern(),
+  pattern = require("insis.env").getFormatOnSavePattern(),
   callback = function()
     vim.lsp.buf.format()
   end,
