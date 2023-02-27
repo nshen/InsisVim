@@ -38,11 +38,11 @@ return function(config)
         return {}
       end
       if config.formatter == "fixjson" then
-        return null_ls.builtins.formatting.fixjson
+        return { null_ls.builtins.formatting.fixjson }
       elseif config.formatter == "prettier" then
-        return null_ls.builtins.formatting.prettier.with({
+        return { null_ls.builtins.formatting.prettier.with({
           filetypes = { "json" },
-        })
+        }) }
       end
       return {}
     end,

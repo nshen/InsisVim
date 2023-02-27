@@ -33,9 +33,9 @@ return function(config)
         return {}
       end
       if config.formatter == "prettier" then
-        return null_ls.builtins.formatting.prettier.with({
+        return { null_ls.builtins.formatting.prettier.with({
           filetypes = { "markdown" },
-        })
+        }) }
       end
       return {}
     end,
