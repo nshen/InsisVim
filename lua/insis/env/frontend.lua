@@ -34,6 +34,9 @@ return function(config)
       if config.formatter == "prettier" then
         table.insert(list, "prettier")
       end
+      if config.cspell then
+        table.insert(list, "cspell")
+      end
       return list
     end,
 
@@ -72,6 +75,29 @@ return function(config)
       table.insert(list, null_ls.builtins.diagnostics.eslint_d)
       table.insert(list, null_ls.builtins.code_actions.eslint_d)
       table.insert(list, require("typescript.extensions.null-ls.code-actions"))
+      if config.cspell then
+        table.insert(
+          list,
+          null_ls.builtins.diagnostics.cspell.with({
+            filetypes = {
+              "javascript",
+              "javascriptreact",
+              "typescript",
+              "typescriptreact",
+            },
+          })
+        )
+        table.insert(
+          list,
+          null_ls.builtins.code_actions.cspell.with({
+
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+          })
+        )
+      end
       return list
     end,
 

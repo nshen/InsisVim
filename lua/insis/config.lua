@@ -352,6 +352,7 @@ local UserConfig = {
     ---@type "eslint_d" | "prettier"
     formatter = "prettier",
     format_on_save = false,
+    cspell = false,
     -- extra lsp command provided by typescript.nvim
     typescript = {
       keys = {
