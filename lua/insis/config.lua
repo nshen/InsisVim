@@ -33,6 +33,7 @@
 ---@field markdown MarkdownConfig
 ---@field toml TomlConfig Toml user config
 ---@field yaml YamlConfig Yaml user config
+---@field docker DockerConfig Docker user config
 ---@field git GitConfig git user config
 ---@field mirror MirrorConfig mirror config
 
@@ -467,6 +468,12 @@ local UserConfig = {
     ---@type "prettier" | false
     formatter = "prettier",
     format_on_save = false,
+  },
+
+  ---@class DockerConfig
+  docker = {
+    enable = false,
+    lsp = "dockerls",
   },
 
   ---@class GitConfig
