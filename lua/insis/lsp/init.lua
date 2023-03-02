@@ -26,10 +26,6 @@ mason.setup({
   },
 })
 
-local lspList, servers, toolList = require("insis.utils.config-helper").getMasonConfig()
-
--- log(lspList)
--- log(toolList)
 mason_config.setup({
   ensure_installed = require("insis.env").getLSPEnsureList(),
 })
@@ -38,6 +34,7 @@ mason_tool.setup({
   ensure_installed = require("insis.env").getToolEnsureList(),
 })
 
+local servers = require("insis.env").getLSPConfigMap()
 for name, config in pairs(servers) do
   if config ~= nil and type(config) == "table" then
     -- config file must implement on_setup method
