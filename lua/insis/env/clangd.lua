@@ -12,7 +12,7 @@ return function(config)
       return { "cpp", "c" }
     end,
 
-    getLspEnsureList = function()
+    getLSPEnsureList = function()
       return { "clangd" }
     end,
 
