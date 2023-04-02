@@ -34,8 +34,9 @@
     "Async Function": {
         "prefix": "async",
         "body": [
-            "async function ${1:name}()$2 {",
-            "\treturn $3;",
+            "async function ${1:name}($2)$3 {",
+            "  $4",
+            "\treturn $5;",
             "}"
         ],
         "description": "Async function"
@@ -139,10 +140,14 @@
         "description": "Executes the given function after the specified delay",
         "scope": "typescript,typescriptreact,javascript,javascriptreact"
     },
-    "promise": {
+    "new Promise": {
         "key": "promise",
-        "prefix": "prom",
-        "body": ["return new Promise((resolve, reject) => { ${1:first} })"],
+        "prefix": "newP",
+        "body": [
+          "new Promise((resolve, reject) => {",
+          "  ${1:first} ",
+          "})"
+        ],
         "description": "Creates and returns a new Promise in the standard ES7 syntax",
         "scope": "typescript,typescriptreact,javascript,javascriptreact"
     },
