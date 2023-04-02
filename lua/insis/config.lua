@@ -353,6 +353,10 @@ local UserConfig = {
     formatter = "prettier",
     format_on_save = false,
     cspell = false,
+    tailwindcss = true,
+    prisma = false,
+    -- vue will take over typescript lsp
+    vue = false,
     -- extra lsp command provided by typescript.nvim
     typescript = {
       keys = {

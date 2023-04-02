@@ -207,7 +207,7 @@ local nvimInfoSection = {
 
 local versionSection = {
   type = "text",
-  val = require("insis").version .. " make with ♥",
+  val = require("insis").version .. " make with ♥ by nshen",
   opts = {
     position = "center",
     hl = "Type",
