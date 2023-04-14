@@ -31,25 +31,13 @@ if treesitter then
         scope_incremental = "<TAB>",
       },
     },
-    -- enable =
+
     indent = {
       enable = true,
     },
-    -- p00f/nvim-ts-rainbow
+    -- HiPhish/nvim-ts-rainbow2
     rainbow = {
       enable = true,
-      -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-      extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-      max_file_lines = cfg.max_highlight_line_count, -- Do not enable for files with more than n lines, int
-      colors = {
-        "#95ca60",
-        "#ee6985",
-        "#D6A760",
-        "#7794f4",
-        "#b38bf5",
-        "#7cc7fe",
-      },
-      -- termcolors = { } -- table of colour name strings
     },
     -- language comments
     -- Also see :comment.lua

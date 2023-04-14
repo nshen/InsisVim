@@ -61,6 +61,7 @@ return {
   },
 
   -- treesitter
+  { "HiPhish/nvim-ts-rainbow2" },
   {
     "nvim-treesitter/nvim-treesitter",
     run = function()
@@ -71,7 +72,7 @@ return {
       require("insis.plugins.treesitter")
     end,
   },
-  { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
+  -- { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
   { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
   { "nvim-treesitter/nvim-treesitter-refactor", after = { "nvim-treesitter" } },
   { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
