@@ -39,7 +39,7 @@ if cfg.enable_very_magic_search then
     remap = false,
     silent = false,
   })
-  keymap("c", "%s/", "%s/\\v", {
+  keymap("c", "s/", "s/\\v", {
     remap = false,
     silent = false,
   })
