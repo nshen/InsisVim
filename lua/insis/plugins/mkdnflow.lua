@@ -37,6 +37,9 @@ if mkdnflow and cfg and cfg.enable then
       keymap("n", cfg.mkdnflow.follow_link, "<cmd>MkdnFollowLink<CR>", opts)
       keymap("n", cfg.mkdnflow.toggle_item, "<cmd>MkdnToggleToDo<CR>", opts)
       keymap({ "n", "x" }, cfg.mkdnflow.follow_link, "<cmd>MkdnFollowLink<CR>", opts)
+      local lsp = require("insis").config.lsp
+      keymap("n", lsp.code_action, "<CMD>lua vim.lsp.buf.code_action()<CR>", opts)
+      keymap("n", lsp.format, "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", opts)
     end,
   })
 end
