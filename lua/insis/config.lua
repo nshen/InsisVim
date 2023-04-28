@@ -139,24 +139,21 @@ local UserConfig = {
       refresh = "R",
       -- open / close --
       edit = { "o", "<2-LeftMouse>" },
-      close = "<BS>",
+      close = "<BS>", -- close parent folder
       system_open = "<CR>",
       vsplit = "sv",
       split = "sh",
-      tabnew = "gh",
+      tabnew = "st",
       -- movement --
       parent_node = "P",
-      cd = "]",
-      dir_up = "[",
-      prev_sibling = "<",
-      next_sibling = ">",
       first_sibling = "K",
       last_sibling = "J",
+      cd = ">",
+      dir_up = "<",
       -- file toggle --
       toggle_git_ignored = "i", --.gitignore (git enable)
       toggle_dotfiles = ".", -- Hide (dotfiles)
       toggle_custom = "u", -- togglle custom config
-      toggle_file_info = "gh",
       -- file operate --
       create = "a",
       remove = "d",
@@ -167,6 +164,7 @@ local UserConfig = {
       copy_name = "y",
       copy_path = "Y",
       copy_absolute_path = "gy",
+      toggle_file_info = "gh",
     },
   },
 
