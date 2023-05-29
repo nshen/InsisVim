@@ -7,7 +7,9 @@ if typescript and cfg and cfg.enable then
     capabilities = common.capabilities,
     flags = common.flags,
     on_attach = function(client, bufnr)
-      common.disableFormat(client)
+      if cfg.formatter ~= "tsserver" then
+        common.disableFormat(client)
+      end
       common.keyAttach(bufnr)
 
       --[[ 

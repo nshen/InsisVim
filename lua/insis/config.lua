@@ -349,8 +349,8 @@ local UserConfig = {
   frontend = {
     enable = false,
     linter = "eslint_d",
-    ---@type "eslint_d" | "prettier"
-    formatter = "prettier",
+    ---@type "eslint_d" | "prettier" | "tsserver"
+    formatter = "tsserver",
     format_on_save = false,
     cspell = false,
     tailwindcss = true,
