@@ -43,6 +43,7 @@ lspkind.init({
     Event = "",
     Operator = "",
     TypeParameter = "",
+    Copilot = "",
   },
 })
 
@@ -71,6 +72,7 @@ M.formatting = {
       end
       -- vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
       vim_item.menu = ({
+        copilot = "[AI]",
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         luasnip = "[Snip]",

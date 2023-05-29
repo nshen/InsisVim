@@ -104,6 +104,8 @@ local UserConfig = {
   ---@class CMPConfig
   cmp = {
     enable = true,
+    -- run ':Copilot auth' for the first time
+    copilot = false,
     keys = {
       confirm = "<CR>",
       select_next_item = "<C-j>",

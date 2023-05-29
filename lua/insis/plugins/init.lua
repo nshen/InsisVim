@@ -283,8 +283,20 @@ return {
     end,
   },
 
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("insis.plugins.copilot")
+    end,
+  },
   ----------------- custom ----------------------------
 
-  { "solarnz/thrift.vim" },
-  { "jose-elias-alvarez/nvim-lsp-ts-utils" },
+  -- { "solarnz/thrift.vim" },
+  -- { "jose-elias-alvarez/nvim-lsp-ts-utils" },
 }
