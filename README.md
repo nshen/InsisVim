@@ -16,6 +16,10 @@ require("insis").setup({
 })
 ```
 
+## Preview
+
+https://github.com/nshen/InsisVim/assets/181506/ca0fe9a0-122f-471a-bbe0-7656e0304309
+
 ## 🛠 Installation 安装
 
 `npx zx https://insisvim.github.io/install.mjs`
@@ -36,9 +40,6 @@ Then try again.
 
 然后再试一次。
 
-## Preview
-
-TODO
 
 ## Setup and Configuration
 
