@@ -121,6 +121,7 @@ return {
   -- fidget.nvim
   {
     "j-hui/fidget.nvim",
+    tag = "legacy",
     config = function()
       require("insis.plugins.fidget")
     end,
