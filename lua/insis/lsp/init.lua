@@ -1,9 +1,3 @@
--- IMPORTANT: make sure to setup neodev BEFORE lspconfig
--- neodev will ONLY change the lua_ls settings
-local neodev = pRequire("neodev")
-if neodev then
-  neodev.setup()
-end
 local mason = pRequire("mason")
 local mason_config = pRequire("mason-lspconfig")
 local lspconfig = pRequire("lspconfig")

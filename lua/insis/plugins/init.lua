@@ -195,8 +195,6 @@ return {
   -- TypeScript
   -- { "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" },
   { "jose-elias-alvarez/typescript.nvim" },
-  -- Lua
-  { "folke/neodev.nvim" },
   -- JSON
   { "b0o/schemastore.nvim" },
   -- Rust
