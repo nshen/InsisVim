@@ -86,6 +86,7 @@ return {
       require("insis.plugins.comment")
     end,
   },
+
   -- indent-blankline
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -93,7 +94,15 @@ return {
       require("insis.plugins.indent-blankline")
     end,
   },
-
+  -- use indent-blankline or hlchunk ?
+  ------------------------------------
+  -- {
+  --   "shellRaining/hlchunk.nvim",
+  --   config = function()
+  --     require("insis.plugins.hlchunk")
+  --   end,
+  -- },
+  -------------------------------------
   -- toggleterm
   {
     "akinsho/toggleterm.nvim",
