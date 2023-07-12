@@ -105,7 +105,6 @@ local UserConfig = {
   cmp = {
     enable = true,
     -- run ':Copilot auth' for the first time
-    copilot = false,
     keys = {
       confirm = "<CR>",
       select_next_item = "<C-j>",
@@ -119,6 +118,9 @@ local UserConfig = {
       snip_jump_prev = "<C-h>",
       snip_next_choice = "<C-j>",
       snip_prev_choice = "<C-k>",
+      -- copilot
+      copilot = false,
+      copilot_panel = "<leader>cpp",
     },
   },
 
