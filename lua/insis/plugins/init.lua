@@ -293,14 +293,15 @@ return {
 
   {
     "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
+    config = function()
+      require("insis.plugins.copilot").copilot()
+    end,
   },
   {
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
     config = function()
-      require("insis.plugins.copilot")
+      require("insis.plugins.copilot").copilot_cmp()
     end,
   },
   ----------------- custom ----------------------------
