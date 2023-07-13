@@ -2,6 +2,13 @@ local toggleterm = pRequire("toggleterm")
 local cfg = require("insis").config.toggleterm
 
 if toggleterm and cfg and cfg.enable then
+  local on_open_common = function(term)
+    vim.cmd("startinsert!")
+    -- q / <leader>tg will close terminal
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<leader>tg", "<cmd>close<CR>", { noremap = true, silent = true })
+  end
+
   toggleterm.setup({
     size = function(term)
       if term.direction == "horizontal" then
@@ -23,10 +30,7 @@ if toggleterm and cfg and cfg.enable then
       border = "rounded",
     },
     on_open = function(term)
-      vim.cmd("startinsert!")
-      -- q / <leader>tg will close terminal
-      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<leader>tg", "<cmd>close<CR>", { noremap = true, silent = true })
+      on_open_common(term)
       -- delete ESC key for lazygit
       if vim.fn.mapcheck("<Esc>", "t") ~= "" then
         vim.api.nvim_del_keymap("t", "<Esc>")
@@ -47,16 +51,19 @@ if toggleterm and cfg and cfg.enable then
       border = "rounded",
     },
     close_on_exit = true,
+    on_open = on_open_common,
   })
 
   local tb = Terminal:new({
     direction = "vertical",
     close_on_exit = true,
+    on_open = on_open_common,
   })
 
   local tc = Terminal:new({
     direction = "horizontal",
     close_on_exit = true,
+    on_open = on_open_common,
   })
 
   local M = {}
