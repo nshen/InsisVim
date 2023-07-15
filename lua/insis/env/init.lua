@@ -49,6 +49,9 @@ local init = function(userConfig)
   if userConfig.docker.enable then
     table.insert(enabledEnv, require("insis.env.docker")(userConfig.docker))
   end
+  if userConfig.solidity.enable then
+    table.insert(enabledEnv, require("insis.env.solidity")(userConfig.solidity))
+  end
 end
 
 -- loop through enabledEnv list and call envFunc on each Env file

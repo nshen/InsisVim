@@ -34,6 +34,7 @@
 ---@field toml TomlConfig Toml user config
 ---@field yaml YamlConfig Yaml user config
 ---@field docker DockerConfig Docker user config
+---@field solidity SolidityConfig
 ---@field git GitConfig git user config
 ---@field mirror MirrorConfig mirror config
 
@@ -481,6 +482,11 @@ local UserConfig = {
   docker = {
     enable = false,
     lsp = "dockerls",
+  },
+
+  ---@class SolidityConfig
+  solidity = {
+    enable = false,
   },
 
   ---@class GitConfig
