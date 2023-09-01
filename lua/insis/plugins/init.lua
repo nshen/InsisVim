@@ -209,6 +209,7 @@ return {
   -- Rust
   { "simrat39/rust-tools.nvim" },
 
+  { "rust-lang/rust.vim" },
   --------------------- colorschemes ------------------------------------------
 
   -- tokyonight
