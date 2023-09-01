@@ -2,12 +2,12 @@ local nvimTree = pRequire("nvim-tree")
 local cfg = require("insis").config.nvimTree
 
 if nvimTree and cfg and cfg.enable then
+  keymap("n", cfg.keys.toggle, "<CMD>NvimTreeToggle<CR>")
   local function on_attach(bufnr)
     local api = require("nvim-tree.api")
     local function opts(desc)
       return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
-    keymap("n", cfg.keys.toggle, "<CMD>NvimTreeToggle<CR>")
     keymap("n", cfg.keys.refresh, api.tree.reload, opts("Refresh"))
 
     -- open / close --

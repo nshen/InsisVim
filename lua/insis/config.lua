@@ -104,6 +104,7 @@ local UserConfig = {
   ---@class CMPConfig
   cmp = {
     enable = true,
+    -- run ':Copilot auth' for the first time
     keys = {
       confirm = "<CR>",
       select_next_item = "<C-j>",
@@ -117,6 +118,9 @@ local UserConfig = {
       snip_jump_prev = "<C-h>",
       snip_next_choice = "<C-j>",
       snip_prev_choice = "<C-k>",
+      -- copilot
+      copilot = false,
+      copilot_panel = "<leader>cpp",
     },
   },
 
@@ -347,8 +351,8 @@ local UserConfig = {
   frontend = {
     enable = false,
     linter = "eslint_d",
-    ---@type "eslint_d" | "prettier"
-    formatter = "prettier",
+    ---@type "eslint_d" | "prettier" | "tsserver"
+    formatter = "tsserver",
     format_on_save = false,
     cspell = false,
     tailwindcss = true,

@@ -33,8 +33,8 @@ luasnip.config.set_config({
 })
 
 keymap({ "i", "s" }, cfg.keys.snip_jump_next, function()
-  if luasnip.expand_or_jumpable() then
-    luasnip.expand_or_jump()
+  if luasnip.jumpable(1) then
+    luasnip.jump(1)
   end
 end)
 

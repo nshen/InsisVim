@@ -86,6 +86,7 @@ return {
       require("insis.plugins.comment")
     end,
   },
+
   -- indent-blankline
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -93,7 +94,15 @@ return {
       require("insis.plugins.indent-blankline")
     end,
   },
-
+  -- use indent-blankline or hlchunk ?
+  ------------------------------------
+  -- {
+  --   "shellRaining/hlchunk.nvim",
+  --   config = function()
+  --     require("insis.plugins.hlchunk")
+  --   end,
+  -- },
+  -------------------------------------
   -- toggleterm
   {
     "akinsho/toggleterm.nvim",
@@ -121,6 +130,7 @@ return {
   -- fidget.nvim
   {
     "j-hui/fidget.nvim",
+    tag = "legacy",
     config = function()
       require("insis.plugins.fidget")
     end,
@@ -194,8 +204,6 @@ return {
   -- TypeScript
   -- { "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" },
   { "jose-elias-alvarez/typescript.nvim" },
-  -- Lua
-  { "folke/neodev.nvim" },
   -- JSON
   { "b0o/schemastore.nvim" },
   -- Rust
@@ -284,8 +292,21 @@ return {
     end,
   },
 
+  {
+    "zbirenbaum/copilot.lua",
+    config = function()
+      require("insis.plugins.copilot").copilot()
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("insis.plugins.copilot").copilot_cmp()
+    end,
+  },
   ----------------- custom ----------------------------
 
-  { "solarnz/thrift.vim" },
-  { "jose-elias-alvarez/nvim-lsp-ts-utils" },
+  -- { "solarnz/thrift.vim" },
+  -- { "jose-elias-alvarez/nvim-lsp-ts-utils" },
 }

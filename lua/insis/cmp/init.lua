@@ -17,7 +17,7 @@ local mapping = {
   -- Accept currently selected item. If none selected, `select` first item.
   -- Set `select` to `false` to only confirm explicitly selected items.
   [cfg.keys.confirm] = cmp.mapping.confirm({
-    select = true,
+    select = false,
     behavior = cmp.ConfirmBehavior.Replace,
   }),
   [cfg.keys.scroll_doc_up] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
@@ -53,22 +53,29 @@ cmp.setup({
     {
       name = "nvim_lsp",
       group_index = 1,
+      priority = 1000,
     },
     {
       name = "nvim_lsp_signature_help",
       group_index = 1,
+      priority = 1000,
     },
     {
       name = "luasnip",
       group_index = 2,
+      priority = 750,
     },
+
+    { name = "copilot", group_index = 2, priority = 750 },
     {
       name = "buffer",
       group_index = 3,
+      priority = 500,
     },
     {
       name = "path",
       group_index = 3,
+      priority = 300,
     },
   }),
 })
