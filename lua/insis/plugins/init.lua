@@ -208,6 +208,8 @@ return {
   { "b0o/schemastore.nvim" },
   -- Rust
   { "simrat39/rust-tools.nvim" },
+  -- Java
+  { "mfussenegger/nvim-jdtls" },
 
   --------------------- colorschemes ------------------------------------------
 

@@ -483,6 +483,11 @@ local UserConfig = {
     lsp = "dockerls",
   },
 
+  ---@class JavaConfig
+  docker = {
+    enable = false,
+  },
+
   ---@class GitConfig
   git = {
     enable = true,
