@@ -484,7 +484,7 @@ local UserConfig = {
   },
 
   ---@class JavaConfig
-  docker = {
+  java = {
     enable = false,
   },
 
