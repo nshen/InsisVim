@@ -51,6 +51,8 @@ local init = function(userConfig)
   end
   if userConfig.solidity.enable then
     table.insert(enabledEnv, require("insis.env.solidity")(userConfig.solidity))
+  if userConfig.java.enable then
+    table.insert(enabledEnv, require("insis.env.java")(userConfig.java))
   end
 end
 

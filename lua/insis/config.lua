@@ -486,6 +486,8 @@ local UserConfig = {
 
   ---@class SolidityConfig
   solidity = {
+  ---@class JavaConfig
+  java = {
     enable = false,
   },
 
