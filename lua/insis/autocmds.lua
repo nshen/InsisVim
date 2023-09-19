@@ -48,19 +48,6 @@ autocmd("FileType", {
   end,
 })
 
--- auto run PackerSync when pluginlist is modified
-autocmd("BufWritePost", {
-  group = myAutoGroup,
-  -- autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  callback = function()
-    if vim.fn.expand("<afile>") == "lua/insis/plugins/init.lua" then
-      vim.api.nvim_command("source lua/insis/plugins/init.lua")
-      require("insis.packer").setup()
-      vim.api.nvim_command("PackerSync")
-    end
-  end,
-})
-
 -- highlight on yank
 autocmd("TextYankPost", {
   callback = function()

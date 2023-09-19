@@ -1,25 +1,21 @@
 local M = {}
-M.version = "v0.9.4"
+M.version = "v0.10.0"
 
 ---@type UserConfig
 M.config = require("insis.config")
-
 --- @param user_config UserConfig
 function M.setup(user_config)
   require("insis.utils.global")
+  require("insis.basic")
   -- user config override
   M.config = vim.tbl_deep_extend("force", M.config, user_config)
-  -- check packer.nvim exists
-  local packer = require("insis.packer")
-  if not packer.avaliable() then
-    -- better to use install script to install insisVim
-    packer.install()
-    return
-  end
-  packer.setup()
   require("insis.env").init(M.config)
-  require("insis.basic")
   require("insis.keybindings")
+  local pluginManager = require("insis.lazy")
+  if not pluginManager.avaliable() then
+    pluginManager.install()
+  end
+  pluginManager.setup()
   require("insis.autocmds")
   require("insis.lsp")
   require("insis.cmp")

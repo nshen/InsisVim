@@ -11,6 +11,9 @@
 
 local cfg = require("insis").config
 local keys = cfg.keys
+if not keys then
+  return
+end
 
 -- leader key
 vim.g.mapleader = keys.leader_key

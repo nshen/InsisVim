@@ -1,14 +1,9 @@
--- NOTE: Do not use requires in plugin
 return {
-  -- Packer can manage itself
-  { "wbthomason/packer.nvim" },
   -------------------------- plugins -------------------------------------------
   -- requires
   { "kyazdani42/nvim-web-devicons" },
   { "moll/vim-bbye" },
   { "nvim-lua/plenary.nvim" },
-  -- ("lewis6991/impatient.nvim")
-
   -- nvim-notify
   {
     "rcarriga/nvim-notify",
@@ -64,7 +59,7 @@ return {
   { "HiPhish/nvim-ts-rainbow2" },
   {
     "nvim-treesitter/nvim-treesitter",
-    run = function()
+    build = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()
     end,
@@ -73,10 +68,10 @@ return {
     end,
   },
   -- { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
-  { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
-  { "nvim-treesitter/nvim-treesitter-refactor", after = { "nvim-treesitter" } },
-  { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
-  { "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" },
+  { "windwp/nvim-ts-autotag" },
+  { "nvim-treesitter/nvim-treesitter-refactor" },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
+  { "RRethy/nvim-treesitter-endwise" },
 
   -- Comment
   { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -268,9 +263,6 @@ return {
   -- go
   { "leoluz/nvim-dap-go" },
 
-  -- lua
-  -- ("jbyuki/one-small-step-for-vimkind")
-
   --[[ 
   -- TODO: python not work yet
 
@@ -293,6 +285,7 @@ return {
     end,
   },
 
+  ----------------- ai ---------------------------
   {
     "zbirenbaum/copilot.lua",
     config = function()
@@ -301,13 +294,8 @@ return {
   },
   {
     "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
     config = function()
       require("insis.plugins.copilot").copilot_cmp()
     end,
   },
-  ----------------- custom ----------------------------
-
-  -- { "solarnz/thrift.vim" },
-  -- { "jose-elias-alvarez/nvim-lsp-ts-utils" },
 }

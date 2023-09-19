@@ -1,47 +1,46 @@
 ---@class UserConfig
----@field colorscheme "tokyonight" | "nord" | "onedark" | "gruvbox" | "nightfox" | "nordfox" | "duskfox" | "dracula" builtin colorscheme
----@field lock_plugin_commit boolean lock plugin commit snapshots by default for stability
----@field max_highlight_line_count number disable code hightlight on big file for performance default 10000
----@field enable_imselect boolean auto switch your input method, default false  ---@see https://github.com/daipeihust/im-select
----@field enable_very_magic_search boolean enable regexp very magic mode ---@see https://www.youtube.com/watch?v=VjOcINs6QWs
----@field fix_windows_clipboard boolean fix yank problem on windows WSL2 ---@see  https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows
----@field keys Commonkeys common keymappings
----@field s_windows SWindowConfig enabled by default
----@field s_tab STabConfig disabled by default
----@field cmp CMPConfig Completion user config
----@field notify NotifyConfig nvim-notify plugin user config
----@field nvimTree NvimTreeConfig nvim-tree plugin user config
----@field bufferLine BufferLineConfig bufferline.nvim plugin user config
----@field telescope TelescopeConfig telescope.nvim plugin user config
----@field surround SurroundConfig nvim-surround plugin user config
----@field venn VENNConfig venn.nvim plugin user config
----@field zen ZenConfig zen-mode.nvim plugin user config
----@field comment CommentConfig Comment.nvim plugin user config
----@field toggleterm ToggleTermConfig toggleterm.nvim plugin user config
----@field neotest NeotestConfig neotest plugin user config
----@field lsp LSPConfig LSP common config
----@field dap DAPConfig DAP common config
----@field frontend FrontendConfig Frontend development user config
----@field clangd ClangdConfig Clangd user config
----@field golang GolangConfig Golang development user config
----@field lua LuaConfig Lua development user config
----@field rust RustConfig Rust development user config
----@field bash BashConfig sh development user config
----@field python PythonConfig python development user config
----@field ruby RubyConfig ruby development user config
----@field json JsonConfig Json user config
----@field markdown MarkdownConfig
----@field toml TomlConfig Toml user config
----@field yaml YamlConfig Yaml user config
----@field docker DockerConfig Docker user config
----@field solidity SolidityConfig
----@field git GitConfig git user config
----@field mirror MirrorConfig mirror config
+---@field colorscheme? "tokyonight" | "nord" | "onedark" | "gruvbox" | "nightfox" | "nordfox" | "duskfox" | "dracula" builtin colorscheme
+---@field max_highlight_line_count? number disable code hightlight on big file for performance default 10000
+---@field enable_imselect? boolean auto switch your input method, default false  ---@see https://github.com/daipeihust/im-select
+---@field enable_very_magic_search? boolean enable regexp very magic mode ---@see https://www.youtube.com/watch?v=VjOcINs6QWs
+---@field fix_windows_clipboard? boolean fix yank problem on windows WSL2 ---@see  https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows
+---@field keys? Commonkeys common keymappings
+---@field s_windows? SWindowConfig enabled by default
+---@field s_tab? STabConfig disabled by default
+---@field cmp? CMPConfig Completion user config
+---@field notify? NotifyConfig nvim-notify plugin user config
+---@field nvimTree? NvimTreeConfig nvim-tree plugin user config
+---@field bufferLine? BufferLineConfig bufferline.nvim plugin user config
+---@field telescope? TelescopeConfig telescope.nvim plugin user config
+---@field surround? SurroundConfig nvim-surround plugin user config
+---@field venn? VENNConfig venn.nvim plugin user config
+---@field zen? ZenConfig zen-mode.nvim plugin user config
+---@field comment? CommentConfig Comment.nvim plugin user config
+---@field toggleterm? ToggleTermConfig toggleterm.nvim plugin user config
+---@field neotest? NeotestConfig neotest plugin user config
+---@field lsp? LSPConfig LSP common config
+---@field dap? DAPConfig DAP common config
+---@field frontend? FrontendConfig Frontend development user config
+---@field clangd? ClangdConfig Clangd user config
+---@field golang? GolangConfig Golang development user config
+---@field lua? LuaConfig Lua development user config
+---@field rust? RustConfig Rust development user config
+---@field bash? BashConfig sh development user config
+---@field python? PythonConfig python development user config
+---@field ruby? RubyConfig ruby development user config
+---@field json? JsonConfig Json user config
+---@field markdown? MarkdownConfig
+---@field toml? TomlConfig Toml user config
+---@field yaml? YamlConfig Yaml user config
+---@field docker? DockerConfig Docker user config
+---@field solidity? SolidityConfig
+---@field java? JavaConfig
+---@field git? GitConfig git user config
+---@field mirror? MirrorConfig mirror config
 
 local UserConfig = {
 
   colorscheme = "tokyonight",
-  lock_plugin_commit = true,
   max_highlight_line_count = 10000,
   enable_imselect = false,
   enable_very_magic_search = false,

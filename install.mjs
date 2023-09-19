@@ -20,8 +20,7 @@ const zh = {
   pluginsFolder: '插件目录',
   startDownload: '开始下载全新配置，请稍后...',
   downloadSuccessful: '下载成功',
-  startDownloadPacker: '开始下载插件管理packer.nvim...',
-  notice: `安装完成，运行以下命令开启 Neovim 并安装插件（需要科学网络环境）\n\n nvim +PackerSync \n\n 如遇失败可运行 :PackerSync 重新尝试`
+  notice: `安装完成，运行以下命令开启 Neovim 并安装插件（需要科学网络环境）\n\n nvim  \n\n 如遇失败可运行 :Lazy restore 重新尝试`
 }
 
 const en = {
@@ -36,8 +35,7 @@ const en = {
   pluginsFolder: 'plugins folder',
   startDownload: 'Start downloading the new configuration, please wait...',
   downloadSuccessful: 'Download successful',
-  startDownloadPacker: 'Start downloading packer.nvim...',
-  notice: `complete! run command below to install plugins \n\n nvim +PackerSync`
+  notice: `complete! run command below to install plugins \n\n nvim .`
 }
 
 let lang = en;
@@ -131,11 +129,6 @@ await $`git clone --depth 1 https://github.com/nshen/insisVim ${nvimDir}`;
 
 blue("");
 green(`${lang.downloadSuccessful}`);
-
-blue("");
-blue(`${lang.startDownloadPacker}`);
-
-await $`git clone --depth 1 https://github.com/wbthomason/packer.nvim .local/share/nvim/site/pack/packer/start/packer.nvim`;
 
 green("");
 green(`${lang.downloadSuccessful}`);

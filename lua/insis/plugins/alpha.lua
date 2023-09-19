@@ -1,6 +1,7 @@
 -- originally authored by @AdamWhittingham
 local alpha = pRequire("alpha")
 if not alpha then
+  log("couldn't find alpha.nvim")
   return
 end
 
@@ -181,7 +182,7 @@ local buttons = {
     -- dashboard.button("c", "  Configuration", "<cmd>cd ~/.config/nvim/ <CR>"),
     dashboard.button("m", "  Mason", "<cmd>Mason<CR>"),
     dashboard.button("t", "  Update Treesitter", "<cmd>TSUpdate<CR>"),
-    dashboard.button("u", "  Update plugins", "<cmd>PackerSync<CR>"),
+    dashboard.button("u", "  Restore plugins", "<cmd>Lazy restore<CR>"),
     dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
   },
   position = "left",
@@ -192,7 +193,9 @@ local nvimInfo = function()
   ---@diagnostic disable-next-line: need-check-nil
   local nvimVersion = "nvim v" .. v.major .. "." .. v.minor .. "." .. v.patch
   ---@diagnostic disable-next-line: undefined-global
-  return nvimVersion .. " with" .. "  " .. #vim.tbl_keys(packer_plugins) .. " plugins "
+  -- return nvimVersion .. " with" .. "  " .. #vim.tbl_keys(packer_plugins) .. " plugins "
+  local stats = require("lazy").stats()
+  return nvimVersion .. " with" .. "  " .. stats.count .. " plugins"
 end
 
 local nvimInfoSection = {
