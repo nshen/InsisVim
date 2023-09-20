@@ -1,9 +1,12 @@
 # InsisVim
 
-一个开箱即用的 Neovim IDE 层，以难以置信的简单方式配置开发环境，例如配置 `golang`，只需：
+An out-of-the-box Neovim IDE layer that setup development environment in an incredibly simple way.
+
+一个开箱即用的 Neovim IDE 层,以难以置信的简单方式设置开发环境。
 
 ```lua
 require("insis").setup({
+  -- enable features here
   golang = {
     enable = true,
     lsp = "gopls",
@@ -11,7 +14,6 @@ require("insis").setup({
     formatter = "gofmt",
     format_on_save = true,
   },
-  -- 在此开启更多特性
 })
 ```
 
@@ -19,46 +21,41 @@ require("insis").setup({
 
 https://github.com/nshen/InsisVim/assets/181506/ca0fe9a0-122f-471a-bbe0-7656e0304309
 
-## 🛠 安装
+## 🛠 Installation 安装
 
-### 注意事项 
+`npx zx https://insisvim.github.io/install.mjs`
 
-- 如缺少以下常见命令行工具，`git`、`wget`、`curl`、`ripgrep`、`nvim v0.9.x`，则有可能安装失败。
+> Note: If any of `git`, `wget`, `curl`, `ripgrep`, `node.js v16+`, `nvim v0.9.x` are missing, the installation will exit and prompt you.
 
-   - 在 Mac 上，您可以使用 `brew install` 安装以上工具。
-   - 在 Ubuntu 上，您可以检查 [Ubuntu 安装指南](https://github.com/nshen/InsisVim/issues/5)。
+> 注意: 安装之前应确保有 `git`、`wget`、`curl`、`ripgrep`、`node.js v16+、nvim v0.9.x` ，中的任何一个，安装将退出，并提示您。
 
-- 如之前安装过其他配置，建议先删除或备份以下目录
+On Mac you can `brew install` anything above.
 
-   - `~/.local/share/nvim`
-   - `~/.cache/nvim`
-   - `~/.config/nvim`
+在 Mac 上,您可以使用 `brew install` 安装以上任何内容。
 
-* 需要科学网络环境，建议开启全局/增强模式等，如遇[网络问题可以到此讨论](https://github.com/nshen/learn-neovim-lua/discussions/categories/q-a?discussions_q=is%3Aopen+category%3AQ%26A+label%3A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98)
+On Ubuntu you can check [Ubuntu installation guide](https://github.com/nshen/InsisVim/issues/5).
 
-#### 安装步骤
+在 Ubuntu 上,您可以检查 [Ubuntu 安装指南](https://github.com/nshen/InsisVim/issues/5)。
 
-1. 克隆本项目到 Neovim 配置目录
+Then try again.
 
-`git clone https://github.com/nshen/InsisVim.git ~/.config/nvim`
+然后再试一次。
 
-2. 运行 `nvim` ，等待插件全部安装完成
 
-3. 重启
+## Setup and Configuration
 
-## 自定义配置
-
-大部分内置模块默认是开启状态，而**编程环境**相关的模块只有 `Lua` 是默认开启的，这是因为你会经常使用 `Lua` 语言来修改配置。
-
-开启其他语言相关的模块非常简单，只需要修改 `~/.config/nvim/init.lua` 后保存重启，即可自动完成安装。
+Edit `~/.config/nvim/init.lua`
 
 ```lua
 require("insis").setup({
+    -- Set parameters as needed
     -- 按需设置参数
 })
 ```
 
-比如启用 `Golang` 开发只需要：
+Most built-in modules are enabled by default, but programming environment-related modules are disabled by default. Enabling them is also very simple. For example, to enable Golang development, just:
+
+大部分内置模块默认是开启状态，编程环境相关的模块默认则是关闭状态，启用也很简单，比如启用 Golang 开发只需要：
 
 ```lua
 require("insis").setup({
@@ -69,9 +66,15 @@ require("insis").setup({
 })
 ```
 
-保持科学网络环境畅通，`:wq` 保存重启后会自动安装 `Golang` 的 `Language Server`，语法高亮，`golangci-lint` 等.
+Keep the network environment smooth, `:wq` save and restart will automatically install the Golang Language Server, syntax highlighting, golangci-lint.
 
-其他语言配置也类似，完整参数列表在此 [config.lua](https://github.com/nshen/InsisVim/blob/main/lua/insis/config.lua) 还没有完善的文档，暂时请大家自行研究。
+保持科学网络环境畅通，`:wq` 保存重启后会自动安装 Golang 的 Language Server，语法高亮，golangci-lint.
+
+The configuration of other languages is similar. The complete parameter list is in this [config.lua](https://github.com/nshen/InsisVim/blob/main/lua/insis/config.lua). The documentation is not yet complete. Please try it yourself.
+
+其他语言配置也类似，完整参数列表在此 [config.lua](https://github.com/nshen/InsisVim/blob/main/lua/insis/config.lua) 还没有完善的文档，请大家自行研究。
+
+Currently, only front-end development configuration is more complex, because it requires the installation of multiple LSPs, syntax highlighting for various file types, etc.
 
 目前只有前端开发配置较复杂，因为需要安装多个 LSP，多种文件的语法高亮等
 
@@ -102,6 +105,8 @@ require("insis").setup({
   },
 })
 ```
+
+The configuration I am currently using is as follows, for reference only. Please turn on the language environment-related modules one by one, otherwise after restarting, many services will be installed at once and it will take a long time to wait.
 
 目前我在用的配置如下，仅供参考，语言环境相关模块请逐个打开，否则重启后一次会安装很多服务，需要等待较长时间。
 
@@ -193,6 +198,7 @@ require("insis").setup({
 ## Requirements
 
 - Neovim v0.9.x.
+- Node.js v16+.
 - Nerd Fonts.
 
 ## License
