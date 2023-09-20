@@ -113,7 +113,6 @@ require("insis").setup({
   git = {
     current_line_blame = true,
   },
-  lock_plugin_commit = false,
   enable_imselect = true,
   enable_very_magic_search = true,
   lua = {
