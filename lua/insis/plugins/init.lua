@@ -56,7 +56,12 @@ return {
   },
 
   -- treesitter
-  { "HiPhish/nvim-ts-rainbow2" },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    config = function()
+      require("insis.plugins.rainbow-delimiters")
+    end,
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     build = function()
@@ -67,7 +72,6 @@ return {
       require("insis.plugins.treesitter")
     end,
   },
-  -- { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
   { "windwp/nvim-ts-autotag" },
   { "nvim-treesitter/nvim-treesitter-refactor" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },

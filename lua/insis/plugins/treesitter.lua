@@ -35,10 +35,7 @@ if treesitter then
     indent = {
       enable = true,
     },
-    -- HiPhish/nvim-ts-rainbow2
-    rainbow = {
-      enable = true,
-    },
+
     -- language comments
     -- Also see :comment.lua
     -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
