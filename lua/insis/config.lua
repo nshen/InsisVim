@@ -267,7 +267,7 @@ local UserConfig = {
     -- visual mode
     opleader = {
       line = "gc",
-      bock = "gb",
+      block = "gb",
     },
   },
 
