@@ -143,15 +143,6 @@ return {
     end,
   },
 
-  -- mkdnflow.nvim
-  {
-    "jakewvincent/mkdnflow.nvim",
-    -- ft = { "markdown" }, -- lazy load
-    config = function()
-      require("insis.plugins.mkdnflow")
-    end,
-  },
-
   -- venn.nvim
   {
     "jbyuki/venn.nvim",
@@ -165,6 +156,29 @@ return {
     "folke/zen-mode.nvim",
     config = function()
       require("insis.plugins.zen-mode")
+    end,
+  },
+
+  ------------------ Markdown -------------------------------------------------
+  {
+    "jakewvincent/mkdnflow.nvim",
+    -- ft = { "markdown" }, -- lazy load
+    config = function()
+      require("insis.plugins.mkdnflow")
+    end,
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    enabled = function()
+      local cfg = require("insis").config.markdown
+      return cfg and cfg.enable
+    end,
+    config = function()
+      require("insis.plugins.markdown-preview")
+    end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
     end,
   },
 
