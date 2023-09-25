@@ -103,14 +103,17 @@ require("insis").setup({
 ```lua
 require("insis").setup({
   markdown = {
-    enable = false,
+    enable = true,
+    -- 以下为默认值，可以省略
     mkdnflow = {
       next_link = "gn",
       prev_link = "gp",
       next_heading = "gj",
       prev_heading = "gk",
-      go_back = "<C-o>",
+      -- 进入链接
       follow_link = "gd",
+      -- 从链接返回
+      go_back = "<C-o>",
       toggle_item = "tt",
     },
     formatter = "prettier",
@@ -119,6 +122,15 @@ require("insis").setup({
   },
 })
 ```
+
+启用 markdown 功能后，重启会自动安装 Treesitter 的 markdown 语法高亮，和 prettier 用于格式化。
+
+增加 `:MarkdownPreview` 命令实时预览 markdown 文件
+
+增加 `mkdnflow.nvim` 相关的快捷键
+
+增加 markdown 相关快捷键例如 `5x5table`
+
 </details>
 
 <details>
