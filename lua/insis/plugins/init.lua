@@ -89,6 +89,7 @@ return {
   -- indent-blankline
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     config = function()
       require("insis.plugins.indent-blankline")
     end,
