@@ -66,7 +66,6 @@ if nvimTree and cfg and cfg.enable then
       width = 34,
       -- or 'right'
       side = "left",
-      hide_root_folder = false,
       number = false,
       relativenumber = false,
       signcolumn = "yes",
@@ -84,6 +83,7 @@ if nvimTree and cfg and cfg.enable then
       cmd = isWSL() and "wsl-open" or "open",
     },
     renderer = {
+      root_folder_label = false,
       indent_markers = {
         enable = false,
         icons = {
