@@ -74,6 +74,29 @@ require("insis").setup({
 
 https://github.com/nshen/InsisVim/assets/181506/15517b20-acdf-45eb-9db6-9a0d0806cb4a
 
+<details>
+<summary>Copilot 配置</summary>
+  
+```lua
+require("insis").setup({
+  cmp = {
+    -- 启用 copilot
+    copilot = true,
+  },
+})
+```
+
+InsisVim 内置了以下插件，启用后会使其生效 
+
+- [copilot.lua](https://github.com/zbirenbaum/copilot.lua) 
+- [copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) 
+
+因为 copilot 是收费的，首次使用需要运行 `:Copilot auth` 认证后才会生效，但如果你是学生老师或者开源项目贡献者，可以[申请免费](https://docs.github.com/en/copilot/quickstart)使用。
+
+> GitHub Copilot is free to use for verified students, teachers, and maintainers of popular open source projects.
+
+</details>
+
 ### 编程环境配置
 
 例如 `Golang` 环境，设置 enable 后，`:wq` 保存重启会自动调用 Mason 安装对应的语法高亮 Language Server，Linter，Formatter 等。安装完毕后再次重启打开对应的 Golang 项目即可生效

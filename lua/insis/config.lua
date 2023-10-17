@@ -104,6 +104,8 @@ local UserConfig = {
   ---@class CMPConfig
   cmp = {
     enable = true,
+    -- enable copilot cmp
+    copilot = false,
     -- run ':Copilot auth' for the first time
     keys = {
       confirm = "<CR>",
@@ -118,8 +120,6 @@ local UserConfig = {
       snip_jump_prev = "<C-h>",
       snip_next_choice = "<C-j>",
       snip_prev_choice = "<C-k>",
-      -- copilot
-      copilot = false,
       copilot_panel = "<leader>cpp",
     },
   },
