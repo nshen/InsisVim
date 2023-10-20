@@ -33,7 +33,7 @@ https://github.com/nshen/InsisVim/assets/181506/ad36e1b1-05f6-47e9-bf2e-6738f539
   - `~/.cache/nvim`
   - `~/.config/nvim`
 
-* 需要科学网络环境，建议开启全局/增强模式等，如遇[网络问题可以到此讨论](https://github.com/nshen/learn-neovim-lua/discussions/categories/q-a?discussions_q=is%3Aopen+category%3AQ%26A+label%3A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98)
+* 需要**科学网络**环境，建议开启**全局/增强**模式等，如遇[网络问题可以到此讨论](https://github.com/nshen/learn-neovim-lua/discussions/categories/q-a?discussions_q=is%3Aopen+category%3AQ%26A+label%3A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98)
 
 ### 安装步骤
 
@@ -86,16 +86,130 @@ require("insis").setup({
 })
 ```
 
-InsisVim 内置了以下插件，启用后会使其生效 
+InsisVim 内置了以下插件，启用后会使其生效
 
-- [copilot.lua](https://github.com/zbirenbaum/copilot.lua) 
-- [copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) 
+- [copilot.lua](https://github.com/zbirenbaum/copilot.lua)
+- [copilot-cmp](https://github.com/zbirenbaum/copilot-cmp)
 
 因为 copilot 是收费的，首次使用需要运行 `:Copilot auth` 认证后才会生效，但如果你是学生老师或者开源项目贡献者，可以[申请免费](https://docs.github.com/en/copilot/quickstart)使用。
 
 > GitHub Copilot is free to use for verified students, teachers, and maintainers of popular open source projects.
 
 </details>
+
+#### Buffers
+
+在 Vim 世界里，Buffer 表示已经加载到内存中的文件。非常像 VSCode 中的 Tab 页，在 VSCode 里看到一个标签页，就表示一个文件加载到内存中了。
+
+在 InsisVim 中使用 [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) 插件来模拟这种行为，并且简化了配置，非常容易定制按键
+
+https://github.com/nshen/InsisVim/assets/181506/a639f05b-adab-4279-8482-e3088d2fae8f
+
+<details>
+<summary>Bufferline 配置</summary>
+  
+```lua
+require("insis").setup({
+  bufferLine = {
+    enable = true,
+    keys = {
+      -- left / right cycle
+      prev = "<C-h>",
+      next = "<C-l>",
+      -- close current buffer
+      close = "<C-w>",
+      -- close = "<leader>bc",
+      -- close all left / right tabs
+      close_left = "<leader>bh",
+      close_right = "<leader>bl",
+      -- close all other tabs
+      close_others = "<leader>bo",
+      close_pick = "<leader>bp",
+    },
+  },
+})
+```
+
+</details>
+
+#### Super Windows
+
+和 VSCode 不同，Vim 中的 Window 只是显示 Buffer 的窗口，允许多个窗口同时显示甚至修改一个 Buffer，在 InsisVim 中可以非常简单的定义一系列窗口相关的快捷键，包括水平垂直分割，快速窗口之间跳转，关闭等，称为 Super windows。
+
+<details>
+<summary>Super Windows 配置</summary>
+  
+```lua
+require("insis").setup({
+  s_windows = {
+    enable = true,
+    keys = {
+      split_vertically = "sv",
+      split_horizontally = "sh",
+      -- close current
+      close = "sc",
+      -- close others
+      close_others = "so",
+      -- jump between windows
+      jump_left = { "<A-h>", "<leader>h" },
+      jump_right = { "<A-l>", "<leader>l" },
+      jump_up = { "<A-k>", "<leader>k" },
+      jump_down = { "<A-j>", "<leader>j" },
+      -- control windows size
+      width_decrease = "s,",
+      width_increase = "s.",
+      height_decrease = "sj",
+      height_increase = "sk",
+      size_equal = "s=",
+    },
+  },
+})
+```
+
+</details>
+
+#### Super Tab
+
+Vim 中的 Tab 是用来保存一个或多个 windows 组合，这样你就可以在不改变 windows 布局的情况下，切换到不同的 Tab， 用不同的 windows 布局来做不同的事。
+
+在 InsisVim 中也可以快速的定义一组 tabs 相关的快捷键，称为 Super Tab
+
+<details>
+<summary>Super Tab 配置</summary>
+
+
+注意 super tab 并不常用，所以默认是关闭的，需要手动启用
+
+```lua
+require("insis").setup({
+  s_tab = {
+    enable = false, -- 默认关闭
+    keys = {
+      split = "ts",
+      prev = "th",
+      next = "tl",
+      first = "tj",
+      last = "tk",
+      close = "tc",
+    },
+  },
+})
+```
+
+</details>
+
+---
+
+简单讲 Buffers & Windows & Tabs 三者的关系如下：
+
+- buffer 是加载到内存的文件，我们用 bufferline 插件模拟类似 VSCode 的 Tab页 行为
+- window 负责显示buffer，熟悉快速分割窗口，在不同窗口快速跳转的快捷键是提高开发效率的关键
+- tab 负责组织 windows 布局，通常用不到，所以默认是关闭的
+
+<img width="762" alt="image" src="https://github.com/nshen/InsisVim/assets/181506/fb10bd17-895a-4f67-9718-87e11eb538b3">
+
+
+---
 
 ### 编程环境配置
 

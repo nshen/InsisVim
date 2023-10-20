@@ -64,6 +64,29 @@ local UserConfig = {
     terminal_to_normal = "<Esc>",
   },
 
+  ---------------------------
+  -- Buffer & Window & Tab --
+  ---------------------------
+
+  ---@class BufferLineConfig
+  bufferLine = {
+    enable = true,
+    keys = {
+      -- left / right cycle
+      prev = "<C-h>",
+      next = "<C-l>",
+      -- close current buffer
+      close = "<C-w>",
+      -- close = "<leader>bc",
+      -- close all left / right tabs
+      close_left = "<leader>bh",
+      close_right = "<leader>bl",
+      -- close all other tabs
+      close_others = "<leader>bo",
+      close_pick = "<leader>bp",
+    },
+  },
+
   ---@class SWindowConfig
   s_windows = {
     enable = true,
@@ -169,24 +192,6 @@ local UserConfig = {
       copy_path = "Y",
       copy_absolute_path = "gy",
       toggle_file_info = "gh",
-    },
-  },
-
-  ---@class BufferLineConfig
-  bufferLine = {
-    enable = true,
-    keys = {
-      -- left / right cycle
-      prev = "<C-h>",
-      next = "<C-l>",
-      -- close current buffer
-      close = "<C-w>", -- close = "<leader>bc",
-      -- close all left / right tabs
-      close_left = "<leader>bh",
-      close_right = "<leader>bl",
-      -- close all other tabs
-      close_others = "<leader>bo",
-      close_pick = "<leader>bp",
     },
   },
 
