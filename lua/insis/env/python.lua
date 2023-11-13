@@ -42,7 +42,7 @@ return function(config)
         return {}
       end
       if config.formatter == "black" then
-        return { null_ls.builtins.black.with({ extra_args = { "--fast" } }) }
+        return { null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }) }
       end
       return {}
     end,
