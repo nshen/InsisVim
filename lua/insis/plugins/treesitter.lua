@@ -36,13 +36,6 @@ if treesitter then
       enable = true,
     },
 
-    -- language comments
-    -- Also see :comment.lua
-    -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
     -- https://github.com/windwp/nvim-ts-autotag
     autotag = {
       enable = true,
