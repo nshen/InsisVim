@@ -63,7 +63,7 @@ cmp.setup({
     {
       name = "luasnip",
       group_index = 2,
-      priority = 750,
+      priority = 1000,
     },
 
     { name = "copilot", group_index = 2, priority = 750 },
