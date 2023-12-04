@@ -36,4 +36,7 @@ if bufferline and cfg and cfg.enable then
   keymap("n", cfg.keys.close_right, ":BufferLineCloseRight<CR>")
   keymap("n", cfg.keys.close_others, ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>")
   keymap("n", cfg.keys.close_pick, ":BufferLinePickClose<CR>")
+
+  -- FIXME: reset colorscheme to make bufferline background color correct
+  require("insis.colorscheme").reset()
 end

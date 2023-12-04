@@ -16,12 +16,12 @@ function M.setup(user_config)
     pluginManager.install()
   end
   pluginManager.setup()
+  require("insis.colorscheme").reset()
   require("insis.autocmds")
   require("insis.lsp")
   require("insis.cmp")
   require("insis.format")
   require("insis.dap")
-  require("insis.colorscheme")
   require("insis.utils.color-preview")
   if M.config.fix_windows_clipboard then
     require("utils.fix-yank")
