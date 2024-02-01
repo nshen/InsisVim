@@ -12,7 +12,7 @@ return function(config)
       return { "bash" }
     end,
 
-    getLspEnsureList = function()
+    getLSPEnsureList = function()
       return { "bashls" }
     end,
 
