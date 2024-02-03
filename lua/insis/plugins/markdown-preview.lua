@@ -97,5 +97,5 @@ if cfg and cfg.enable then
 
   -- set default theme (dark or light)
   -- By default the theme is define according to the preferences of the system
-  vim.g.mkdp_theme = "dark"
+  vim.g.mkdp_theme = cfg.theme
 end

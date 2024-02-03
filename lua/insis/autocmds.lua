@@ -44,7 +44,10 @@ autocmd("FileType", {
   group = myAutoGroup,
   pattern = { "markdown" },
   callback = function()
-    vim.opt_local.wrap = true
+    if cfg.markdown then
+      vim.opt_local.wrap = cfg.markdown.wrap
+      vim.wo.wrap = cfg.markdown.wrap
+    end
   end,
 })
 

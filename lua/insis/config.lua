@@ -465,6 +465,9 @@ local UserConfig = {
     },
     formatter = "prettier",
     format_on_save = false,
+    wrap = true,
+    ---@type "dark" | "light"
+    theme = "dark",
   },
 
   ---@class TomlConfig
