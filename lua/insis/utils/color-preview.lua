@@ -9,7 +9,17 @@ local finders = require("telescope.finders")
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local mycolors = { "nord", "onedark", "gruvbox", "tokyonight", "nightfox", "nordfox", "duskfox", "dracula" }
+local mycolors = {
+  "nord",
+  "onedark",
+  "gruvbox",
+  "tokyonight",
+  "nightfox",
+  "nordfox",
+  "duskfox",
+  "dracula",
+  "kanagawa",
+}
 
 local mini = {
   layout_strategy = "vertical",

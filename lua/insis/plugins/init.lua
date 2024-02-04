@@ -248,7 +248,11 @@ return {
   -- nightfox
   { "EdenEast/nightfox.nvim" },
 
+  -- dracula
   { "Mofiqul/dracula.nvim" },
+
+  -- kanagawa
+  { "rebelot/kanagawa.nvim" },
 
   --------------------- git ---------------------------------------------------
 
