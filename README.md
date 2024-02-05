@@ -177,7 +177,6 @@ Vim 中的 Tab 是用来保存一个或多个 windows 组合，这样你就可�
 <details>
 <summary>Super Tab 配置</summary>
 
-
 注意 super tab 并不常用，所以默认是关闭的，需要手动启用
 
 ```lua
@@ -207,7 +206,6 @@ require("insis").setup({
 - tab 负责组织 windows 布局，通常用不到，所以默认是关闭的
 
 <img width="762" alt="image" src="https://github.com/nshen/InsisVim/assets/181506/fb10bd17-895a-4f67-9718-87e11eb538b3">
-
 
 ---
 
@@ -394,6 +392,19 @@ require("insis").setup({
 ```
 </details>
 
+<details>
+<summary>Docker 开发</summary>
+  
+```lua
+require("insis").setup({
+  docker = {
+    enable = true,
+    lsp = "dockerls",
+  },
+})
+```
+</details>
+
 ## 微信群
 
 有问题扫码加我，拉你进群，微信号：nshen121
@@ -403,7 +414,6 @@ require("insis").setup({
 ## 日常使用
 
 TODO
-
 
 ### 快捷键列表
 
