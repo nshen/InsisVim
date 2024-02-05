@@ -183,7 +183,7 @@ Vim 中的 Tab 是用来保存一个或多个 windows 组合，这样你就可�
 ```lua
 require("insis").setup({
   s_tab = {
-    enable = false, -- 默认关闭
+    enable = true, -- 默认关闭
     keys = {
       split = "ts",
       prev = "th",
@@ -334,7 +334,7 @@ require("insis").setup({
 ```lua
 require("insis").setup({
   clangd = {
-    enable = false,
+    enable = true,
     lsp = "clangd",
     -- linter = "clangd-tidy",
     formatter = "clang-format",
