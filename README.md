@@ -256,6 +256,11 @@ require("insis").setup({
     formatter = "prettier",
     -- 保存时格式化默认为false
     format_on_save = false,
+    -- 文字长度到达边缘默认自动折行
+    wrap = true,
+    ---:MarkdownPreview 命令打开文章预览默认是 dark 皮肤
+    ---@type "dark" | "light"
+    theme = "dark",
   },
 })
 ```
