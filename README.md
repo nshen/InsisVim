@@ -394,11 +394,16 @@ require("insis").setup({
 ```
 </details>
 
-TODO...
+## 微信群
+
+有问题扫码加我，拉你进群，微信号：nshen121
+
+<img src="./wechat.jpg" alt="image" width="300" height="auto">
 
 ## 日常使用
 
 TODO
+
 
 ### 快捷键列表
 
