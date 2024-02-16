@@ -1,3 +1,5 @@
+-- Solidity snippets
+-- https://github.com/rafamadriz/friendly-snippets/blob/main/snippets/solidity.json
 --- @param config SolidityConfig
 return function(config)
   return {

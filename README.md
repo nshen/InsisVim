@@ -310,6 +310,24 @@ require("insis").setup({
 </details>
 
 <details>
+<summary>Solidity 开发</summary>
+  
+```lua
+require("insis").setup({
+  solidity = {
+    enable = true,
+  },
+})
+```
+当设置 `enable` 为 `true`  并重启后，将安装:
+
+- TreeSitter 语法高亮：`solidity`
+- Language Server: [nomicfoundation-solidity-language-server](https://github.com/NomicFoundation/hardhat-vscode/tree/development/server)
+- 代码片段: [solidity snippets](https://github.com/rafamadriz/friendly-snippets/blob/main/snippets/solidity.json)
+
+</details>
+
+<details>
 <summary>Golang开发</summary>
   
 ```lua
@@ -404,6 +422,7 @@ require("insis").setup({
 })
 ```
 </details>
+
 
 ## 微信群
 
