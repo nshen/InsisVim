@@ -43,7 +43,6 @@ return function(config)
     getNulllsSources = function()
       local null_ls = pRequire("null-ls")
       if not null_ls then
-        log(222)
         return {}
       end
       if config.linter == "solhint" then
