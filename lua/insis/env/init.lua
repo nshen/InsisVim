@@ -8,6 +8,44 @@
 -- getNulllsSources
 -- getNeotestAdapters
 
+--[[ 
+
+Empty Env template
+
+return function(config)
+  return {
+    getFormatOnSavePattern = function()
+      return {}
+    end,
+
+    getTSEnsureList = function()
+      return {}
+    end,
+
+    getLSPEnsureList = function()
+      return {}
+    end,
+
+    getLSPConfigMap = function()
+      return {}
+    end,
+
+    getToolEnsureList = function()
+      return {}
+    end,
+
+    getNulllsSources = function()
+      return {}
+    end,
+
+    getNeotestAdapters = function()
+      return {}
+    end,
+  }
+end
+
+]]
+
 local enabledEnv = {}
 
 --- @param userConfig UserConfig
@@ -100,41 +138,3 @@ return {
     return collectList("getNeotestAdapters")
   end,
 }
-
---[[ 
-
-Empty Env template
-
-return function(config)
-  return {
-    getFormatOnSavePattern = function()
-      return {}
-    end,
-
-    getTSEnsureList = function()
-      return {}
-    end,
-
-    getLSPEnsureList = function()
-      return {}
-    end,
-
-    getLSPConfigMap = function()
-      return {}
-    end,
-
-    getToolEnsureList = function()
-      return {}
-    end,
-
-    getNulllsSources = function()
-      return {}
-    end,
-
-    getNeotestAdapters = function()
-      return {}
-    end,
-  }
-end
-
-]]

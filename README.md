@@ -316,6 +316,9 @@ require("insis").setup({
 require("insis").setup({
   solidity = {
     enable = true,
+    --linter 可以是 sohint 或 false
+    linter = "solhint",
+    format_on_save = true,
   },
 })
 ```
@@ -324,6 +327,7 @@ require("insis").setup({
 - TreeSitter 语法高亮：`solidity`
 - Language Server: [nomicfoundation-solidity-language-server](https://github.com/NomicFoundation/hardhat-vscode/tree/development/server)
 - 代码片段: [solidity snippets](https://github.com/rafamadriz/friendly-snippets/blob/main/snippets/solidity.json)
+- 如果设置了linter，则自动下载 [sohint](https://github.com/protofire/solhint) 并启动
 
 </details>
 
@@ -422,7 +426,6 @@ require("insis").setup({
 })
 ```
 </details>
-
 
 ## 微信群
 

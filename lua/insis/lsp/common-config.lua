@@ -2,8 +2,11 @@ local M = {}
 
 M.keyAttach = function(bufnr)
   local lsp = require("insis").config.lsp
-  local opt = { noremap = true, silent = true, buffer = bufnr }
+  if not lsp then
+    return
+  end
 
+  local opt = { noremap = true, silent = true, buffer = bufnr }
   -- TODO: move to config.diagnostic
   -- diagnostic
   keymap("n", lsp.open_flow, "<CMD>lua vim.diagnostic.open_float()<CR>")

@@ -494,6 +494,9 @@ local UserConfig = {
   ---@class SolidityConfig
   solidity = {
     enable = false,
+    ---@type "solhint" | false
+    linter = "solhint",
+    format_on_save = false,
   },
 
   ---@class JavaConfig
