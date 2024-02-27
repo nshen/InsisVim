@@ -46,7 +46,6 @@ return function(config)
         return {}
       end
       if config.linter == "solhint" then
-        log(11)
         return { null_ls.builtins.diagnostics.solhint }
       end
       return {}
