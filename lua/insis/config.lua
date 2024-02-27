@@ -294,25 +294,33 @@ local UserConfig = {
 
   ---@class LSPConfig
   lsp = {
-    -- jumps to the declaration
+    -- Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope
     definition = "gd",
-    -- jumps to the declaration, many servers do not implement this method
-    declaration = false,
-    -- displays hover information
-    hover = "gh",
-    -- lists all the implementations
+    -- Goto the implementation of the word under the cursor if there's only one, otherwise show all options in Telescope
     implementation = "gi",
-    -- lists all the references to the symbol
+    -- Lists LSP references for word under the cursor
     references = "gr",
-
+    -- Displays hover information
+    hover = "gh",
+    -- Lists LSP incoming calls for word under the cursor
+    call_in = "gci",
+    -- Lists LSP outgoing calls for word under the cursor
+    call_out = "gco",
+    -- Rename variable under the cursor
     rename = "<leader>rn",
+    -- Popup code action
     code_action = "<leader>ca",
+    -- Format the current buffer
     format = "<leader>f",
-    -- diagnostic
-    open_flow = "gp",
+
+    ----- Diagnostic ------
+
+    -- Show diagnostics in a floating window.
+    open_float = "gp",
+    -- Move to the next diagnostic.
     goto_next = "gj",
+    -- Move to the previous diagnostic.
     goto_prev = "gk",
-    list = "gl",
   },
 
   ------------------------------------

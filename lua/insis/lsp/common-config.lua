@@ -7,37 +7,35 @@ M.keyAttach = function(bufnr)
   end
 
   local opt = { noremap = true, silent = true, buffer = bufnr }
-  -- TODO: move to config.diagnostic
-  -- diagnostic
-  keymap("n", lsp.open_flow, "<CMD>lua vim.diagnostic.open_float()<CR>")
-  keymap("n", lsp.goto_next, "<CMD>lua vim.diagnostic.goto_next()<CR>")
-  keymap("n", lsp.goto_prev, "<CMD>lua vim.diagnostic.goto_prev()<CR>")
-  keymap("n", lsp.list, "<CMD>lua Telescope loclist<CR>")
 
-  -- lsp
-  keymap("n", lsp.definition, require("telescope.builtin").lsp_definitions, opt)
-  keymap("n", lsp.declaration, vim.lsp.buf.declaration, opt)
+  ------ Diagnostic
+  -- Show diagnostics in a floating window.
+  keymap("n", lsp.open_float, vim.diagnostic.open_float)
+  -- Move to the next diagnostic.
+  keymap("n", lsp.goto_next, vim.diagnostic.goto_next)
+  -- Move to the previous diagnostic.
+  keymap("n", lsp.goto_prev, vim.diagnostic.goto_prev)
+
+  ------ LSP
+  local telescope_builtin = require("telescope.builtin")
+  -- Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope
+  keymap("n", lsp.definition, telescope_builtin.lsp_definitions, opt)
+  -- Goto the implementation of the word under the cursor if there's only one, otherwise show all options in Telescope
+  keymap("n", lsp.implementation, telescope_builtin.lsp_implementations, opt)
+  -- Lists LSP references for word under the cursor
+  keymap("n", lsp.references, function()
+    telescope_builtin.lsp_references(require("telescope.themes").get_ivy())
+  end, opt)
+  -- Displays hover information
   keymap("n", lsp.hover, vim.lsp.buf.hover, opt)
-  keymap("n", lsp.implementation, require("telescope.builtin").lsp_implementations, opt)
-  keymap(
-    "n",
-    lsp.references,
-    "<CMD>lua require'telescope.builtin'.lsp_references(require('telescope.themes').get_ivy())<CR>",
-    opt
-  )
-
-  keymap("n", lsp.rename, "<CMD>lua vim.lsp.buf.rename()<CR>", opt)
-  keymap("n", lsp.code_action, "<CMD>lua vim.lsp.buf.code_action()<CR>", opt)
-  keymap("n", lsp.format, "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", opt)
-
-  -- not used
-  -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-  -- vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-  -- vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-  -- vim.keymap.set("n", "<space>wl", function()
-  --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  -- end, bufopts)
-  -- vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+  -- Rename variable under the cursor
+  keymap("n", lsp.rename, vim.lsp.buf.rename, opt)
+  keymap("n", lsp.code_action, vim.lsp.buf.code_action, opt)
+  keymap("n", lsp.format, function()
+    vim.lsp.buf.format({ async = true })
+  end, opt)
+  keymap("n", lsp.call_in, telescope_builtin.lsp_incoming_calls)
+  keymap("n", lsp.call_out, telescope_builtin.lsp_outgoing_calls)
 end
 
 -- 禁用格式化功能，交给专门插件插件处理
