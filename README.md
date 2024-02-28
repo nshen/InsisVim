@@ -282,9 +282,9 @@ require("insis").setup({
 require("insis").setup({
   frontend = {
     enable = true,
-    -- 下边的都是默认值可以省略
-    linter = "eslint_d",
-    ---@type "eslint_d" | "prettier" | "tsserver"
+    ---@type "eslint" | false
+    linter = "eslint", -- :EslintFixAll command added
+    ---@type false | "prettier" | "tsserver"
     formatter = "tsserver",
     format_on_save = false,
     cspell = false,
