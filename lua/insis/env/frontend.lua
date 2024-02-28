@@ -30,6 +30,9 @@ return function(config)
       if config.vue then
         table.insert(list, "volar")
       end
+      if config.linter == "eslint" then
+        table.insert(list, "eslint")
+      end
       return list
     end,
 
@@ -40,6 +43,9 @@ return function(config)
         emmet_ls = require("insis.lsp.config.emmet"),
         html = require("insis.lsp.config.html"),
       }
+      if config.linter == "eslint" then
+        list.eslint = require("insis.lsp.config.eslint")
+      end
       if config.tailwindcss then
         list.tailwindcss = require("insis.lsp.config.tailwindcss")
       end
@@ -55,9 +61,6 @@ return function(config)
 
     getToolEnsureList = function()
       local list = {}
-      if config.formatter == "eslint_d" or config.linter == "eslint_d" then
-        table.insert(list, "eslint_d")
-      end
       if config.formatter == "prettier" then
         table.insert(list, "prettier")
       end
@@ -73,9 +76,7 @@ return function(config)
         return {}
       end
       local list = {}
-      if config.formatter == "eslint_d" then
-        table.insert(list, null_ls.builtins.formatting.eslint_d)
-      elseif config.formatter == "prettier" then
+      if config.formatter == "prettier" then
         table.insert(
           list,
           null_ls.builtins.formatting.prettier.with({
@@ -99,9 +100,6 @@ return function(config)
           })
         )
       end
-      table.insert(list, null_ls.builtins.diagnostics.eslint_d)
-      table.insert(list, null_ls.builtins.code_actions.eslint_d)
-      table.insert(list, require("typescript.extensions.null-ls.code-actions"))
       if config.cspell then
         table.insert(
           list,
@@ -117,7 +115,6 @@ return function(config)
         table.insert(
           list,
           null_ls.builtins.code_actions.cspell.with({
-
             "javascript",
             "javascriptreact",
             "typescript",
