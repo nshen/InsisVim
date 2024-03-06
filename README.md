@@ -233,6 +233,29 @@ require("insis").setup({
 语言环境相关模块请逐个打开，否则重启后一次会安装很多服务，需要等待较长时间。
 
 <details>
+<summary>JSON 编辑</summary>
+  
+```lua
+require("insis").setup({
+  json = {
+    enable = true,
+    -- 以下为默认值，可以省略
+    lsp = "jsonls",
+    ---@type "jsonls" | "prettier"
+    formatter = "jsonls",
+    format_on_save = false,
+   }
+})
+```
+
+启用 `json` 功能，重启后
+
+- 会自动安装 Treesitter 的 JSON 语法高亮。
+- 自动安装并配置 [jsonls](https://github.com/microsoft/vscode-json-languageservice) Language Server
+
+</details>
+
+<details>
 <summary>Markdown 编辑</summary>
   
 ```lua

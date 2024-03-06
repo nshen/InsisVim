@@ -24,12 +24,10 @@ return function(config)
     end,
 
     getToolEnsureList = function()
-      if config.formatter == "fixjson" then
-        return { "fixjson" }
-      end
       if config.formatter == "prettier" then
         return { "prettier" }
       end
+      return {}
     end,
 
     getNulllsSources = function()
@@ -37,9 +35,7 @@ return function(config)
       if not null_ls then
         return {}
       end
-      if config.formatter == "fixjson" then
-        return { null_ls.builtins.formatting.fixjson }
-      elseif config.formatter == "prettier" then
+      if config.formatter == "prettier" then
         return { null_ls.builtins.formatting.prettier.with({
           filetypes = { "json" },
         }) }

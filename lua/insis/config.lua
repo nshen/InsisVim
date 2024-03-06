@@ -454,9 +454,8 @@ local UserConfig = {
   json = {
     enable = false,
     lsp = "jsonls",
-    -- npm install -g fixjson
-    ---@type "fixjson" | "prettier"
-    formatter = "fixjson",
+    ---@type "jsonls" | "prettier"
+    formatter = "jsonls",
     format_on_save = false,
   },
 
