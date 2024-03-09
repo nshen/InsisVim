@@ -450,6 +450,21 @@ require("insis").setup({
 ```
 </details>
 
+### 常用命令
+
+- 更新插件:
+    - `:Lazy restore` 更新所有插件到 `lazy-lock.json` 锁定的稳定版本
+    - `:Lazy update` 更新所有插件到最新版本，不保证兼容性
+- 查看报错信息:
+    - `:Notifications` 
+    - `:messages`
+- 查看/安装 LSP :
+    - `:LspInfo` 查看运行状态
+    - `:Mason` 安装更新等
+- 更新语法高亮：
+    - `:TSUpdate` 全部更新
+    - `:TSUpdate <json>` 单独更新
+
 ## 微信群
 
 有问题扫码加我，拉你进群，微信号：nshen121
