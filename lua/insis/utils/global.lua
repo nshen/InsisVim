@@ -70,3 +70,7 @@ table.indexOf = function(t, object)
     error("table.indexOf expects table for first argument, " .. type(t) .. " given")
   end
 end
+
+function _G.trim(s)
+  return s:match("^%s*(.-)%s*$")
+end
