@@ -450,32 +450,42 @@ require("insis").setup({
 ```
 </details>
 
+## 日常使用
+
 ### 常用命令
 
 - 更新插件:
-    - `:Lazy restore` 更新所有插件到 `lazy-lock.json` 锁定的稳定版本
-    - `:Lazy update` 更新所有插件到最新版本，不保证兼容性
+  - `:Lazy restore` 更新所有插件到 `lazy-lock.json` 锁定的稳定版本
+  - `:Lazy update` 更新所有插件到最新版本，不保证兼容性
 - 查看报错信息:
-    - `:Notifications` 
-    - `:messages`
+  - `:Notifications`
+  - `:messages`
 - 查看/安装 LSP :
-    - `:LspInfo` 查看运行状态
-    - `:Mason` 安装更新等
+  - `:LspInfo` 查看运行状态
+  - `:Mason` 安装更新等
 - 更新语法高亮：
-    - `:TSUpdate` 全部更新
-    - `:TSUpdate <json>` 单独更新
+  - `:TSUpdate` 全部更新
+  - `:TSUpdate <json>` 单独更新
+- Markdown 预览：
+  - `:MarkdownPreview`
+
+### 代码折叠快捷键
+
+| fold shortcuts | description     |
+| -------------- | --------------- |
+| zc             | close fold      |
+| zo             | open fold       |
+| za             | toggle fold     |
+| zM             | close all folds |
+| zR             | open all folds  |
+
+更新中。。。
 
 ## 微信群
 
-有问题扫码加我，拉你进群，微信号：nshen121
+有问题扫码加我，注明 `vim` ，拉你进群，微信号：nshen121
 
 <img src="./wechat.jpg" alt="image" width="300" height="auto">
-
-## 日常使用
-
-TODO
-
-### 快捷键列表
 
 ## 项目结构
 

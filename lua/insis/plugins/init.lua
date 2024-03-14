@@ -160,6 +160,14 @@ return {
     end,
   },
 
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = "kevinhwang91/promise-async",
+    config = function()
+      require("insis.plugins.nvim-ufo")
+    end,
+  },
+
   ------------------ Markdown -------------------------------------------------
   {
     "jakewvincent/mkdnflow.nvim",

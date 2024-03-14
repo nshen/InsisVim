@@ -27,7 +27,18 @@ M.keyAttach = function(bufnr)
     telescope_builtin.lsp_references(require("telescope.themes").get_ivy())
   end, opt)
   -- Displays hover information
-  keymap("n", lsp.hover, vim.lsp.buf.hover, opt)
+  keymap("n", lsp.hover, function()
+    -- nvim-ufo
+    local ufo = pRequire("ufo")
+    if ufo then
+      local winid = ufo.peekFoldedLinesUnderCursor()
+      if not winid then
+        vim.lsp.buf.hover()
+      end
+    else
+      vim.lsp.buf.hover()
+    end
+  end, opt)
   -- Rename variable under the cursor
   keymap("n", lsp.rename, vim.lsp.buf.rename, opt)
   keymap("n", lsp.code_action, vim.lsp.buf.code_action, opt)
@@ -51,6 +62,11 @@ end
 
 -- M.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- nvim-ufo fold
+M.capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
 
 M.flags = {
   debounce_text_changes = 150,

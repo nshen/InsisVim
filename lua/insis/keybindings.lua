@@ -101,10 +101,6 @@ if cfg.s_tab ~= nil and cfg.s_tab.enable then
   keymap("n", tkey.last, "<CMD>tablast<CR>")
 end
 
--- treesitter fold
-keymap("n", keys.fold.open, ":foldopen<CR>")
-keymap("n", keys.fold.close, ":foldclose<CR>")
-
 -- Esc back to Normal mode
 keymap("t", keys.terminal_to_normal, "<C-\\><C-n>")
 
