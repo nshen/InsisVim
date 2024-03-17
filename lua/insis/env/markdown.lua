@@ -9,7 +9,7 @@ return function(config)
     end,
 
     getTSEnsureList = function()
-      return { "markdown" }
+      return { "markdown", "markdown_inline" }
     end,
 
     getLSPEnsureList = function()
