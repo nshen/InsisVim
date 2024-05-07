@@ -44,6 +44,7 @@ lspkind.init({
     Operator = "",
     TypeParameter = "",
     Copilot = "",
+    Codeium = "",
   },
 })
 
@@ -73,6 +74,7 @@ M.formatting = {
       -- vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
       vim_item.menu = ({
         copilot = "[AI]",
+        codeium = "[AI]",
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         luasnip = "[Snip]",

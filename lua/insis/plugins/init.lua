@@ -330,4 +330,11 @@ return {
       require("insis.plugins.copilot").copilot_cmp()
     end,
   },
+  -- Codeium
+  {
+    "Exafunction/codeium.nvim",
+    config = function()
+      require("insis.plugins.codeium").init()
+    end,
+  },
 }

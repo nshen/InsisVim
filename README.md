@@ -74,6 +74,8 @@ require("insis").setup({
 
 https://github.com/nshen/InsisVim/assets/181506/15517b20-acdf-45eb-9db6-9a0d0806cb4a
 
+#### AI 补全
+
 <details>
 <summary>Copilot 配置</summary>
   
@@ -94,6 +96,25 @@ InsisVim 内置了以下插件，启用后会使其生效
 因为 copilot 是收费的，首次使用需要运行 `:Copilot auth` 认证后才会生效，但如果你是学生老师或者开源项目贡献者，可以[申请免费](https://docs.github.com/en/copilot/quickstart)使用。
 
 > GitHub Copilot is free to use for verified students, teachers, and maintainers of popular open source projects.
+
+</details>
+
+
+<details>
+<summary>Codeium 配置</summary>
+  
+```lua
+require("insis").setup({
+  cmp = {
+    -- 启用 codeium 
+    codeium = true,
+  },
+})
+```
+
+InsisVim 内置了[Codeium.nvim](https://github.com/Exafunction/codeium.nvim)，启用后会使其生效
+
+首次使用需要运行 `:Codeium Auth` 认证一下即可生效
 
 </details>
 
