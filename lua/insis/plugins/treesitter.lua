@@ -17,17 +17,21 @@ if treesitter then
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false,
-      disable = function(_, bufnr) -- Disable in large buffers
-        return vim.api.nvim_buf_line_count(bufnr) > cfg.max_highlight_line_count
+      disable = function(lang, bufnr)
+        if vim.bo.filetype == "help" then
+          return true
+        else
+          return vim.api.nvim_buf_line_count(bufnr) > cfg.max_highlight_line_count
+        end
       end,
     },
 
     incremental_selection = {
-      enable = false,
+      enable = true,
       keymaps = {
-        init_selection = "<CR>",
-        node_incremental = "<CR>",
-        node_decremental = "<BS>",
+        init_selection = "=",
+        node_incremental = "=",
+        node_decremental = "-",
         scope_incremental = "<TAB>",
       },
     },
@@ -57,7 +61,6 @@ if treesitter then
     textobjects = {
       select = {
         enable = true,
-
         -- Automatically jump forward to textobj, similar to targets.vim
         lookahead = true,
 
@@ -73,36 +76,50 @@ if treesitter then
           ["il"] = "@loop.inner",
           ["ab"] = "@block.outer",
           ["ib"] = "@block.inner",
+          ["ap"] = "@parameter.outer",
+          ["ip"] = "@parameter.inner",
+        },
+        -- You can choose the select mode (default is charwise 'v')
+        --
+        -- Can also be a function which gets passed a table with the keys
+        -- * query_string: eg '@function.inner'
+        -- * method: eg 'v' or 'o'
+        -- and should return the mode ('v', 'V', or '<c-v>') or a table
+        -- mapping query_strings to modes.
+        selection_modes = {
+          ["@parameter.outer"] = "v", -- charwise
+          ["@function.outer"] = "V", -- linewise
+          ["@class.outer"] = "V",
         },
       },
       swap = {
-        enable = false,
+        enable = true,
         swap_next = {
-          ["<leader>a"] = "@parameter.inner",
+          ["ml"] = "@parameter.inner",
         },
         swap_previous = {
-          ["<leader>A"] = "@parameter.inner",
+          ["mh"] = "@parameter.inner",
         },
       },
       move = {
         enable = true,
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
-          ["]m"] = "@function.outer",
-          ["]]"] = "@class.outer",
-        },
-        goto_next_end = {
-          ["]M"] = "@function.outer",
-          ["]["] = "@class.outer",
+          ["gnf"] = "@function.outer",
+          ["gnc"] = "@class.outer",
         },
         goto_previous_start = {
-          ["[m"] = "@function.outer",
-          ["[["] = "@class.outer",
+          ["gpf"] = "@function.outer",
+          ["gpc"] = "@class.outer",
         },
-        goto_previous_end = {
-          ["[M"] = "@function.outer",
-          ["[]"] = "@class.outer",
-        },
+        -- goto_previous_end = {
+        --   ["[M"] = "@function.outer",
+        --   ["[]"] = "@class.outer",
+        -- },
+        -- goto_next_end = {
+        --   ["]M"] = "@function.outer",
+        --   ["]["] = "@class.outer",
+        -- },
       },
     },
   })
