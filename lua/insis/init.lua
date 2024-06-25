@@ -1,5 +1,5 @@
 local M = {}
-M.version = "v0.10.5"
+M.version = "v0.10.6"
 
 ---@type UserConfig
 M.config = require("insis.config")
