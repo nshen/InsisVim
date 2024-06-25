@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local, unused-function
 local gitsigns = pRequire("gitsigns")
 local cfg = require("insis").config.git
 
@@ -63,12 +64,12 @@ if gitsigns and cfg and cfg.enable then
     --  C for change
     --  D for delete
     signs = {
-      add = { hl = "GitSignsAdd", text = "+|", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-      change = { hl = "GitSignsChange", text = "c|", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-      delete = { hl = "GitSignsDelete", text = "d_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-      topdelete = { hl = "GitSignsDelete", text = "d‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-      changedelete = { hl = "GitSignsChange", text = "d~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-      untracked = { hl = "GitSignsAdd", text = "┆", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+      add = { text = "+|" },
+      change = { text = "c|" },
+      delete = { text = "d_" },
+      topdelete = { text = "d‾" },
+      changedelete = { text = "d~" },
+      untracked = { text = "┆" },
     },
     -- sign display
     signcolumn = cfg.signcolumn, -- Toggle with `:Gitsigns toggle_signs`
@@ -80,6 +81,7 @@ if gitsigns and cfg and cfg.enable then
       interval = 1000,
       follow_files = true,
     },
+    auto_attach = true,
     attach_to_untracked = true,
     current_line_blame = cfg.current_line_blame, -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {
@@ -87,10 +89,9 @@ if gitsigns and cfg and cfg.enable then
       virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
       delay = 1000,
       ignore_whitespace = false,
+      virt_text_priority = 100,
     },
-    current_line_blame_formatter_opts = {
-      relative_time = false,
-    },
+    current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
     sign_priority = 6,
     update_debounce = 100,
     status_formatter = nil, -- Use default
@@ -102,9 +103,6 @@ if gitsigns and cfg and cfg.enable then
       relative = "cursor",
       row = 0,
       col = 1,
-    },
-    yadm = {
-      enable = false,
     },
     -- I'm not gona remember these keys for now, let's use code action
     -- on_attach = gitsigns_on_attach,
