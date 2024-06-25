@@ -44,6 +44,15 @@
     "For Loop": {
         "prefix": "for",
         "body": [
+            "for (let ${1:i} = 0; ${1:i} < ${2:10}; ${1:i}++) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "For Loop"
+    },
+    "For Loop Array": {
+        "prefix": "fora",
+        "body": [
             "for (let ${1:i} = 0; ${1:i} < ${2:arr}.length; ${1:i}++) {",
             "\tconst ${3:element} = ${2:arr}[${1:i}];",
             "\t$0",
