@@ -39,6 +39,13 @@ autocmd({ "BufNewFile", "BufRead" }, {
   command = "setfiletype markdown",
 })
 
+-- set *.ets to filetype to typescriptreact
+-- autocmd({ "BufNewFile", "BufRead" }, {
+--   group = myAutoGroup,
+--   pattern = "*.ets",
+--   command = "setfiletype typescript",
+-- })
+
 -- set wrap only in markdown
 autocmd("FileType", {
   group = myAutoGroup,
@@ -78,6 +85,7 @@ autocmd("BufEnter", {
   end,
 })
 
+-- quit window with q
 autocmd({ "FileType" }, {
   group = myAutoGroup,
   pattern = {
@@ -88,17 +96,4 @@ autocmd({ "FileType" }, {
   callback = function()
     keymap({ "i", "n" }, { "q", "<esc>" }, "<esc>:close<CR>", { buffer = true })
   end,
-})
-
--- save fold
-autocmd("BufWinEnter", {
-  group = myAutoGroup,
-  pattern = "*",
-  command = "silent! loadview",
-})
-
-autocmd("BufWrite", {
-  group = myAutoGroup,
-  pattern = "*",
-  command = "mkview",
 })
