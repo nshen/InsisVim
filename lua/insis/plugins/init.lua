@@ -320,6 +320,8 @@ return {
   ----------------- ai ---------------------------
   {
     "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
       require("insis.plugins.copilot").copilot()
     end,
