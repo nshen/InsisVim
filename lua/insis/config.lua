@@ -366,6 +366,7 @@ local UserConfig = {
     ---@type false | "prettier" | "tsserver"
     formatter = "tsserver",
     format_on_save = false,
+    indent = 4,
     cspell = false,
     tailwindcss = true,
     prisma = false,
@@ -391,6 +392,7 @@ local UserConfig = {
     -- linter = "clangd-tidy",
     formatter = "clang-format",
     format_on_save = false,
+    indent = 4,
   },
 
   ---@class GolangConfig
@@ -400,6 +402,7 @@ local UserConfig = {
     linter = "golangci-lint",
     formatter = "gofmt",
     format_on_save = false,
+    indent = 4,
   },
 
   ---@class LuaConfig
@@ -408,6 +411,7 @@ local UserConfig = {
     lsp = "lua_ls",
     formatter = "stylua",
     format_on_save = true,
+    indent = 2,
   },
 
   ---@class RustConfig
@@ -417,6 +421,7 @@ local UserConfig = {
     -- rustup component add rustfmt
     formatter = "rustfmt",
     format_on_save = false,
+    indent = 4,
   },
 
   ---@class BashConfig
@@ -426,6 +431,7 @@ local UserConfig = {
     --  brew install shfmt
     formatter = "shfmt",
     format_on_save = false,
+    indent = 4,
   },
 
   ---@class PythonConfig
@@ -437,6 +443,7 @@ local UserConfig = {
     -- asdf reshim python
     formatter = "black",
     format_on_save = false,
+    indent = 4,
   },
 
   ---@class RubyConfig
@@ -446,6 +453,7 @@ local UserConfig = {
     -- gem install rubocop
     formatter = "rubocop",
     format_on_save = false,
+    indent = 2,
   },
 
   ---@class JsonConfig
@@ -455,6 +463,7 @@ local UserConfig = {
     ---@type "jsonls" | "prettier"
     formatter = "jsonls",
     format_on_save = false,
+    indent = 2,
   },
 
   ---@class MarkdownConfig
@@ -480,6 +489,7 @@ local UserConfig = {
   toml = {
     enable = false,
     lsp = "taplo",
+    indent = 2,
   },
 
   ---@class YamlConfig
@@ -489,12 +499,14 @@ local UserConfig = {
     ---@type "prettier" | false
     formatter = "prettier",
     format_on_save = false,
+    indent = 2,
   },
 
   ---@class DockerConfig
   docker = {
     enable = false,
     lsp = "dockerls",
+    indent = 2,
   },
 
   ---@class SolidityConfig
@@ -503,11 +515,13 @@ local UserConfig = {
     ---@type "solhint" | false
     linter = "solhint",
     format_on_save = false,
+    indent = 4,
   },
 
   ---@class JavaConfig
   java = {
     enable = false,
+    indent = 4,
   },
 
   ---@class GitConfig

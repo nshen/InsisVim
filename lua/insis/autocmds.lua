@@ -97,3 +97,34 @@ autocmd({ "FileType" }, {
     keymap({ "i", "n" }, { "q", "<esc>" }, "<esc>:close<CR>", { buffer = true })
   end,
 })
+
+-- set indent size
+autocmd({ "FileType" }, {
+  callback = function()
+    local ft = vim.bo.filetype
+    local default_indent_size = 4
+    local indent_size
+    local switch = {
+      javascript = cfg.frontend.indent or default_indent_size,
+      typescript = cfg.frontend.indent or default_indent_size,
+      c = cfg.clangd.indent or default_indent_size,
+      cpp = cfg.clangd.indent or default_indent_size,
+      go = cfg.golang.indent or default_indent_size,
+      lua = cfg.lua.indent or default_indent_size,
+      rust = cfg.rust.indent or default_indent_size,
+      sh = cfg.bash.indent or default_indent_size,
+      python = cfg.python.indent or default_indent_size,
+      ruby = cfg.ruby.indent or default_indent_size,
+      json = cfg.json.indent or default_indent_size,
+      toml = cfg.toml.indent or default_indent_size,
+      yaml = cfg.yaml.indent or default_indent_size,
+      dockerfile = cfg.docker.indent or default_indent_size,
+      solidity = cfg.solidity.indent or default_indent_size,
+      java = cfg.java.indent or default_indent_size,
+    }
+    indent_size = switch[ft] or default_indent_size
+    vim.bo.tabstop = indent_size
+    vim.bo.softtabstop = indent_size
+    vim.bo.shiftwidth = indent_size
+  end,
+})
