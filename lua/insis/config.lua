@@ -152,8 +152,8 @@ local UserConfig = {
     timeout = 3000,
     ---@type 'fade' | 'static' | 'slide'
     stages = "fade",
-    ---@type  'defalut' | 'minimal' | 'simple'
-    render = "minimal",
+    ---@type  'default' | 'minimal' | 'simple' | 'compact' | 'wrapped-compact'
+    render = "wrapped-compact",
   },
 
   ---@class NvimTreeConfig
