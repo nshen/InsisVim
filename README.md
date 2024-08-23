@@ -1,5 +1,7 @@
 # InsisVim
 
+> [English](./README-EN.md) 
+
 一个开箱即用的 Neovim IDE 层，以难以置信的简单方式配置开发环境，例如配置 `golang`，只需：
 
 ```lua
@@ -82,7 +84,7 @@ https://github.com/nshen/InsisVim/assets/181506/15517b20-acdf-45eb-9db6-9a0d0806
 ```lua
 require("insis").setup({
   cmp = {
-    -- 启用 copilot
+    -- 让 cmp 启用 copilot 补全
     copilot = true,
   },
 })
@@ -92,21 +94,39 @@ InsisVim 内置了以下插件，启用后会使其生效
 
 - [copilot.lua](https://github.com/zbirenbaum/copilot.lua)
 - [copilot-cmp](https://github.com/zbirenbaum/copilot-cmp)
+- [copilotChat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim/tree/canary)
 
 因为 copilot 是收费的，首次使用需要运行 `:Copilot auth` 认证后才会生效，但如果你是学生老师或者开源项目贡献者，可以[申请免费](https://docs.github.com/en/copilot/quickstart)使用。
 
 > GitHub Copilot is free to use for verified students, teachers, and maintainers of popular open source projects.
 
-</details>
+启用 `Copilot Chat` 就可以和代码对话了：
 
+```lua
+copilot_chat = {
+  enable = true,
+  keys = {
+     -- Code Chat 快速和当前文件对话
+     quick_chat = "<leader>cc",
+     -- Code Prompt 列出打开各种预定义prompt，例如解释代码，重构代码，加文档等
+     prompt_actions = "<leader>cp",
+     -- Code Help 修复选中错误
+     help_actions = "<leader>ch",
+     -- AI 直接问 copilot 问题
+     ai = "<leader>ai",
+  },
+},
+```
+
+</details>
 
 <details>
 <summary>Codeium 配置</summary>
-  
+
 ```lua
 require("insis").setup({
   cmp = {
-    -- 启用 codeium 
+    -- 让 cmp 启用 codeium 补全
     codeium = true,
   },
 })
@@ -265,6 +285,7 @@ require("insis").setup({
     ---@type "jsonls" | "prettier"
     formatter = "jsonls",
     format_on_save = false,
+    indent = 2,
    }
 })
 ```
@@ -331,6 +352,7 @@ require("insis").setup({
     ---@type false | "prettier" | "tsserver"
     formatter = "tsserver",
     format_on_save = false,
+    indent = 4,
     cspell = false,
     tailwindcss = true,
     prisma = false,
@@ -363,6 +385,7 @@ require("insis").setup({
     --linter 可以是 sohint 或 false
     linter = "solhint",
     format_on_save = true,
+    indent = 4,
   },
 })
 ```
@@ -387,6 +410,7 @@ require("insis").setup({
     linter = "golangci-lint",
     formatter = "gofmt",
     format_on_save = false,
+    indent = 4,
   },
 })
 ```
@@ -403,6 +427,7 @@ require("insis").setup({
     -- linter = "clangd-tidy",
     formatter = "clang-format",
     format_on_save = false,
+    indent = 4,
   },
 })
 ```
@@ -419,6 +444,7 @@ require("insis").setup({
     --  brew install shfmt
     formatter = "shfmt",
     format_on_save = false,
+    indent = 4,
   },
 })
 ```
@@ -437,6 +463,7 @@ require("insis").setup({
     -- asdf reshim python
     formatter = "black",
     format_on_save = false,
+    indent = 4,
   },
 })
 ```
@@ -453,6 +480,7 @@ require("insis").setup({
     -- gem install rubocop
     formatter = "rubocop",
     format_on_save = false,
+    indent = 2,
   },
 })
 ```
@@ -466,6 +494,7 @@ require("insis").setup({
   docker = {
     enable = true,
     lsp = "dockerls",
+    indent = 2,
   },
 })
 ```
