@@ -332,6 +332,18 @@ return {
       require("insis.plugins.copilot").copilot_cmp()
     end,
   },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    config = function()
+      require("insis.plugins.copilot").copilot_chat()
+    end,
+  },
   -- Codeium
   {
     "Exafunction/codeium.nvim",

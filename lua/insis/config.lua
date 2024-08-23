@@ -17,6 +17,7 @@
 ---@field zen? ZenConfig zen-mode.nvim plugin user config
 ---@field comment? CommentConfig Comment.nvim plugin user config
 ---@field toggleterm? ToggleTermConfig toggleterm.nvim plugin user config
+---@field copilot_chat? CopilotChatConfig
 ---@field neotest? NeotestConfig neotest plugin user config
 ---@field lsp? LSPConfig LSP common config
 ---@field dap? DAPConfig DAP common config
@@ -141,7 +142,6 @@ local UserConfig = {
       snip_jump_prev = "<C-h>",
       snip_next_choice = "<C-j>",
       snip_prev_choice = "<C-k>",
-      copilot_panel = "<leader>cpp",
     },
   },
 
@@ -284,6 +284,21 @@ local UserConfig = {
     toggle_side_window_command = nil,
     toggle_bottom_window = "<leader>tc",
     toggle_bottom_window_command = nil,
+  },
+
+  ---@class CopilotChatConfig
+  copilot_chat = {
+    enable = false,
+    keys = {
+      -- Code Chat
+      quick_chat = "<leader>cc",
+      -- Code Prompt
+      prompt_actions = "<leader>cp",
+      -- Code Help
+      help_actions = "<leader>ch",
+      -- AI (ask copilot)
+      ai = "<leader>ai",
+    },
   },
 
   ------------------------------------

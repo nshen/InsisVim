@@ -1,37 +1,87 @@
-local cmp = require("insis").config.cmp
-if not cmp then
-  return
-end
-
 local M = {}
+
 M.copilot = function()
   local copilot = pRequire("copilot")
-  if copilot and cmp.copilot then
-    copilot.setup({
-      suggestion = { enabled = false, auto_trigger = true },
-      panel = {
-        enabled = false,
-        auto_refresh = false,
-        keymap = {
-          jump_prev = "p",
-          jump_next = "n",
-          refresh = "r",
-        },
-        layout = {
-          position = "bottom", -- | top | left | right
-          ratio = 0.4,
-        },
-      },
-    })
+  if not copilot then
+    return
   end
+  copilot.setup({
+    suggestion = { enabled = false, auto_trigger = true },
+    panel = { enabled = false },
+  })
 end
 
 M.copilot_cmp = function()
-  local copilot_cmp = pRequire("copilot_cmp")
-  if copilot_cmp and cmp.copilot then
-    copilot_cmp.setup()
-    -- keymap("n", cmp.keys.copilot_panel, "<CMD>Copilot panel<CR>")
+  local cmpConfig = require("insis").config.cmp
+  if not cmpConfig or not cmpConfig.copilot then
+    return
   end
+  local copilot_cmp = pRequire("copilot_cmp")
+  if copilot_cmp then
+    copilot_cmp.setup()
+  end
+end
+
+M.copilot_chat = function()
+  local copilot_chat_config = require("insis").config.copilot_chat
+  local copilot_chat = pRequire("CopilotChat")
+  if not copilot_chat or not copilot_chat_config or not copilot_chat_config.enable then
+    return
+  end
+  copilot_chat.setup({
+    debug = false,
+    prompts = {
+      -- Text related prompts
+      TextTranslate = "Please translate the following text into English.",
+      TextSummarize = "Please summarize the following text.",
+      TextSpelling = "Please correct any grammar and spelling errors in the following text.",
+      TextWording = "Please improve the grammar and wording of the following text.",
+      TextConcise = "Please rewrite the following text to make it more concise.",
+    },
+  })
+  -- Custom buffer for CopilotChat
+  vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "copilot-*",
+    callback = function()
+      vim.opt_local.relativenumber = true
+      vim.opt_local.number = true
+
+      -- Get current filetype and set it to markdown if the current filetype is copilot-chat
+      local ft = vim.bo.filetype
+      if ft == "copilot-chat" then
+        vim.bo.filetype = "markdown"
+      end
+    end,
+  })
+
+  local cmp = pRequire("cmp")
+  if cmp then
+    require("CopilotChat.integrations.cmp").setup()
+  end
+  local telescope = pRequire("telescope")
+  if not telescope then
+    return
+  end
+  local actions = require("CopilotChat.actions")
+  local copilot_telescope = require("CopilotChat.integrations.telescope")
+  keymap({ "n", "v", "x" }, copilot_chat_config.keys.help_actions, function()
+    copilot_telescope.pick(actions.help_actions())
+  end)
+  keymap({ "n", "v", "x" }, copilot_chat_config.keys.prompt_actions, function()
+    copilot_telescope.pick(actions.prompt_actions())
+  end)
+  keymap({ "n", "v", "x" }, copilot_chat_config.keys.quick_chat, function()
+    local input = vim.fn.input("Quick Chat: ")
+    if input ~= "" then
+      copilot_chat.ask(input, { selection = require("CopilotChat.select").buffer })
+    end
+  end)
+  keymap({ "n", "v", "x" }, copilot_chat_config.keys.ai, function()
+    local input = vim.fn.input("Ask Copilot: ")
+    if input ~= "" then
+      vim.cmd("CopilotChat " .. input)
+    end
+  end)
 end
 
 return M
