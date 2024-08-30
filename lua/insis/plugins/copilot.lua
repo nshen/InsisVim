@@ -30,13 +30,14 @@ M.copilot_chat = function()
   end
   copilot_chat.setup({
     debug = false,
+    auto_follow_cursor = false,
     prompts = {
       -- Text related prompts
-      TextTranslate = "Please translate the following text into English.",
-      TextSummarize = "Please summarize the following text.",
-      TextSpelling = "Please correct any grammar and spelling errors in the following text.",
-      TextWording = "Please improve the grammar and wording of the following text.",
-      TextConcise = "Please rewrite the following text to make it more concise.",
+      Translate = "Please translate the following text into English.",
+      Summarize = "Please summarize the following text.",
+      Spelling = "Please correct any grammar and spelling errors in the following text.",
+      Wording = "Please improve the grammar and wording of the following text.",
+      Concise = "Please rewrite the following text to make it more concise.",
     },
   })
   -- Custom buffer for CopilotChat
@@ -73,13 +74,7 @@ M.copilot_chat = function()
   keymap({ "n", "v", "x" }, copilot_chat_config.keys.quick_chat, function()
     local input = vim.fn.input("Quick Chat: ")
     if input ~= "" then
-      copilot_chat.ask(input, { selection = require("CopilotChat.select").buffer })
-    end
-  end)
-  keymap({ "n", "v", "x" }, copilot_chat_config.keys.ai, function()
-    local input = vim.fn.input("Ask Copilot: ")
-    if input ~= "" then
-      vim.cmd("CopilotChat " .. input)
+      copilot_chat.ask(input)
     end
   end)
 end

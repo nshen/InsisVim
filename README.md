@@ -106,14 +106,12 @@ InsisVim 内置了以下插件，启用后会使其生效
 copilot_chat = {
   enable = true,
   keys = {
-     -- Code Chat 快速和当前文件对话
+     -- Code Chat 快速与选中的代码对话
      quick_chat = "<leader>cc",
      -- Code Prompt 列出打开各种预定义prompt，例如解释代码，重构代码，加文档等
      prompt_actions = "<leader>cp",
      -- Code Help 修复选中错误
      help_actions = "<leader>ch",
-     -- AI 直接问 copilot 问题
-     ai = "<leader>ai",
   },
 },
 ```

@@ -296,8 +296,6 @@ local UserConfig = {
       prompt_actions = "<leader>cp",
       -- Code Help
       help_actions = "<leader>ch",
-      -- AI (ask copilot)
-      ai = "<leader>ai",
     },
   },
 
