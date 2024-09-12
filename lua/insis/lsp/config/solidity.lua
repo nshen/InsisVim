@@ -8,7 +8,7 @@ local opts = {
   end,
   cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
   filetypes = { "solidity" },
-  root_dir = lspconfig.util.root_pattern("hardhat.config.*", "package.json", ".git"),
+  root_dir = lspconfig.util.root_pattern("foundry.toml", "hardhat.config.*", "package.json", ".git"),
   single_file_support = true,
 }
 return {
