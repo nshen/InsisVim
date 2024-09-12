@@ -104,14 +104,12 @@ To enable `Copilot Chat` and interact with your code:
 copilot_chat = {
   enable = true,
   keys = {
-     -- Quick chat with the current file
+     -- Quick chat with your selection code
      quick_chat = "<leader>cc",
      -- Code Prompt to list various predefined prompts, such as explaining code, refactoring code, adding documentation, etc.
      prompt_actions = "<leader>cp",
      -- Code Help to fix selected errors
      help_actions = "<leader>ch",
-     -- Ask Copilot questions directly
-     ai = "<leader>ai",
   },
 },
 ```
@@ -347,8 +345,8 @@ require("insis").setup({
     enable = true,
     ---@type "eslint" | false
     linter = "eslint", -- :EslintFixAll command added
-    ---@type false | "prettier" | "tsserver"
-    formatter = "tsserver",
+    ---@type false | "prettier" | "ts_ls"
+    formatter = "ts_ls",
     format_on_save = false,
     indent = 4,
     cspell = false,
@@ -356,17 +354,6 @@ require("insis").setup({
     prisma = false,
     -- vue will take over typescript lsp
     vue = false,
-    -- extra lsp command provided by typescript.nvim
-    typescript = {
-      keys = {
-        ts_organize = "gs",
-        ts_rename_file = "gR",
-        ts_add_missing_import = "ga",
-        ts_remove_unused = "gu",
-        ts_fix_all = "gf",
-        ts_goto_source = "gD",
-      },
-    },
   },
 })
 ```

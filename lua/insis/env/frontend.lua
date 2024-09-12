@@ -20,7 +20,7 @@ return function(config)
     end,
 
     getLSPEnsureList = function()
-      local list = { "tsserver", "cssls", "emmet_ls", "html" }
+      local list = { "ts_ls", "cssls", "emmet_ls", "html" }
       if config.tailwindcss then
         table.insert(list, "tailwindcss")
       end
@@ -38,7 +38,8 @@ return function(config)
 
     getLSPConfigMap = function()
       local list = {
-        tsserver = require("insis.lsp.config.typescript"),
+        -- tsserver config is moved to insis/plugins/typescript-tools.lua
+        -- ts_ls = require("insis.lsp.config.typescript"),
         cssls = require("insis.lsp.config.css"),
         emmet_ls = require("insis.lsp.config.emmet"),
         html = require("insis.lsp.config.html"),

@@ -168,6 +168,17 @@ return {
     end,
   },
 
+  {
+    "LunarVim/bigfile.nvim",
+    event = "BufReadPre",
+    opts = {
+      filesize = 1,
+    },
+    config = function(_, opts)
+      require("bigfile").setup(opts)
+    end,
+  },
+
   ------------------ Markdown -------------------------------------------------
   {
     "jakewvincent/mkdnflow.nvim",
@@ -226,7 +237,13 @@ return {
 
   -- TypeScript
   -- { "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" },
-  { "jose-elias-alvarez/typescript.nvim" },
+  -- { "jose-elias-alvarez/typescript.nvim" },
+  {
+    "pmizio/typescript-tools.nvim",
+    config = function()
+      require("insis.plugins.typescript-tools")
+    end,
+  },
   -- JSON
   { "b0o/schemastore.nvim" },
   -- Rust

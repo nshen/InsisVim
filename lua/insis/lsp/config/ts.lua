@@ -7,7 +7,7 @@ local opts = {
   capabilities = common.capabilities,
 
   -- https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils/blob/main/lua/nvim-lsp-ts-utils/utils.lua
-  -- 传入 tsserver 初始化参数
+  -- 传入 ts_ls 初始化参数
   -- make inlay hints work
   init_options = {
     hostInfo = "neovim",
