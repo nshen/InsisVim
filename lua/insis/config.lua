@@ -41,7 +41,7 @@
 
 local UserConfig = {
 
-  colorscheme = "tokyonight",
+  colorscheme = "gruvbox",
   max_highlight_line_count = 5000,
   enable_imselect = false,
   enable_very_magic_search = false,
