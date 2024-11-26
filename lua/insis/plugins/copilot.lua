@@ -1,5 +1,6 @@
 local M = {}
 
+-- copilot.lua
 M.copilot = function()
   local copilot = pRequire("copilot")
   if not copilot then
@@ -11,6 +12,7 @@ M.copilot = function()
   })
 end
 
+-- copilot-cmp
 M.copilot_cmp = function()
   local cmpConfig = require("insis").config.cmp
   if not cmpConfig or not cmpConfig.copilot then
@@ -22,6 +24,7 @@ M.copilot_cmp = function()
   end
 end
 
+-- CopilotChat.nvim
 M.copilot_chat = function()
   local copilot_chat_config = require("insis").config.copilot_chat
   local copilot_chat = pRequire("CopilotChat")
@@ -39,6 +42,7 @@ M.copilot_chat = function()
       Wording = "Please improve the grammar and wording of the following text.",
       Concise = "Please rewrite the following text to make it more concise.",
     },
+    chat_autocomplete = true,
   })
   -- Custom buffer for CopilotChat
   vim.api.nvim_create_autocmd("BufEnter", {
@@ -55,10 +59,6 @@ M.copilot_chat = function()
     end,
   })
 
-  local cmp = pRequire("cmp")
-  if cmp then
-    require("CopilotChat.integrations.cmp").setup()
-  end
   local telescope = pRequire("telescope")
   if not telescope then
     return
