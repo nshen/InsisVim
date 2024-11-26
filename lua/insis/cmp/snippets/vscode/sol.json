@@ -1,0 +1,79 @@
+{
+  "spdx": {
+    "key": "spdx",
+    "prefix": "spdx",
+    "body": [
+      "// SPDX-License-Identifier: MIT",
+      "pragma solidity 0.8.${1:20};"
+    ]
+  },
+  "import destructing": {
+    "key": "importDestructing",
+    "prefix": "imd",
+    "body": [
+      "import { ${2:second} } from '${1:first}';"
+    ]
+  },
+  "function declaration": {
+    "prefix": "func",
+    "body": "function ${1:name}(${2}) ${3} {\n\t$0\n}"
+  },
+  "Console Log": {
+    "prefix": "log",
+    "body": "console.log(${1:object})"
+  },
+  "Contract": {
+    "prefix": "con",
+    "body": [
+      "/* imports */",
+      "",
+      "contract ${1} {",
+      "    /* errors */",
+      "    /* interfaces, libraries, contracts */",
+      "    /* type declarations */",
+      "    /* state variables */",
+      "    /* events */",
+      "    /* modifiers */",
+      "    /* constructor */",
+      "    /* receive function (if exists) */",
+      "    /* fallback function (if exists) */",
+      "    /* external */",
+      "    /* public */",
+      "    /* internal */",
+      "    /* private */",
+      "    /* internal & private view & pure functions */",
+      "    /* external & public view & pure functions */",
+      "}"
+    ]
+  },
+  "------------------------------------------------------------------------": {
+    "body": "Foundry"
+  },
+  "test": {
+    "prefix": "test",
+    "body": [
+      "import {Test, console} from \"forge-std/Test.sol\";",
+      "",
+      "contract ${1:${TM_FILENAME_BASE}} is Test {",
+      "",
+      "    function setUp() external {",
+      "        ${2}",
+      "    }",
+      "",
+      "    function test${3:TestName}() public {",
+      "        assertEq(${4});",
+      "    }",
+      "}"
+    ]
+  },
+  "script": {
+    "prefix": "script",
+    "body": [
+      "import {Script} from \"forge-std/Script.sol\";",
+      "",
+      "contract ${1} is Script {",
+      "    ${2}",
+      "}"
+    ]
+  }
+}
