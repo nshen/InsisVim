@@ -15,7 +15,7 @@ if ts_tools and cfg and cfg.enable and not cfg.vue then
     settings = {
       expose_as_code_actions = "all",
       jsx_close_tag = {
-        enable = true,
+        enable = false,
         filetypes = { "javascriptreact", "typescriptreact" },
       },
     },
