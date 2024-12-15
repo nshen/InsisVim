@@ -17,7 +17,7 @@ local mapping = {
   -- Accept currently selected item. If none selected, `select` first item.
   -- Set `select` to `false` to only confirm explicitly selected items.
   [cfg.keys.confirm] = cmp.mapping.confirm({
-    select = false,
+    select = true,
     behavior = cmp.ConfirmBehavior.Replace,
   }),
   [cfg.keys.scroll_doc_up] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
