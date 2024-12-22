@@ -379,7 +379,7 @@ local UserConfig = {
     ---@type false | "prettier" | "ts_ls"
     formatter = "ts_ls",
     format_on_save = false,
-    indent = 4,
+    indent = 2,
     cspell = false,
     tailwindcss = true,
     prisma = false,

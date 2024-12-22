@@ -106,7 +106,9 @@ autocmd({ "FileType" }, {
     local indent_size
     local switch = {
       javascript = cfg.frontend.indent or default_indent_size,
+      javascriptreact = cfg.frontend.indent or default_indent_size,
       typescript = cfg.frontend.indent or default_indent_size,
+      typescriptreact = cfg.frontend.indent or default_indent_size,
       c = cfg.clangd.indent or default_indent_size,
       cpp = cfg.clangd.indent or default_indent_size,
       go = cfg.golang.indent or default_indent_size,
