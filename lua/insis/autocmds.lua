@@ -130,3 +130,24 @@ autocmd({ "FileType" }, {
     vim.bo.shiftwidth = indent_size
   end,
 })
+
+-- autocmd({ "BufEnter" }, {
+--   pattern = "*",
+--   desc = "Disable syntax highlighting in files larger than 1MB",
+--   callback = function(args)
+--     local highlighter = require("vim.treesitter.highlighter")
+--     local ts_was_active = highlighter.active[args.buf]
+--     local file_size = vim.fn.getfsize(args.file)
+--     if file_size > 100 * 100 then
+--       vim.cmd("TSBufDisable highlight")
+--       vim.cmd("syntax off")
+--       vim.cmd("syntax clear")
+--       -- vim.cmd("IlluminatePauseBuf")
+--       -- vim.cmd("IndentBlanklineDisable")
+--       vim.cmd("NoMatchParen")
+--       if ts_was_active then
+--         vim.notify("File larger than 1MB, turned off syntax highlighting")
+--       end
+--     end
+--   end,
+-- })
