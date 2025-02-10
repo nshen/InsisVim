@@ -30,7 +30,9 @@ end
 
 local macInsertLeave = function()
   M.currentIM = trim(vim.fn.system({ "im-select" }))
-  executeImSelectJob("im-select", M.defaultIM)
+  if M.currentIM ~= M.defaultIM then
+    executeImSelectJob("im-select", M.defaultIM)
+  end
 end
 
 local windowsInsertLeave = function()
