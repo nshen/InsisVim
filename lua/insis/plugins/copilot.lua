@@ -64,12 +64,15 @@ M.copilot_chat = function()
     return
   end
   local actions = require("CopilotChat.actions")
+  local select = require("CopilotChat.select")
   local copilot_telescope = require("CopilotChat.integrations.telescope")
   keymap({ "n", "v", "x" }, copilot_chat_config.keys.help_actions, function()
     copilot_telescope.pick(actions.help_actions())
   end)
   keymap({ "n", "v", "x" }, copilot_chat_config.keys.prompt_actions, function()
-    copilot_telescope.pick(actions.prompt_actions())
+    copilot_telescope.pick(actions.prompt_actions({
+      selection = select.visual,
+    }))
   end)
   keymap({ "n", "v", "x" }, copilot_chat_config.keys.quick_chat, function()
     local input = vim.fn.input("Quick Chat: ")
