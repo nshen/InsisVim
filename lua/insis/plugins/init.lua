@@ -350,21 +350,28 @@ return {
     end,
   },
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
+    "olimorris/codecompanion.nvim",
     config = function()
-      require("insis.plugins.copilot").copilot_chat()
+      require("insis.plugins.codecompanion")
     end,
   },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+  --     { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+  --   },
+  --   build = "make tiktoken", -- Only on MacOS or Linux
+  --   config = function()
+  --     require("insis.plugins.copilot").copilot_chat()
+  --   end,
+  -- },
+
   -- Codeium
-  {
-    "Exafunction/codeium.nvim",
-    config = function()
-      require("insis.plugins.codeium").init()
-    end,
-  },
+  -- {
+  --   "Exafunction/codeium.nvim",
+  --   config = function()
+  --     require("insis.plugins.codeium").init()
+  --   end,
+  -- },
 }
