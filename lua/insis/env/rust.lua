@@ -23,20 +23,21 @@ return function(config)
     end,
 
     getToolEnsureList = function()
-      if config.formatter == "rustfmt" then
-        return { "rustfmt" }
-      end
+      -- if config.formatter == "rustfmt" then
+      --   return { "rustfmt" }
+      -- end
       return {}
     end,
 
     getNulllsSources = function()
-      local null_ls = pRequire("null-ls")
-      if not null_ls then
-        return {}
-      end
-      if config.formatter == "rustfmt" then
-        return { null_ls.builtins.formatting.rustfmt }
-      end
+      -- rustaceanvim plugin don't need these
+      -- local null_ls = pRequire("null-ls")
+      -- if not null_ls then
+      --   return {}
+      -- end
+      -- if config.formatter == "rustfmt" then
+      --   return { null_ls.builtins.formatting.rustfmt }
+      -- end
       return {}
     end,
 

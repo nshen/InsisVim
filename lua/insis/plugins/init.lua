@@ -1,4 +1,6 @@
-return {
+local cfg = require("insis").config
+
+local plugins = {
   -------------------------- plugins -------------------------------------------
   -- requires
   { "kyazdani42/nvim-web-devicons" },
@@ -246,8 +248,6 @@ return {
   },
   -- JSON
   { "b0o/schemastore.nvim" },
-  -- Rust
-  { "simrat39/rust-tools.nvim" },
   -- Java
   { "mfussenegger/nvim-jdtls" },
 
@@ -375,3 +375,14 @@ return {
   --   end,
   -- },
 }
+
+-- Rust
+if cfg.rust.enable then
+  table.insert(plugins, {
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended
+    lazy = false, -- This plugin is already lazy
+  })
+end
+
+return plugins

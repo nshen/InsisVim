@@ -25,6 +25,7 @@ M.setup = function()
     vim.notify("require lazy.nvim")
     return
   end
+  -- /insis/plugins/init.lua
   local plugins = require("insis.plugins")
   lazy.setup(plugins)
 end
