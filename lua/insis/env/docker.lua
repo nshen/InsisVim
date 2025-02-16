@@ -1,4 +1,4 @@
---- @param config DockerConfig
+--- @param config InsisDockerConfig
 return function(config)
   return {
 

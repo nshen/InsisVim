@@ -1,4 +1,4 @@
---- @param config YamlConfig
+--- @param config InsisYamlConfig
 return function(config)
   return {
 

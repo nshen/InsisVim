@@ -1,4 +1,4 @@
---- @param config LuaConfig
+--- @param config InsisLuaConfig
 return function(config)
   return {
     getFormatOnSavePattern = function()

@@ -1,4 +1,4 @@
---- @param config RubyConfig
+--- @param config InsisRubyConfig
 return function(config)
   return {
 

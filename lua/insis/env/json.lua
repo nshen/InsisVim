@@ -1,4 +1,4 @@
---- @param config JsonConfig
+--- @param config InsisJsonConfig
 return function(config)
   return {
 

@@ -48,7 +48,7 @@ end
 
 local enabledEnv = {}
 
---- @param userConfig UserConfig
+--- @param userConfig InsisUserConfig
 local init = function(userConfig)
   table.insert(enabledEnv, require("insis.env.common")(userConfig))
   if userConfig.lua.enable then

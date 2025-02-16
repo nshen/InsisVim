@@ -1,4 +1,4 @@
---- @param config ClangdConfig
+--- @param config InsisClangdConfig
 return function(config)
   return {
     getFormatOnSavePattern = function()

@@ -1,6 +1,6 @@
 -- Solidity snippets
 -- https://github.com/rafamadriz/friendly-snippets/blob/main/snippets/solidity.json
---- @param config SolidityConfig
+--- @param config InsisSolidityConfig
 return function(config)
   return {
     getFormatOnSavePattern = function()

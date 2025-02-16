@@ -1,4 +1,4 @@
---- @param config MarkdownConfig
+--- @param config InsisMarkdownConfig
 return function(config)
   return {
     getFormatOnSavePattern = function()

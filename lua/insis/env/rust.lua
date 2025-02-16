@@ -1,4 +1,4 @@
---- @param config RustConfig
+--- @param config InsisRustConfig
 return function(config)
   return {
     getFormatOnSavePattern = function()

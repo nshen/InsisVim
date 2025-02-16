@@ -1,4 +1,4 @@
---- @param config GolangConfig
+--- @param config InsisGolangConfig
 return function(config)
   return {
 

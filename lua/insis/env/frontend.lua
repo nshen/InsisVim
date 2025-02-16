@@ -1,4 +1,4 @@
---- @param config FrontendConfig
+--- @param config InsisFrontendConfig
 return function(config)
   return {
     getFormatOnSavePattern = function()

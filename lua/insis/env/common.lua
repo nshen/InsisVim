@@ -1,4 +1,4 @@
---- @param config UserConfig
+--- @param config InsisUserConfig
 return function(config)
   return {
 

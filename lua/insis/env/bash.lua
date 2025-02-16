@@ -1,4 +1,4 @@
---- @param config BashConfig
+--- @param config InsisBashConfig
 return function(config)
   return {
     getFormatOnSavePattern = function()

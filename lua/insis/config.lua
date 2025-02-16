@@ -1,45 +1,44 @@
----@class UserConfig
+---@class InsisUserConfig
 ---@field colorscheme? "tokyonight" | "nord" | "onedark" | "gruvbox" | "nightfox" | "nordfox" | "duskfox" | "dracula" builtin colorscheme
 ---@field max_highlight_line_count? number disable code hightlight on big file for performance default 10000
 ---@field enable_imselect? boolean auto switch your input method, default false  ---@see https://github.com/daipeihust/im-select
 ---@field enable_very_magic_search? boolean enable regexp very magic mode ---@see https://www.youtube.com/watch?v=VjOcINs6QWs
 ---@field fix_windows_clipboard? boolean fix yank problem on windows WSL2 ---@see  https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows
----@field keys? Commonkeys common keymappings
----@field s_windows? SWindowConfig enabled by default
----@field s_tab? STabConfig disabled by default
----@field cmp? CMPConfig Completion user config
----@field notify? NotifyConfig nvim-notify plugin user config
----@field nvimTree? NvimTreeConfig nvim-tree plugin user config
----@field bufferLine? BufferLineConfig bufferline.nvim plugin user config
----@field telescope? TelescopeConfig telescope.nvim plugin user config
----@field surround? SurroundConfig nvim-surround plugin user config
----@field venn? VENNConfig venn.nvim plugin user config
----@field zen? ZenConfig zen-mode.nvim plugin user config
----@field comment? CommentConfig Comment.nvim plugin user config
----@field toggleterm? ToggleTermConfig toggleterm.nvim plugin user config
----@field copilot_chat? CopilotChatConfig
----@field neotest? NeotestConfig neotest plugin user config
----@field lsp? LSPConfig LSP common config
----@field dap? DAPConfig DAP common config
----@field frontend? FrontendConfig Frontend development user config
----@field clangd? ClangdConfig Clangd user config
----@field golang? GolangConfig Golang development user config
----@field lua? LuaConfig Lua development user config
----@field rust? RustConfig Rust development user config
----@field bash? BashConfig sh development user config
----@field python? PythonConfig python development user config
----@field ruby? RubyConfig ruby development user config
----@field json? JsonConfig Json user config
----@field markdown? MarkdownConfig
----@field toml? TomlConfig Toml user config
----@field yaml? YamlConfig Yaml user config
----@field docker? DockerConfig Docker user config
----@field solidity? SolidityConfig
----@field java? JavaConfig
----@field git? GitConfig git user config
----@field mirror? MirrorConfig mirror config
-
-local UserConfig = {
+---@field keys? InsisCommonkeys common keymappings
+---@field s_windows? InsisSWindowConfig enabled by default
+---@field s_tab? InsisSTabConfig disabled by default
+---@field cmp? InsisCMPConfig Completion user config
+---@field notify? InsisNotifyConfig nvim-notify plugin user config
+---@field nvimTree? InsisNvimTreeConfig nvim-tree plugin user config
+---@field bufferLine? InsisBufferLineConfig bufferline.nvim plugin user config
+---@field telescope? InsisTelescopeConfig telescope.nvim plugin user config
+---@field surround? InsisSurroundConfig nvim-surround plugin user config
+---@field venn? InsisVENNConfig venn.nvim plugin user config
+---@field zen? InsisZenConfig zen-mode.nvim plugin user config
+---@field comment? InsisCommentConfig Comment.nvim plugin user config
+---@field toggleterm? InsisToggleTermConfig toggleterm.nvim plugin user config
+---@field copilot_chat? InsisCopilotChatConfig
+---@field neotest? InsisNeotestConfig neotest plugin user config
+---@field lsp? InsisLSPConfig LSP common config
+---@field dap? InsisDAPConfig DAP common config
+---@field frontend? InsisFrontendConfig Frontend development user config
+---@field clangd? InsisClangdConfig Clangd user config
+---@field golang? InsisGolangConfig Golang development user config
+---@field lua? InsisLuaConfig Lua development user config
+---@field rust? InsisRustConfig Rust development user config
+---@field bash? InsisBashConfig sh development user config
+---@field python? InsisPythonConfig python development user config
+---@field ruby? InsisRubyConfig ruby development user config
+---@field json? InsisJsonConfig Json user config
+---@field markdown? InsisMarkdownConfig
+---@field toml? InsisTomlConfig Toml user config
+---@field yaml? InsisYamlConfig Yaml user config
+---@field docker? InsisDockerConfig Docker user config
+---@field solidity? InsisSolidityConfig
+---@field java? InsisJavaConfig
+---@field git? InsisGitConfig git user config
+---@field mirror? InsisMirrorConfig mirror config
+local InsisUserConfig = {
 
   colorscheme = "tokyonight",
   max_highlight_line_count = 5000,
@@ -47,7 +46,15 @@ local UserConfig = {
   enable_very_magic_search = false,
   fix_windows_clipboard = false,
 
-  ---@class Commonkeys
+  ---@class InsisCommonkeys
+  ---@field leader_key? string
+  ---@field n_save? string
+  ---@field n_force_quit? string
+  ---@field n_v_5j? string
+  ---@field n_v_5k? string
+  ---@field n_v_10k? string
+  ---@field n_v_10j? string
+  ---@field terminal_to_normal? string
   keys = {
     leader_key = " ",
     -- quick save / quite
@@ -65,7 +72,9 @@ local UserConfig = {
   -- Buffer & Window & Tab --
   ---------------------------
 
-  ---@class BufferLineConfig
+  ---@class InsisBufferLineConfig
+  ---@field enable? boolean
+  ---@field keys? {prev:string, next:string, close:string, close_left:string, close_right:string, close_others:string, close_pick:string}
   bufferLine = {
     enable = true,
     keys = {
@@ -84,7 +93,9 @@ local UserConfig = {
     },
   },
 
-  ---@class SWindowConfig
+  ---@class InsisSWindowConfig
+  ---@field enable? boolean
+  ---@field keys? {split_vertically:string, split_horizontally:string, close:string, close_others:string, jump_left:string[], jump_right:string[], jump_up:string[], jump_down:string[], width_decrease:string, width_increase:string, height_decrease:string, height_increase:string, size_equal:string}
   s_windows = {
     enable = true,
     keys = {
@@ -108,7 +119,9 @@ local UserConfig = {
     },
   },
 
-  ---@class STabConfig
+  ---@class InsisSTabConfig
+  ---@field enable? boolean
+  ---@field keys? {split:string, prev:string, next:string, first:string, last:string, close:string}
   s_tab = {
     enable = false,
     keys = {
@@ -121,7 +134,11 @@ local UserConfig = {
     },
   },
 
-  ---@class CMPConfig
+  ---@class InsisCMPConfig
+  ---@field enable? boolean
+  ---@field copilot? boolean
+  ---@field codeium? boolean
+  ---@field keys? {confirm:string, select_next_item:string, select_prev_item:string, scroll_doc_up:string, scroll_doc_down:string, complete:string, abort:string, snip_jump_next:string, snip_jump_prev:string, snip_next_choice:string, snip_prev_choice:string}
   cmp = {
     enable = true,
     -- enable copilot cmp
@@ -145,18 +162,21 @@ local UserConfig = {
     },
   },
 
-  ---@class NotifyConfig
+  ---@class InsisNotifyConfig
+  ---@field enable? boolean
+  ---@field timeout? number
+  ---@field stages? 'fade'|'static'|'slide'
+  ---@field render? 'default'|'minimal'|'simple'|'compact'|'wrapped-compact'
   notify = {
     enable = true,
-    ---@type number in millionsecond
     timeout = 3000,
-    ---@type 'fade' | 'static' | 'slide'
     stages = "fade",
-    ---@type  'default' | 'minimal' | 'simple' | 'compact' | 'wrapped-compact'
     render = "wrapped-compact",
   },
 
-  ---@class NvimTreeConfig
+  ---@class InsisNvimTreeConfig
+  ---@field enable? boolean
+  ---@field keys? {toggle:string[], refresh:string, edit:string[], close:string, system_open:string, vsplit:string, split:string, tabnew:string, parent_node:string, first_sibling:string, last_sibling:string, cd:string, dir_up:string, toggle_git_ignored:string, toggle_dotfiles:string, toggle_custom:string, create:string, remove:string, rename:string, cut:string, copy:string, paste:string, copy_name:string, copy_path:string, copy_absolute_path:string, toggle_file_info:string}
   nvimTree = {
     enable = true,
     keys = {
@@ -193,7 +213,9 @@ local UserConfig = {
     },
   },
 
-  ---@class TelescopeConfig
+  ---@class InsisTelescopeConfig
+  ---@field enable? boolean
+  ---@field keys? {find_files:string[], live_grep:string, live_grep_args:string, move_selection_next:string, move_selection_previous:string, cycle_history_next:string, cycle_history_prev:string, close:string, preview_scrolling_up:string, preview_scrolling_down:string}
   telescope = {
     enable = true,
     keys = {
@@ -215,7 +237,9 @@ local UserConfig = {
     },
   },
 
-  ---@class SurroundConfig
+  ---@class InsisSurroundConfig
+  ---@field enable? boolean
+  ---@field keys? {normal:string, normal_cur:string, delete:string, change:string, visual:string, visual_line:string, insert:any, insert_line:any, normal_line:any, normal_cur_line:any}
   surround = {
     enable = true,
     keys = {
@@ -236,7 +260,9 @@ local UserConfig = {
     },
   },
 
-  ---@class VENNConfig
+  ---@class InsisVENNConfig
+  ---@field enable? boolean
+  ---@field keys? {toggle:string, up:string, down:string, left:string, right:string, draw_box:string}
   venn = {
     enable = true,
     keys = {
@@ -251,7 +277,9 @@ local UserConfig = {
     },
   },
 
-  ---@class ZenConfig
+  ---@class InsisZenConfig
+  ---@field enable? boolean
+  ---@field keys? {toggle:string}
   zen = {
     enable = true,
     keys = {
@@ -259,7 +287,10 @@ local UserConfig = {
     },
   },
 
-  ---@class CommentConfig
+  ---@class InsisCommentConfig
+  ---@field enable? boolean
+  ---@field toggler? {line:string, block:string}
+  ---@field opleader? {line:string, block:string}
   comment = {
     enable = true,
     -- normal mode
@@ -274,7 +305,14 @@ local UserConfig = {
     },
   },
 
-  ---@class ToggleTermConfig
+  ---@class InsisToggleTermConfig
+  ---@field enable? boolean
+  ---@field toggle_float_window? string
+  ---@field toggle_float_window_command? string|nil
+  ---@field toggle_side_window? string
+  ---@field toggle_side_window_command? string|nil
+  ---@field toggle_bottom_window? string
+  ---@field toggle_bottom_window_command? string|nil
   toggleterm = {
     -- enable 3 builtin terminal <leader>t a/b/c
     enable = true,
@@ -286,7 +324,9 @@ local UserConfig = {
     toggle_bottom_window_command = nil,
   },
 
-  ---@class CopilotChatConfig
+  ---@class InsisCopilotChatConfig
+  ---@field enable? boolean
+  ---@field keys? {quick_chat:string, prompt_actions:string, help_actions:string}
   copilot_chat = {
     enable = false,
     keys = {
@@ -303,7 +343,19 @@ local UserConfig = {
   -- shared LSP keys
   ------------------------------------
 
-  ---@class LSPConfig
+  ---@class InsisLSPConfig
+  ---@field definition? string
+  ---@field implementation? string
+  ---@field references? string
+  ---@field hover? string
+  ---@field call_in? string
+  ---@field call_out? string
+  ---@field rename? string
+  ---@field code_action? string
+  ---@field format? string
+  ---@field open_float? string
+  ---@field goto_next? string
+  ---@field goto_prev? string
   lsp = {
     -- Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope
     definition = "gd",
@@ -338,7 +390,15 @@ local UserConfig = {
   -- shared DAP keys
   ------------------------------------
 
-  ---@class DAPConfig
+  ---@class InsisDAPConfig
+  ---@field continue? string
+  ---@field terminate? string
+  ---@field step_over? string
+  ---@field step_into? string
+  ---@field step_out? string
+  ---@field toggle_breakpoint? string
+  ---@field clear_breakpoints? string
+  ---@field eval? string
   dap = {
     -- start, stop
     continue = "<leader>dc",
@@ -357,7 +417,13 @@ local UserConfig = {
   -- shared Test keys
   ------------------------------------
 
-  ---@class NeotestConfig
+  ---@class InsisNeotestConfig
+  ---@field toggle? string
+  ---@field run? string
+  ---@field run_file? string
+  ---@field run_dap? string
+  ---@field run_stop? string
+  ---@field output_open? string
   neotest = {
     toggle = "<leader>nt",
     run = "<leader>nr",
@@ -371,12 +437,19 @@ local UserConfig = {
   -- Languages config
   ------------------------------------
 
-  ---@class FrontendConfig
+  ---@class InsisFrontendConfig
+  ---@field enable? boolean
+  ---@field linter? "eslint" | false
+  ---@field formatter? "prettier" | "ts_ls" | false
+  ---@field format_on_save? boolean
+  ---@field indent? number
+  ---@field cspell? boolean
+  ---@field tailwindcss? boolean
+  ---@field prisma? boolean
+  ---@field vue? boolean
   frontend = {
     enable = false,
-    ---@type "eslint" | false
     linter = "eslint", -- :EslintFixAll command added
-    ---@type false | "prettier" | "ts_ls"
     formatter = "ts_ls",
     format_on_save = false,
     indent = 2,
@@ -387,7 +460,12 @@ local UserConfig = {
     vue = false,
   },
 
-  ---@class ClangdConfig
+  ---@class InsisClangdConfig
+  ---@field enable? boolean
+  ---@field lsp? string
+  ---@field formatter? string
+  ---@field format_on_save? boolean
+  ---@field indent? number
   clangd = {
     enable = false,
     lsp = "clangd",
@@ -397,7 +475,13 @@ local UserConfig = {
     indent = 4,
   },
 
-  ---@class GolangConfig
+  ---@class InsisGolangConfig
+  ---@field enable? boolean
+  ---@field lsp? string
+  ---@field linter? string
+  ---@field formatter? string
+  ---@field format_on_save? boolean
+  ---@field indent? number
   golang = {
     enable = false,
     lsp = "gopls",
@@ -407,7 +491,12 @@ local UserConfig = {
     indent = 4,
   },
 
-  ---@class LuaConfig
+  ---@class InsisLuaConfig
+  ---@field enable? boolean
+  ---@field lsp? string
+  ---@field formatter? string
+  ---@field format_on_save? boolean
+  ---@field indent? number
   lua = {
     enable = true,
     lsp = "lua_ls",
@@ -416,7 +505,12 @@ local UserConfig = {
     indent = 2,
   },
 
-  ---@class RustConfig
+  ---@class InsisRustConfig
+  ---@field enable? boolean
+  ---@field lsp? string
+  ---@field formatter? string
+  ---@field format_on_save? boolean
+  ---@field indent? number
   rust = {
     enable = false,
     lsp = "rust_analyzer",
@@ -426,7 +520,7 @@ local UserConfig = {
     indent = 4,
   },
 
-  ---@class BashConfig
+  ---@class InsisBashConfig
   bash = {
     enable = false,
     lsp = "bashls",
@@ -436,7 +530,12 @@ local UserConfig = {
     indent = 4,
   },
 
-  ---@class PythonConfig
+  ---@class InsisPythonConfig
+  ---@field enable? boolean
+  ---@field lsp? string
+  ---@field formatter? string
+  ---@field format_on_save? boolean
+  ---@field indent? number
   python = {
     enable = false,
     -- can be pylsp or pyright
@@ -448,7 +547,7 @@ local UserConfig = {
     indent = 4,
   },
 
-  ---@class RubyConfig
+  ---@class InsisRubyConfig
   ruby = {
     enable = false,
     lsp = "ruby_ls",
@@ -458,7 +557,12 @@ local UserConfig = {
     indent = 2,
   },
 
-  ---@class JsonConfig
+  ---@class InsisJsonConfig
+  ---@field enable? boolean
+  ---@field lsp? string
+  ---@field formatter? "jsonls" | "prettier"
+  ---@field format_on_save? boolean
+  ---@field indent? number
   json = {
     enable = false,
     lsp = "jsonls",
@@ -468,7 +572,13 @@ local UserConfig = {
     indent = 2,
   },
 
-  ---@class MarkdownConfig
+  ---@class InsisMarkdownConfig
+  ---@field enable? boolean
+  ---@field mkdnflow? {next_link:string, prev_link:string, next_heading:string, prev_heading:string, go_back:string, follow_link:string, toggle_item:string}
+  ---@field formatter? string
+  ---@field format_on_save? boolean
+  ---@field wrap? boolean
+  ---@field theme? "dark"|"light"
   markdown = {
     enable = false,
     mkdnflow = {
@@ -487,14 +597,14 @@ local UserConfig = {
     theme = "dark",
   },
 
-  ---@class TomlConfig
+  ---@class InsisTomlConfig
   toml = {
     enable = false,
     lsp = "taplo",
     indent = 2,
   },
 
-  ---@class YamlConfig
+  ---@class InsisYamlConfig
   yaml = {
     enable = false,
     lsp = "yamlls",
@@ -504,14 +614,21 @@ local UserConfig = {
     indent = 2,
   },
 
-  ---@class DockerConfig
+  ---@class InsisDockerConfig
+  ---@field enable? boolean
+  ---@field lsp? string
+  ---@field indent? number
   docker = {
     enable = false,
     lsp = "dockerls",
     indent = 2,
   },
 
-  ---@class SolidityConfig
+  ---@class InsisSolidityConfig
+  ---@field enable? boolean
+  ---@field linter? "solhint"|false
+  ---@field format_on_save? boolean
+  ---@field indent? number
   solidity = {
     enable = false,
     ---@type "solhint" | false
@@ -520,13 +637,22 @@ local UserConfig = {
     indent = 4,
   },
 
-  ---@class JavaConfig
+  ---@class InsisJavaConfig
+  ---@field enable? boolean
+  ---@field indent? number
   java = {
     enable = false,
     indent = 4,
   },
 
-  ---@class GitConfig
+  ---@class InsisGitConfig
+  ---@field enable? boolean
+  ---@field code_actions? string
+  ---@field signcolumn? boolean
+  ---@field numhl? boolean
+  ---@field linehl? boolean
+  ---@field word_diff? boolean
+  ---@field current_line_blame? boolean
   git = {
     enable = true,
     code_actions = "gitsigns",
@@ -538,14 +664,16 @@ local UserConfig = {
     current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
   },
 
-  ---@class MirrorConfig
+  ---@class InsisMirrorConfig
+  ---@field treesitter? string|false
+  ---@field lsp? string  -- TODO
+  ---@field dap? string   -- TODO
   mirror = {
     -- treesitter = "https://github.com/",
     treesitter = false,
-    packer = "https://github.com/",
     -- TODO: LSP DAP mirror config
     -- carefully change these value
   },
 }
 
-return UserConfig
+return InsisUserConfig

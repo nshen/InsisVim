@@ -1,9 +1,9 @@
 local M = {}
 M.version = "v0.10.9"
 
----@type UserConfig
+--- @type InsisUserConfig
 M.config = require("insis.config")
---- @param user_config UserConfig
+--- @param user_config InsisUserConfig
 function M.setup(user_config)
   require("insis.utils.global")
   require("insis.basic")

@@ -1,4 +1,4 @@
---- @param config PythonConfig
+--- @param config InsisPythonConfig
 return function(config)
   return {
 
