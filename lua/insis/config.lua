@@ -18,6 +18,7 @@
 ---@field comment? InsisCommentConfig Comment.nvim plugin user config
 ---@field toggleterm? InsisToggleTermConfig toggleterm.nvim plugin user config
 ---@field copilot_chat? InsisCopilotChatConfig
+---@field codecompanion? InsisCodecompanionConfig
 ---@field neotest? InsisNeotestConfig neotest plugin user config
 ---@field lsp? InsisLSPConfig LSP common config
 ---@field dap? InsisDAPConfig DAP common config
@@ -336,6 +337,19 @@ local InsisUserConfig = {
       prompt_actions = "<leader>cp",
       -- Code Help
       help_actions = "<leader>ch",
+    },
+  },
+
+  ---@class InsisCodecompanionConfig
+  ---@field enable? boolean
+  ---@field keys? {quick_chat:string, prompt_actions:string, help_actions:string}
+  codecompanion = {
+    enable = true,
+    keys = {
+      -- Code Chat
+      toggle_chat = "<leader>cc",
+      -- Code Prompt
+      prompt_actions = "<leader>cp",
     },
   },
 
