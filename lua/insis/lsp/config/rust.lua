@@ -1,7 +1,8 @@
 return {
   on_setup = function(_)
-    -- Do not call the nvim-lspconfig.rust_analyzer setup or set up the LSP client for rust-analyzer manually, as doing so may cause conflicts.
-    local lsp = require("insis").config.lsp
+    -- Do not call the nvim-lspconfig.rust_analyzer setup or set up the LSP client for rust-analyzer manually,
+    -- as doing so may cause conflicts.
+    local cfg = require("insis").config
     local common = require("insis.lsp.common-config")
     vim.g.rustaceanvim = {
       -- Plugin configuration
@@ -13,13 +14,17 @@ return {
           local opt = { noremap = true, silent = true, buffer = bufnr }
 
           ---@diagnostic disable-next-line: need-check-nil
-          keymap("n", lsp.hover, function()
+          keymap("n", cfg.lsp.hover, function()
             vim.cmd.RustLsp({ "hover", "actions" })
           end, opt)
 
           ---@diagnostic disable-next-line: need-check-nil
-          keymap("n", lsp.code_action, function()
+          keymap("n", cfg.lsp.code_action, function()
             vim.cmd.RustLsp("codeAction")
+          end, opt)
+
+          keymap("n", cfg.rust.keys.explain_error, function()
+            vim.cmd.RustLsp("explainError", "current")
           end, opt)
         end,
         default_settings = {

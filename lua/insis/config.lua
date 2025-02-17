@@ -525,6 +525,7 @@ local InsisUserConfig = {
   ---@field formatter? string
   ---@field format_on_save? boolean
   ---@field indent? number
+  ---@field keys? {explain_error:string}
   rust = {
     enable = false,
     lsp = "rust_analyzer",
@@ -532,6 +533,9 @@ local InsisUserConfig = {
     formatter = "rustfmt",
     format_on_save = false,
     indent = 4,
+    keys = {
+      explain_error = "ge",
+    },
   },
 
   ---@class InsisBashConfig
