@@ -6,12 +6,12 @@ local myAutoGroup = vim.api.nvim_create_augroup("myAutoGroup", {
 local autocmd = vim.api.nvim_create_autocmd
 
 if cfg.enable_imselect then
-  autocmd("InsertLeave", {
+  autocmd({ "InsertLeave", "CmdlineLeave" }, {
     group = myAutoGroup,
     callback = require("insis.utils.im-select").insertLeave,
   })
 
-  autocmd("InsertEnter", {
+  autocmd({ "InsertLeave", "CmdlineLeave" }, {
     group = myAutoGroup,
     callback = require("insis.utils.im-select").insertEnter,
   })
