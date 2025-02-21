@@ -132,7 +132,7 @@ local plugins = {
   -- fidget.nvim
   {
     "j-hui/fidget.nvim",
-    tag = "legacy",
+    -- tag = "legacy",
     config = function()
       require("insis.plugins.fidget")
     end,
