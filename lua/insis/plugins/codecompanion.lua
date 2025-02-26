@@ -109,6 +109,17 @@ code.setup({
         },
       })
     end,
+
+    copilot_claude = function()
+      return require("codecompanion.adapters").extend("copilot", {
+        name = "copilot_claude",
+        schema = {
+          model = {
+            default = "claude-3.5-sonnet",
+          },
+        },
+      })
+    end,
   },
 
   strategies = {
