@@ -115,7 +115,7 @@ code.setup({
         name = "copilot_claude",
         schema = {
           model = {
-            default = "claude-3.5-sonnet",
+            default = "claude-3.7-sonnet",
           },
         },
       })
@@ -123,17 +123,8 @@ code.setup({
   },
 
   strategies = {
-    chat = { adapter = "copilot" },
-    inline = { adapter = "copilot" },
-    -- copilot
-    -- choices = {
-    --   ["o3-mini-2025-01-31"] = { opts = { can_reason = true } },
-    --   ["o1-2024-12-17"] = { opts = { can_reason = true } },
-    --   ["o1-mini-2024-09-12"] = { opts = { can_reason = true } },
-    --   "claude-3.5-sonnet",
-    --   "gpt-4o-2024-08-06",
-    --   "gemini-2.0-flash-001",
-    -- },
+    chat = { adapter = "copilot_claude" },
+    inline = { adapter = "copilot_claude" },
   },
 
   opts = {
@@ -141,8 +132,8 @@ code.setup({
   },
   -------------------------------------------
   prompt_library = {
-    ["DeepSeek Explain In Chinese"] = require("insis.utils.promps.deepseek-explain"),
-    ["Nextjs Helper"] = require("insis.utils.promps.nextjs-helper"),
+    ["DeepSeek Explain"] = require("insis.ai.codecompanion.prompts.deepseek-explain"),
+    ["Nextjs Agant"] = require("insis.ai.codecompanion.prompts.nextjs-agant"),
   },
 })
 
@@ -152,33 +143,4 @@ end)
 
 keymap({ "n", "v", "x" }, cfg.codecompanion.keys.prompt_actions, ":CodeCompanionActions<CR>")
 
--- https://github.com/olimorris/codecompanion.nvim/discussions/640
-local fidget = pRequire("fidget")
-local handler
-if fidget then
-  -- Attach:
-  vim.api.nvim_create_autocmd({ "User" }, {
-    pattern = "CodeCompanionRequest*",
-    group = vim.api.nvim_create_augroup("CodeCompanionHooks", {}),
-    callback = function(request)
-      if request.match == "CodeCompanionRequestStarted" then
-        if handler then
-          handler.message = "Abort."
-          handler:cancel()
-          handler = nil
-        end
-        handler = fidget.progress.handle.create({
-          title = "",
-          message = "Thinking...",
-          lsp_client = { name = "CodeCompanion" },
-        })
-      elseif request.match == "CodeCompanionRequestFinished" then
-        if handler then
-          handler.message = "Done."
-          handler:finish()
-          handler = nil
-        end
-      end
-    end,
-  })
-end
+require("insis.ai.codecompanion/fidget").init()

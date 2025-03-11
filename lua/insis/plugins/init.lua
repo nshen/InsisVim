@@ -356,7 +356,7 @@ local plugins = {
   {
     "olimorris/codecompanion.nvim",
     config = function()
-      require("insis.plugins.codecompanion")
+      require("insis.ai.codecompanion.codecompanion")
     end,
   },
   -- {
