@@ -232,6 +232,12 @@ local plugins = {
   { "rafamadriz/friendly-snippets" },
   -- UI improvement
   { "onsails/lspkind-nvim" },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    opts = {}, -- your configuration
+  },
 
   ------------------ Code formatter -------------------------------------------
 
