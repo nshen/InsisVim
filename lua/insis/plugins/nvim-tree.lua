@@ -49,8 +49,8 @@ if nvimTree and cfg and cfg.enable then
   nvimTree.setup({
     on_attach = on_attach,
     update_focused_file = {
-      enable = true,
-      update_root = true,
+      enable = false,
+      update_root = false,
     },
     git = {
       enable = true,
