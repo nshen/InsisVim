@@ -1,12 +1,11 @@
 vim.diagnostic.config({
   virtual_text = true,
-  signs = true,
   update_in_insert = false,
   underline = true,
   show_header = false,
   severity_sort = true,
   float = {
-    source = "always",
+    source = true,
     border = "rounded",
     style = "minimal",
     header = "",
@@ -15,10 +14,12 @@ vim.diagnostic.config({
     -- width = 60,
     -- height = 20,
   },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ✘", --" ", ""
+      [vim.diagnostic.severity.WARN] = " ", -- " "
+      [vim.diagnostic.severity.HINT] = " 󰌶", -- "󰌵 "
+      [vim.diagnostic.severity.INFO] = " ", -- "󰋼 "
+    },
+  },
 })
-
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
