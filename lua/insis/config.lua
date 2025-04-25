@@ -170,7 +170,7 @@ local InsisUserConfig = {
   ---@field render? 'default'|'minimal'|'simple'|'compact'|'wrapped-compact'
   notify = {
     enable = true,
-    timeout = 3000,
+    timeout = 2000,
     stages = "fade",
     render = "wrapped-compact",
   },
