@@ -453,8 +453,8 @@ local InsisUserConfig = {
 
   ---@class InsisFrontendConfig
   ---@field enable? boolean
-  ---@field linter? "eslint" | false
-  ---@field formatter? "prettier" | "ts_ls" | false
+  ---@field linter? "biome" | "eslint" | false
+  ---@field formatter? "biome" | "prettier" | "ts_ls" | false
   ---@field format_on_save? boolean
   ---@field indent? number
   ---@field cspell? boolean

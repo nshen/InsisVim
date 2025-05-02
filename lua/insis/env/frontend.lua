@@ -30,7 +30,9 @@ return function(config)
       if config.vue then
         table.insert(list, "volar")
       end
-      if config.linter == "eslint" then
+      if config.linter == "biome" then
+        table.insert(list, "biome")
+      elseif config.linter == "eslint" then
         table.insert(list, "eslint")
       end
       return list
@@ -44,7 +46,9 @@ return function(config)
         emmet_ls = require("insis.lsp.config.emmet"),
         html = require("insis.lsp.config.html"),
       }
-      if config.linter == "eslint" then
+      if config.linter == "biome" then
+        list.biome = require("insis.lsp.config.biome")
+      elseif config.linter == "eslint" then
         list.eslint = require("insis.lsp.config.eslint")
       end
       if config.tailwindcss then
@@ -64,6 +68,9 @@ return function(config)
       local list = {}
       if config.formatter == "prettier" then
         table.insert(list, "prettier")
+      end
+      if config.formatter == "biome" then
+        table.insert(list, "biome")
       end
       if config.cspell then
         table.insert(list, "cspell")
@@ -100,6 +107,9 @@ return function(config)
             prefer_local = "node_modules/.bin",
           })
         )
+      end
+      if config.formatter == "biome" then
+        table.insert(list, null_ls.builtins.formatting.biome)
       end
       if config.cspell then
         table.insert(
