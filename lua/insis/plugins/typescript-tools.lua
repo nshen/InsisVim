@@ -8,7 +8,6 @@ if ts_tools and cfg and cfg.enable and not cfg.vue then
     on_attach = function(client, bufnr)
       if cfg.formatter ~= "ts_ls" then
         common.disableFormat(client)
-        log("disable formatter")
       end
       common.keyAttach(bufnr)
     end,
