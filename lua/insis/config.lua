@@ -508,15 +508,17 @@ local InsisUserConfig = {
   ---@class InsisLuaConfig
   ---@field enable? boolean
   ---@field lsp? string
-  ---@field formatter? string
+  ---@field formatter? "stylua" | "lua_ls"
   ---@field format_on_save? boolean
   ---@field indent? number
+  ---@field inlay_hint? boolean
   lua = {
     enable = true,
     lsp = "lua_ls",
-    formatter = "stylua",
+    formatter = "lua_ls",
     format_on_save = true,
     indent = 2,
+    inlay_hint = true,
   },
 
   ---@class InsisRustConfig

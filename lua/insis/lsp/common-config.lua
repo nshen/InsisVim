@@ -10,11 +10,16 @@ M.keyAttach = function(bufnr)
 
   ------ Diagnostic
   -- Show diagnostics in a floating window.
-  keymap("n", lsp.open_float, vim.diagnostic.open_float)
+  keymap("n", lsp.open_float, vim.diagnostic.open_float, opt)
   -- Move to the next diagnostic.
-  keymap("n", lsp.goto_next, vim.diagnostic.goto_next)
+  -- keymap("n", lsp.goto_next, vim.diagnostic.goto_next(), opt)
+  keymap("n", lsp.goto_next, function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end)
   -- Move to the previous diagnostic.
-  keymap("n", lsp.goto_prev, vim.diagnostic.goto_prev)
+  keymap("n", lsp.goto_prev, function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end)
 
   ------ LSP
   local telescope_builtin = require("telescope.builtin")
