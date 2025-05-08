@@ -461,6 +461,7 @@ local InsisUserConfig = {
   ---@field tailwindcss? boolean
   ---@field prisma? boolean
   ---@field vue? boolean
+  ---@field inlay_hint? boolean
   frontend = {
     enable = false,
     linter = "eslint", -- :EslintFixAll command added
@@ -472,6 +473,7 @@ local InsisUserConfig = {
     prisma = false,
     -- vue will take over typescript lsp
     vue = false,
+    inlay_hint = true,
   },
 
   ---@class InsisClangdConfig
