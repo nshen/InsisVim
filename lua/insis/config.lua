@@ -454,7 +454,7 @@ local InsisUserConfig = {
   ---@class InsisFrontendConfig
   ---@field enable? boolean
   ---@field linter? "biome" | "eslint" | false
-  ---@field formatter? "biome" | "prettier" | "ts_ls" | false
+  ---@field formatter? "biome" | "prettier" | "ts_ls" | "eslint" | false
   ---@field format_on_save? boolean
   ---@field indent? number
   ---@field cspell? boolean
@@ -465,7 +465,7 @@ local InsisUserConfig = {
   frontend = {
     enable = false,
     linter = "eslint", -- :EslintFixAll command added
-    formatter = "ts_ls",
+    formatter = "ts_ls", -- if formatter set to eslint,then the linter must be eslint
     format_on_save = false,
     indent = 2,
     cspell = false,
