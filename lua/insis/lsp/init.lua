@@ -20,7 +20,9 @@ mason.setup({
   },
 })
 
+-- Automatically install LSP servers
 mason_config.setup({
+  automatic_enable = false,
   ensure_installed = require("insis.env").getLSPEnsureList(),
 })
 
