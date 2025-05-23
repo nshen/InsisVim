@@ -211,7 +211,7 @@ local plugins = {
   ------------------ LSP ------------------------------------------------------
 
   -- Installer
-  { "williamboman/mason.nvim" },
+  { "mason-org/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
   { "WhoIsSethDaniel/mason-tool-installer.nvim" },
   -- Lspconfig
