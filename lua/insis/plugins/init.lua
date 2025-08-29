@@ -365,6 +365,13 @@ local plugins = {
       require("insis.ai.codecompanion.codecompanion")
     end,
   },
+  {
+    "ravitemer/mcphub.nvim",
+    build = "pnpm install -g mcp-hub@latest",
+    config = function()
+      require("mcphub").setup()
+    end,
+  },
   -- {
   --   "CopilotC-Nvim/CopilotChat.nvim",
   --   dependencies = {

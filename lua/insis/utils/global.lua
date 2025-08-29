@@ -74,3 +74,11 @@ end
 function _G.trim(s)
   return s:match("^%s*(.-)%s*$")
 end
+
+function _G.try_catch(try_func, catch_func)
+  local status, result = pcall(try_func)
+  if not status then
+    return catch_func(result)
+  end
+  return result
+end

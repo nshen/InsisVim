@@ -9,8 +9,8 @@ return {
     user_prompt = false,
     stop_context_insertion = true,
     adapter = {
-      name = "aliyun_deepseek",
-      model = "deepseek-r1",
+      name = "siliconflow_r1",
+      model = "deepseek-ai/DeepSeek-R1",
     },
   },
   prompts = {
