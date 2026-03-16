@@ -51,11 +51,11 @@ function _G.isWSL()
 end
 
 function _G.isMAC()
-  return vim.fn.has("maxunic") == 1
+  return vim.fn.has("macunix") == 1
 end
 
-function _G.isLinux(self)
-  return not self.is_wsl() and not self.is_mac()
+function _G.isLinux()
+  return not _G.isWSL() and not _G.isMAC()
 end
 
 table.indexOf = function(t, object)
