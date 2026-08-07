@@ -24,7 +24,7 @@ function M.setup(user_config)
   require("insis.dap")
   require("insis.utils.color-preview")
   if M.config.fix_windows_clipboard then
-    require("utils.fix-yank")
+    require("insis.utils.fix-yank")
   end
 end
 
