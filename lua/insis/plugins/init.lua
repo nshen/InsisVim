@@ -3,7 +3,7 @@ local cfg = require("insis").config
 local plugins = {
   -------------------------- plugins -------------------------------------------
   -- requires
-  { "kyazdani42/nvim-web-devicons" },
+  { "nvim-tree/nvim-web-devicons" },
   { "moll/vim-bbye" },
   { "nvim-lua/plenary.nvim" },
   -- nvim-notify
@@ -15,7 +15,7 @@ local plugins = {
   },
   -- nvim-tree
   {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     config = function()
       require("insis.plugins.nvim-tree")
     end,
