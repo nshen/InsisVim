@@ -39,8 +39,8 @@ if nvimTree and cfg and cfg.enable then
     keymap("n", cfg.keys.paste, api.fs.paste, opts("Paste"))
     keymap("n", cfg.keys.copy_name, api.fs.copy.filename, opts("Copy Name"))
     keymap("n", cfg.keys.copy_path, api.fs.copy.relative_path, opts("Copy Relative Path"))
-    keymap("n", cfg.copy_absolute_path, api.fs.copy.absolute_path, opts("Copy Absolute Path"))
-    keymap("n", cfg.toggle_file_info, api.node.show_info_popup, opts("Info"))
+    keymap("n", cfg.keys.copy_absolute_path, api.fs.copy.absolute_path, opts("Copy Absolute Path"))
+    keymap("n", cfg.keys.toggle_file_info, api.node.show_info_popup, opts("Info"))
   end
   -- disable netrw at the very start of your init.lua (strongly advised)
   vim.g.loaded_netrw = 1
